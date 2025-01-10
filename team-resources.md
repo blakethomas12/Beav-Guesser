@@ -1,4 +1,4 @@
-Each team member’s role in the project:
+**Each team member’s role in the project:**
 - Blake - Database
 - Joy - API/data collection
 - Lukas - API/data collection
@@ -7,9 +7,9 @@ Each team member’s role in the project:
 - Sam - UI Designer/Frontend
 - Gavin - Frontend
 
-Links to project-relevant artifacts:
+**Links to project-relevant artifacts:**
 
-Communication channels/tools and corresponding policies:
+**Communication channels/tools and corresponding policies:**
 - **Discord server link:**
     - https://discord.gg/DcFygYKwqJ
 - **Policies:**
