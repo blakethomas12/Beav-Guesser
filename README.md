@@ -1,1 +1,2 @@
-# Team-18
+# Beav-Guesser
+Our project is a take on the game Geoguesser adapted to the OSU campus. Our game will be a web-based application where users are shown a 360 image from around the Oregon State University Campus and asked to guess the location of the image taken. Our major developmental goals are, a user authentication system, user profile, leaderboard system, and integrated locational data.
