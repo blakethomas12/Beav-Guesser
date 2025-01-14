@@ -1,11 +1,11 @@
 # Team Report
 
-### Goals From Last Week**
+### Goals From Last Week
 - 
 - 
 - 
 
-### Progess**
+### Progess
 
 **Status Report** 
 
@@ -15,7 +15,7 @@
 
     (text here)
 
-### Goals For Next Week**
+### Goals For Next Week
 
 1. 
 
@@ -25,12 +25,12 @@
 
 # Contributions of Individual Team Members
 
-### Goals From Last Week**
+### Goals From Last Week
 - 
 - 
 - 
 
-### Progess**
+### Progess
 
 - **Blake**
     (update here)
@@ -47,7 +47,7 @@
 - **Gavin**
     (update here)
 
-### Goals For Next Week**
+### Goals For Next Week
 
 1. 
 
