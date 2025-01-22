@@ -24,12 +24,3 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model('users', userSchema)
-
-const myImage = new Image({
-    path: 'here/to/there',
-    long: 3586.44,
-    lat: 394.2,
-    UserSubmitted: false
-})
-
- await myImage.save()
