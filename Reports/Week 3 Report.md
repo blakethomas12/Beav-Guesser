@@ -1,55 +1,42 @@
 # Team Report
 
 ### Goals From Last Week
-- 
-- 
-- 
+- Research about designated roles.
+- N/A
+- N/A
 
 ### Progess
 
 **Status Report** 
+Blake has established a setup using mongodb.
 
-    (text here)
 
 **Next Meeting Agenda**
 
-    (text here)
-
-### Goals For Next Week
-
-1. 
-
-2. 
-
-3. 
+Ensure everybody has their system set up and test out current functionalities.
 
 # Contributions of Individual Team Members
-
-### Goals From Last Week
-- 
-- 
-- 
 
 ### Progess
 
 - **Blake**
-    (update here)
+    Working on functions to pull data from database.
 - **Joy** 
-    (update here)
+    
 - **Lukas** 
-    (update here)
+    Basic testing with Google streetview embeds. 
 - **Kevin** 
-    (update here)
+    
 - **Kevin** 
-    (update here)
+    
 - **Sam** 
-    (update here)
+    
 - **Gavin**
-    (update here)
+  Developing a basic HTML to use as a guideline. 
 
 ### Goals For Next Week
 
-1. 
+1.  Have a basic website running.
 
 2. 
 
