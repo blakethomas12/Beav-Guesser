@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-mongoose.connect('mongodb://localhost:27017/BeavGuesser')
+mongoose.connect('mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser')
 
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
@@ -8,14 +8,14 @@ db.once('open', function(){
     console.log('Connected to MongoDB')
 })
 
-const imageSchema = new mongoose.Schema({
+const locationSchema = new mongoose.Schema({
     path: String,
     long: Number,
     lat: Number,
     UserSubmitted: Boolean
 })
 
-const Image = mongoose.model('image', imageSchema)
+const Location = mongoose.model('location', locationSchema)
 
 
 const userSchema = new mongoose.Schema({
