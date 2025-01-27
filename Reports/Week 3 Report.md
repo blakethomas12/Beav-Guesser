@@ -8,25 +8,27 @@
 ### Progess
 
 **Status Report** 
-Blake has established a setup using mongodb.
+Blake has established a setup using MongoDB.
 
 
 **Next Meeting Agenda**
-
 Ensure everybody has their system set up and test out current functionalities.
 
-# Contributions of Individual Team Members
+
+## Contributions of Individual Team Members
 
 ### Progess
 
 - **Blake**
     Working on functions to pull data from database.
+
 - **Joy** 
-    
-- **Lukas** 
-    Basic testing with Google streetview embeds. 
-- **Kevin** 
-    
+
+- **Lukas**
+    Basic testing with Google streetview embeds.
+
+- **Kevin**
+  
 - **Kevin** 
     
 - **Sam** 
