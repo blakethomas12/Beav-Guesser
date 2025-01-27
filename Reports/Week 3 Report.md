@@ -1,50 +1,47 @@
 # Team Report
-
+### Agenda
+- 
 ### Goals From Last Week
-- Research about designated roles.
-- N/A
-- N/A
+1. Research about designated roles.
+2. N/A
+3. N/A
 
-### Progess
+### Progess and Issues
+Currently we are setting up our systems with MongoDB and can connect to the server succesfully. We have run into a few issues setting up and are working on getting those sorted out. 
 
-**Status Report** 
+### Goals For Next Week
+1. Have a basic website running with front-end and back-end.
+2. Ensure everybody has their system set up.
+3. N/A
 
-Blake has established a setup using MongoDB.
-
-
-**Next Meeting Agenda**
-
-Ensure everybody has their system set up and test out current functionalities.
-
-
-## Contributions of Individual Team Members
-
-### Progess
+# Contributions of Individual Team Members
 
 - **Blake**
 
-    Working on functions to pull data from database.
-
-- **Joy** 
+Working on functions to pull data from database.
 
 - **Lukas**
 
-    Basic testing with Google streetview embeds.
+Basic testing with Google streetview embeds.\
+Gathering locations from Google maps (data collection).
 
-- **Kevin**
+- **Joy**
+
+Gathering locations from Google maps (data collection)
+
+- **Kevin T**
+
+Setting up the server.js and creating/storing users
   
-- **Kevin** 
-    
+- **Kevin N**
+
+Setting up the server.js and creating/storing users
+
 - **Sam** 
-    
+
+Working on initial start, ingame, and leaderboard ui design.
+
 - **Gavin**
 
-  Developing a basic HTML to use as a guideline. 
+Developing the HTML for the home webpage.
 
-### Goals For Next Week
-
-1.  Have a basic website running.
-
-2. 
-
-3. 
