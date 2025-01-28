@@ -48,6 +48,7 @@ async function get_location_by_number(num) {
     }
 }
 
+//creates a user with the given username and password, encrypts password before storing
 async function create_user(username, password) {
     try{
         const saltRounds = 10
@@ -65,22 +66,26 @@ async function create_user(username, password) {
     }
 }
 
+//checks if the username and password are correct returns true or false
 async function check_cred(username, password) {
-    try{
-        const user = User.findOne({username:username})
-        if(!user){
-            return false
+    try {
+        console.log(`Checking credentials for user: ${username}`);
+        const user = await User.findOne({ username: username });
+        if (!user) {
+            console.log(`User not found: ${username}`);
+            return false;
         }
-        const match = await bcrypt.compare(password, user.password)
-        return match
-    }catch(error){
-        console.error(error)
-        return false
+        console.log(`User found: ${username}, verifying password...`);
+        const match = await bcrypt.compare(password, user.password); // Use await here
+        console.log(`Password match: ${match}`);
+        return match;
+    } catch (error) {
+        console.error('Error:', error.message);
+        return false;
     }
 }
 
-
-//==============================IMPORTING FUNCTION=========================================
+//==============================IMPORTING FUNCTIONS=========================================
 function extractLatLong(url) {
     const regex = /!2m2!1d([0-9.\-]+)!2d([0-9.\-]+)/;
     const match = url.match(regex);
@@ -134,5 +139,4 @@ function extractLatLong(url) {
     }
 }  
   
-  // Call the main function with the filename
-  //processFile('links.txt');
+//processFile('links.txt');
