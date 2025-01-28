@@ -65,6 +65,19 @@ async function create_user(username, password) {
     }
 }
 
+async function check_cred(username, password) {
+    try{
+        const user = User.findOne({username:username})
+        if(!user){
+            return false
+        }
+        const match = await bcrypt.compare(password, user.password)
+        return match
+    }catch(error){
+        console.error(error)
+        return false
+    }
+}
 
 
 //==============================IMPORTING FUNCTION=========================================
