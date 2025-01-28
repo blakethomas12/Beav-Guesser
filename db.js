@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+import fs from 'fs/promises'
+import bcrypt from 'bcrypt'
 
 mongoose.connect('mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser')
 
@@ -19,8 +21,7 @@ const Location = mongoose.model('location', locationSchema)
 
 const userSchema = new mongoose.Schema({
     username: String,
-    password: String,
-    level: Number,
+    password: String
 })
 
 const User = mongoose.model('users', userSchema)
@@ -46,3 +47,79 @@ async function get_location_by_number(num) {
             throw error
     }
 }
+
+async function create_user(username, password) {
+    try{
+        const saltRounds = 10
+        const hashedPassword = await bcrypt.hash(password, saltRounds)
+
+        const user = new User({
+            username: username,
+            password: hashedPassword
+        })
+
+        await user.save()
+        console.log(`password and username stored for ${username}`)
+    }catch(error){
+        console.error('Error creating and storing user', error)
+    }
+}
+
+
+
+//==============================IMPORTING FUNCTION=========================================
+function extractLatLong(url) {
+    const regex = /!2m2!1d([0-9.\-]+)!2d([0-9.\-]+)/;
+    const match = url.match(regex);
+    if (match) {
+      const latitude = match[1];
+      const longitude = match[2];
+      return { latitude, longitude };
+    }
+    return null;
+  }
+
+  async function saveLocation(link, latitude, longitude) {
+    const location = new Location({
+      path: link,
+      lat: latitude,
+      long: longitude,
+    });
+  
+    await location.save();
+    console.log(`Saved location: ${link}`);
+  }
+
+  async function extractLinksFromFile(filename) {
+    const data = await fs.readFile(filename, 'utf-8');
+    const regex = /src="([^"]+)"/g;
+    const links = [];
+    let match;
+    while ((match = regex.exec(data)) !== null) {
+      links.push(match[1]);
+    }
+    return links;
+  }
+
+  async function processFile(filename) {
+    const links = await extractLinksFromFile(filename);
+    if (!Array.isArray(links) || links.length === 0) {
+      console.log("No valid links found in the file.");
+      return;
+    }
+    for (const link of links) {
+      const coordinates = extractLatLong(link);
+      if (coordinates) {
+        try {
+          await saveLocation(link, coordinates.latitude, coordinates.longitude);
+        } catch (err) {
+          console.error('Error saving location:', err);
+        }
+      } else {
+        console.log("Coordinates not found in the link");
+      }
+    }
+}  
+  
+  // Call the main function with the filename
+  //processFile('links.txt');
