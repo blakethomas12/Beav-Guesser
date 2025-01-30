@@ -6,8 +6,8 @@
 2. N/A
 3. N/A
 
-### Progess and Issues
-Currently we are setting up our systems with MongoDB and can connect to the server succesfully. We have run into a few issues setting up and are working on getting those sorted out. 
+### Progress and Issues
+Currently we are setting up our systems with MongoDB and can connect to the server successfully. We have run into a few issues setting up and are working on getting those sorted out. 
 
 ### Goals For Next Week
 1. Have a basic website running with front-end and back-end.
