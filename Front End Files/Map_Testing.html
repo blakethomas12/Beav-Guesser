@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<link rel="stylesheet" href="style.css">
 <script src="Map_Testing.js"></script>
 
 <html>
@@ -8,8 +9,8 @@
         <title>Beav-Guesser</title>
     </head>
     <body>
-        <h1>Random Google Maps Street View</h1>
-        <button onclick="loadRandomStreetView()">Generate Random Street View</button>
+        <h1>Beav-Guesser</h1>
+        <button onclick="loadRandomStreetView()">New Round</button>
         <div style="width: 100%; overflow: hidden; height: 600px;">
             <iframe id="streetViewFrame"
                 src="getRandomStreetViewEmbedLink()"
@@ -18,7 +19,9 @@
                 frameborder="0"
                 style="border:0; margin-top: -150px;">
             </iframe>
+            <img src="campus-map.jpg" alt="Map" id="overlay-map">
         </div>
+
     </body>
 
 </html> 

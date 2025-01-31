@@ -30,3 +30,5 @@ function getRandomStreetViewEmbedLink() {
     const randomLink = getRandomStreetViewEmbedLink();
     iframe.src = randomLink;
   }
+
+  window.onload = loadRandomStreetView;
