@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   high_score: Number,
+  xp: Number
 });
 
 const User = mongoose.model("users", userSchema);
@@ -69,7 +70,16 @@ async function create_user(username, password) {
       username: username,
       password: hashedPassword,
       high_score: 0,
+      xp: 0,
     });
+
+    const leaderboard = new Leaderboard({
+      username: username,
+      score: 0,
+    })
+
+    await leaderboard.save()
+
 
     await user.save();
     console.log(`password and username stored for ${username}`);
@@ -145,13 +155,18 @@ async function get_top_players() {
   }
 }
 
+//todo: make so only update if score if greater
 async function update_leaderboard(username, score) {
   try {
-    await Leaderboard.findOneAndUpdate(
-      { username: username },
-      { score, timestamp: new Date() },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
-    );
+    const user = await User.findOne({username: username})
+    if(user.high_score<=score){
+      await Leaderboard.findOneAndUpdate(
+        { username: username },
+        { score, timestamp: new Date() },
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      );
+      user.high_score = score
+    }
   } catch (error) {
     console.log("error updating leaderboard:", error);
   }
