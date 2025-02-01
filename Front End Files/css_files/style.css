@@ -1,0 +1,46 @@
+h1 {
+    text-align: center;
+}
+
+button {
+    margin: 0;
+    
+    
+}
+
+.topnav {
+    display: flex;
+    justify-content: space-between; /* Pushes items to the edges */
+    align-items: center; /* Vertically centers the links */
+    padding: 20px; /* Adds some spacing around the links */
+    background-color: #c47979; /* Optional: Adds a background color */
+    
+}
+
+.topnav-group {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.topnav-item {
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+#overlay-map {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    width: 150px;
+    height: auto;
+    z-index: 10;
+    border-radius: 2px;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+#overlay-map:hover {
+    transform: scale(4);
+}

@@ -1,0 +1,61 @@
+<!-- This is the base html page that user's will go to - Gavin Fifer -->
+ 
+<!DOCTYPE html>
+
+<html>
+    <head> 
+        <title>Home</title>
+        <link rel="stylesheet" href="..\css_files\style.css">
+        <script src="..\javascript_files\Page_functions.js"></script>
+    </head>
+
+    <body>
+        <!-- topnav represents the navigation bar at the top of the page AND IS CURRENTLY UNIQUE FOR EACH HTML FILE-->
+        <div class="topnav">
+            <div class="topnav-group" id="topnav-left-group">
+                <button class="topnav-item" onclick="goToPage('Home.html')">Home</button>
+                <button class="topnav-item" onclick="goToPage('About.html')">About</button>
+                <button class="topnav-item" onclick="goToPage('Leaderboard.html')">Leaderboard</button>
+            </div>
+            <div class="topnav-group" id="topnav-right-group">
+                <button class="topnav-item" onclick="goToPage('Login.html')">Login</button>
+                <button class="topnav-item" onclick="goToPage('Signup.html')">Signup</button>
+            </div>
+        </div>
+        
+        <h1>Welcome to Beav-Guesser</h1>
+
+            <!-- Div for ui related to playing the game -->
+            <div>
+                <button id="play_game_button" type="button" onclick="playGamePressed()">Play Game</button>
+            </div>
+
+            <div id="left-panel">
+                <p>
+                    left panel text hereadhafdsfa dsfadsfa
+                </p>
+            </div>
+
+            <div id="middle-panel">
+                <p>
+                    middle panel text heredasfgdaghadsf
+                </p>
+            </div>
+
+            <div id="right-panel">
+                <p>
+                    right panel text herehuabdafdsafds
+                </p>
+            </div>
+        
+
+        <!-- Some Javascript functions here -->
+        <script>
+            function playGamePressed() {
+                // Goes to the gameplay page
+                window.location.href = "Map_Testing.html";
+            }
+        </script>
+    </body>
+
+</html>
