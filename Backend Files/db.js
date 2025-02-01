@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
-import fs from "fs/promises";
-import bcrypt from "bcrypt";
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const fs = require('fs/promises');
 
-mongoose.connect(
-  "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
-);
+// mongoose.connect(
+//   "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
+// );
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("Connected to MongoDB");
-});
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", function () {
+//   console.log("Connected to MongoDB");
+// });
 
 const locationSchema = new mongoose.Schema({
   path: String,
@@ -171,6 +171,18 @@ async function update_leaderboard(username, score) {
     console.log("error updating leaderboard:", error);
   }
 }
+
+
+module.exports = {
+  get_num_locations,
+  get_location_by_number,
+  create_user,
+  check_cred,
+  get_user,
+  check_name_availability,
+  get_top_players,
+  update_leaderboard,
+};
 
 //==============================IMPORTING FUNCTIONS=========================================
 function extractLatLong(url) {

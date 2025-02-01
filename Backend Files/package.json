@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon server.js",
+    "database": "nodemon db.js"
   },
   "keywords": [
     "express",
@@ -16,6 +17,13 @@
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
+    "bcrypt": "^5.1.1",
+    "mongoose": "^8.9.5",
+    "express-handlebars": "8.0.1",
+    "cookie-parser": "1.4.7",
+    "body-parser": "1.20.3"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.9"
   }
 }

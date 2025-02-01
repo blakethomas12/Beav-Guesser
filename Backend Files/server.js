@@ -2,12 +2,24 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const fs = require('fs');
+const mongoose = require('mongoose');
+const dbFunctions = require('./db');
 //parsers for code
 const bodyParser = require('body-parser'); 
 const cookieParser = require('cookie-parser');
 
 const port = 4000;
 const app = express();
+
+mongoose.connect(
+  "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
+);
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('Connected to MongoDB');
+});
 
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' })); //default look on every site
 app.set('view engine', 'handlebars');
