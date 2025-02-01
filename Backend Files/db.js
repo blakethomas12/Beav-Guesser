@@ -167,9 +167,16 @@ async function update_leaderboard(username, score) {
       );
       user.high_score = score
     }
+    user.xp = user.xp + calculate_xp(score)
   } catch (error) {
     console.log("error updating leaderboard:", error);
   }
+}
+
+function calculate_xp(score){
+  const SCORE_TO_XP_RATIO = 12
+
+  return score * SCORE_TO_XP_RATIO
 }
 
 

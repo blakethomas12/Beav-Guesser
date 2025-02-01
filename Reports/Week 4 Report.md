@@ -28,7 +28,8 @@
 ### Progress
 
 - **Blake**
-    Finished database i/o functions.
+    Finished database i/o functions.  
+    Starting on scoring and xp functions
 - **Joy** 
     (update here)
 - **Lukas** 
