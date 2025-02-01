@@ -1,9 +1,8 @@
 //requires
 const express = require('express');
 const exphbs = require('express-handlebars');
-const fs = require('fs');
 const mongoose = require('mongoose');
-const dbFunctions = require('./db');
+const dbFunctions = require('./db'); //database i/o functions
 //parsers for code
 const bodyParser = require('body-parser'); 
 const cookieParser = require('cookie-parser');
@@ -51,34 +50,20 @@ app.get('/login', (req, res) =>{
 app.post('/login', (req, res) => {
     const { username, password } = req.body; //gets username and password from body
     
-    fs.readFile('userData.json', (err, data) => { //reads json file
-        if (err) {
-          console.error('Error reading userData.json:', err);
-          return res.status(500).send('Internal server error');
-        }
+    try {
+      const verification = dbFunctions.check_cred(username, password)
     
-        try {
-          const users = JSON.parse(data);
-          const user = users[username];
-    
-          if (!user) {
-            // Username does not exist
-            return res.render('login', { error: 'Username does not exist'});
+          if (verification === false) {
+            //failed verification
+            return res.render('login', { error: 'Username or password are incorrect'});
           }
     
-          if (user.password !== password) {
-            // Incorrect password
-            return res.render('login', { error2: 'Incorrect password'});
-          }
-    
-       
           res.cookie('username', username, { maxAge: 900000, httpOnly: true }); //cookie for username
           res.render('homePage', { loggedIn: true, username: username }); //goes back to homePage after login
         } catch (error) {
           console.error( error);
           res.status(500).send('error');
         }
-      });
 });
 
 app.listen(port, function (err) {
