@@ -8,14 +8,14 @@
 3. N/A
    
 ### Progress and Issues
-Succesfully set up MongoDB connection.\ 
+Succesfully set up MongoDB connection.\
 Front-End design is in progress.\
 Back-End implementation is in progress.\
 Brainstormed game logic and features to be implemented.
 
 ### Goals For Next Week
 1. Have a basic website running with front-end and back-end.
-2. Ensure everybody has their system set up.
+2. Test out implemented features and functionalities.
 3. N/A
 
 # Contributions of Individual Team Members
