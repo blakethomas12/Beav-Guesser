@@ -8,9 +8,9 @@
 3. N/A
    
 ### Progress and Issues
-Succesfully set up MongoDB connection. 
-Front-End design is in progress.
-Back-End implementation is in progress.
+Succesfully set up MongoDB connection.\ 
+Front-End design is in progress.\
+Back-End implementation is in progress.\
 Brainstormed game logic and features to be implemented.
 
 ### Goals For Next Week
@@ -22,19 +22,19 @@ Brainstormed game logic and features to be implemented.
 
 - **Blake**
   
-  Finished database i/o functions.
+  Finished database i/o functions.\
   Implement scoring and xp function
 
 - **Joy**
 
-  Continuation of location data gathering
-  Brainstorm and implement game logic
+  Continuation of location data gathering\
+  Brainstorm and implement game logic\
   Implement guess input function
 
 - **Lukas** 
 
-  Continuation of location data gathering
-  Brainstorm and implement game logic
+  Continuation of location data gathering\
+  Brainstorm and implement game logic\
   Implement guess input function
 
 - **Kevin T**
@@ -47,11 +47,11 @@ Brainstormed game logic and features to be implemented.
 
 - **Sam**
 
-  Create front-end CSS
+  Create front-end CSS\
   Create front-end HTML
 
 - **Gavin**
 
-  Create front-end CSS
+  Create front-end CSS\
   Create front-end HTML
 
