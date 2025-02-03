@@ -10,6 +10,20 @@ button {
     transform: translate(-50%, -50%);
 }
 
+#guess-button {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#main-div {
+    width: 100%; 
+    overflow: hidden; 
+    height: 600px;
+}
+
 #overlay-map {
     position: absolute;
     bottom: 5px;
@@ -20,8 +34,19 @@ button {
     border-radius: 2px;
     transform-origin: bottom right;
     transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+    cursor: crosshair;
 }
 
 #overlay-map:hover {
     transform: scale(4);
+}
+
+#guess-canvas {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    width: 594px;
+    height: 450px;
+    border-style: dashed;
+    z-index: 10;
 }
