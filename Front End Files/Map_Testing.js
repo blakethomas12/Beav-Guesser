@@ -7,24 +7,24 @@ const mapBounds = {
 };
 
 function getRandomStreetViewEmbedLink() {
-    // generate random latitude and longitude within bounds
-    actualLat = Math.random() * (mapBounds.topLeft.lat - mapBounds.bottomRight.lat) + mapBounds.bottomRight.lat;
-    actualLng = Math.random() * (mapBounds.bottomRight.lng - mapBounds.topLeft.lng) + mapBounds.topLeft.lng;
+  // generate random latitude and longitude within bounds
+   actualLat = Math.random() * (mapBounds.topLeft.lat - mapBounds.bottomRight.lat) + mapBounds.bottomRight.lat;
+  actualLng = Math.random() * (mapBounds.bottomRight.lng - mapBounds.topLeft.lng) + mapBounds.topLeft.lng;
 
-    return `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sPLACEHOLDER!2m2!1d${actualLat.toFixed(6)}!2d${actualLng.toFixed(6)}!3f0!4f0!5f0.7820865974627469`;
-  }
+  return `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sPLACEHOLDER!2m2!1d${actualLat.toFixed(6)}!2d${actualLng.toFixed(6)}!3f0!4f0!5f0.7820865974627469`;
+}
 
-  function loadRandomStreetView() {
-    const iframe = document.getElementById("street-view-frame");
-    iframe.src = getRandomStreetViewEmbedLink();
-  }
+function loadRandomStreetView() {
+  const iframe = document.getElementById("street-view-frame");
+  iframe.src = getRandomStreetViewEmbedLink();
+}
 
-  window.onload = loadRandomStreetView;
+window.onload = loadRandomStreetView;
 
-  function latLngToXY(lat, lng, imgWidth, imgHeight) {
-    const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
-    const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
-    return { x, y };
+function latLngToXY(lat, lng, imgWidth, imgHeight) {
+  const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
+  const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
+  return { x, y };
 }
 
 document.getElementById("overlay-map").addEventListener("click", function(event) {
