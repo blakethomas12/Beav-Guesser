@@ -39,14 +39,14 @@ Brainstormed game logic and features to be implemented.
 
 - **Kevin T**
 
-  Solidify back-end
-  Created log-in page
+  Solidify back-end \
+  Created log-in page \
   Created a js to check for the correct username and password
 
 - **Kevin N**
 
-  Solidify back-end
-  Created log-in page
+  Solidify back-end \
+  Created log-in page \
   Connected front-end CSS to the login page
 
 - **Sam**
