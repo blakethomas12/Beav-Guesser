@@ -1,12 +1,15 @@
-<!-- Web page for users to make an account - Gavin Fifer-->
+<!-- This is where the user actually plays the game - Gavin Fifer-->
 
 <!DOCTYPE html>
 
 <html>
     <head> 
-        <title>Signup</title>
+        <title>Guesser</title>
         <link rel="stylesheet" href="..\css_files\style.css">
         <script src="..\javascript_files\Page_functions.js"></script>
+        <script>
+            window.onload = loadRandomStreetView;
+        </script>
     </head>
 
     <body>
@@ -24,20 +27,25 @@
         </div>
 
         <main>
-            <p>Signup</p>
+            <p>Guesser</p>
+            <!-- This is the window for the google street view api -->
+            <button onclick="loadRandomStreetView()">New Round</button>
+            <div id="street-view-window">
+                <div style="width: 100%; overflow: hidden; height: 600px;">
+                    <iframe id="streetViewFrame"
+                        src="getRandomStreetViewEmbedLink()"
+                        width="100%"
+                        height="900"
+                        frameborder="0"
+                        style="border:0; margin-top: -150px;">
+                    </iframe>
+                </div>
+            </div>
 
-            <form method="POST">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-                <br>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                <br>
-                <label for="confirm-password">Confirm Password:</label>
-                <input type="confirm-password" id="confirm-password" name="confirm-password" required>
-                <br>
-                <button type="submit">Login</button>
-            </form>
+            <!-- This is the window for the OSU map -->>
+            <div id="guessing-map">
+                <img src="..\image_files\campus-map.jpg" alt="Map" id="overlay-map">
+            </div>
         </main>
 
     </body>

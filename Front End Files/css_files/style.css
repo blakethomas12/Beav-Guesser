@@ -8,16 +8,20 @@ button {
     
 }
 
-.topnav {
+.panel { /* Panels on the Home.html page */
+    background-color: orange;
+}
+
+.topnav { /* Navigation bar at the top */
     display: flex;
-    justify-content: space-between; /* Pushes items to the edges */
-    align-items: center; /* Vertically centers the links */
-    padding: 20px; /* Adds some spacing around the links */
-    background-color: #c47979; /* Optional: Adds a background color */
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #c47979;
     
 }
 
-.topnav-group {
+.topnav-group { /* Specific groups within the Navigation bar */
     padding: 10px 20px;
     font-size: 16px;
     text-decoration: none;
