@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <link rel="stylesheet" href="style.css">
-<script src="Map_Testing.js"></script>
+<script src="map_testing.js"></script>
 
 <html>
     <head>
@@ -11,17 +11,18 @@
     <body>
         <h1>Beav-Guesser</h1>
         <button onclick="loadRandomStreetView()">New Round</button>
-        <div style="width: 100%; overflow: hidden; height: 600px;">
-            <iframe id="streetViewFrame"
+        <div id="main-div">
+            <iframe id="street-view-frame"
                 src="getRandomStreetViewEmbedLink()"
                 width="100%"
                 height="900"
                 frameborder="0"
                 style="border:0; margin-top: -150px;">
             </iframe>
-            <img src="campus-map.jpg" alt="Map" id="overlay-map">
         </div>
-
+        <canvas id="guess-canvas"></canvas>
+        <div id="coordinates"></div>
+        <p id="feedback"></p>
     </body>
 
 </html> 
