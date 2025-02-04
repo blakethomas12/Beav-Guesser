@@ -21,19 +21,10 @@ function loadRandomStreetView() {
 
 window.onload = loadRandomStreetView;
 
-//function latLngToXY(lat, lng, imgWidth, imgHeight) {
-//  const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
-//  const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
-//  return { x, y };
-//}
-
-const canvas = document.getElementById("guess-canvas");
-const ctx = canvas.getContext("2d");
-
-function draw(x, y) {
-  ctx.beginPath();
-  ctx.arc(x, y, 50, 0, 2 * Math.PI);
-  ctx.stroke(); 
+function latLngToXY(lat, lng, imgWidth, imgHeight) {
+  const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
+  const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
+  return { x, y };
 }
 
 document.getElementById("guess-canvas").addEventListener("click", function(event) {
@@ -41,22 +32,23 @@ document.getElementById("guess-canvas").addEventListener("click", function(event
   const x = event.clientX - rect.left;
   const y = event.clientY - rect.top;
   document.getElementById("coordinates").textContent = `X: ${x}, Y: ${y}`;
-  draw(x, y);
+  drawGuess(x, y, "blue");
+  checkGuess();
 });
 
-//function drawGuess(x, y, color) {
-//  const canvas = document.getElementById("guess-canvas");
-//  const ctx = canvas.getContext("2d");
+function drawGuess(x, y, color) {
+  const canvas = document.getElementById("guess-canvas");
+  const ctx = canvas.getContext("2d");
 
-//  canvas.width = canvas.clientWidth;
-//  canvas.height = canvas.clientHeight;
+  canvas.width = canvas.clientWidth;
+  canvas.height = canvas.clientHeight;
   
-//  ctx.clearRect(0, 0, canvas.width, canvas.height);
-//  ctx.fillStyle = color;
-//  ctx.beginPath();
-//  ctx.arc(x, y, 10, 0, 2 * Math.PI);
-//  ctx.fill();
-//}
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x, y, 2, 0, 2 * Math.PI);
+  ctx.fill();
+}
 
 function checkGuess() {
   const img = document.getElementById("guess-canvas");
