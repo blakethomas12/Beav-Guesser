@@ -20,42 +20,79 @@ Brainstormed game logic and features to be implemented.
 
 # Contributions of Individual Team Members
 
-- **Blake**
+- ### Blake
+  **Progress and Issues**
+  1) N/A
   
-  Finished database i/o functions.\
-  Implement scoring and xp function
+  **Goals From Last Week**
+  1) Finish database i/o functions
+     
+  **Goals For Next Week**
+  1) Implement scoring and xp function
 
-- **Joy**
+- ### Joy
+  **Progress and Issues**
+  1) N/A
+  
+  **Goals From Last Week**
+  1) Location data gathering
+     
+  **Goals For Next Week**
+  1) Brainstorm and implement game logic
+  2) Implement guess input function
 
-  Continuation of location data gathering\
-  Brainstorm and implement game logic\
-  Implement guess input function
+- ### Lukas
+  **Progress and Issues**
+  1) N/A
+  
+  **Goals From Last Week**
+  1) Location data gathering
+     
+  **Goals For Next Week**
+  1) Brainstorm and implement game logic
+  2) Implement guess input function
 
-- **Lukas** 
+- ### Kevin T
+  **Progress and Issues**
+  1) Created a js to check for the correct username and password
+  2) Created log-in page
 
-  Continuation of location data gathering\
-  Brainstorm and implement game logic\
-  Implement guess input function
+  **Goals From Last Week**
+  1) Implement back end server
 
-- **Kevin T**
+  **Goals For Next Week**
+  1) Solidify back-end
 
-  Solidify back-end \
-  Created log-in page \
-  Created a js to check for the correct username and password
+- ### Kevin N
+  **Progress and Issues**
+  1) Connected front-end CSS to the login page
+  2) Created log-in page
+  
+  **Goals From Last Week**
+  1) Implement back end server
+  
+  **Goals For Next Week**
+  1) Solidify back-end
 
-- **Kevin N**
+- ### Sam
+  **Progress and Issues**
+  1) N/A
+  
+  **Goals From Last Week**
+  1) N/A
+     
+  **Goals For Next Week**
+  1) Create front-end CSS
+  2) Create front-end HTML
 
-  Solidify back-end \
-  Created log-in page \
-  Connected front-end CSS to the login page
-
-- **Sam**
-
-  Create front-end CSS\
-  Create front-end HTML
-
-- **Gavin**
-
-  Create front-end CSS\
-  Create front-end HTML
+- ### Gavin
+  **Progress and Issues**
+  1) N/A
+  
+  **Goals From Last Week**
+  1) N/A
+     
+  **Goals For Next Week**
+  1) Create front-end CSS
+  2) Create front-end HTML
 
