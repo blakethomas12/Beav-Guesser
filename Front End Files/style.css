@@ -13,9 +13,10 @@ button {
 #guess-button {
     margin: 0;
     position: absolute;
-    left: 50%;
+    left: 75%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    z-index: 11;
 }
 
 #main-div {
@@ -24,12 +25,14 @@ button {
     height: 600px;
 }
 
-#overlay-map {
+#guess-canvas {
+    background: url('campus-map.jpg') no-repeat center center;
+    background-size: cover;
     position: absolute;
     bottom: 5px;
     right: 10px;
-    width: 150px;
-    height: auto;
+    width: 200px;
+    height: 150px;
     z-index: 10;
     border-radius: 2px;
     transform-origin: bottom right;
@@ -37,16 +40,6 @@ button {
     cursor: crosshair;
 }
 
-#overlay-map:hover {
+#guess-canvas:hover {
     transform: scale(4);
-}
-
-#guess-canvas {
-    position: absolute;
-    bottom: 5px;
-    right: 10px;
-    width: 594px;
-    height: 450px;
-    border-style: dashed;
-    z-index: 10;
 }

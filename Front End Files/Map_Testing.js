@@ -8,7 +8,7 @@ const mapBounds = {
 
 function getRandomStreetViewEmbedLink() {
   // generate random latitude and longitude within bounds
-   actualLat = Math.random() * (mapBounds.topLeft.lat - mapBounds.bottomRight.lat) + mapBounds.bottomRight.lat;
+  actualLat = Math.random() * (mapBounds.topLeft.lat - mapBounds.bottomRight.lat) + mapBounds.bottomRight.lat;
   actualLng = Math.random() * (mapBounds.bottomRight.lng - mapBounds.topLeft.lng) + mapBounds.topLeft.lng;
 
   return `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sPLACEHOLDER!2m2!1d${actualLat.toFixed(6)}!2d${actualLng.toFixed(6)}!3f0!4f0!5f0.7820865974627469`;
@@ -21,35 +21,45 @@ function loadRandomStreetView() {
 
 window.onload = loadRandomStreetView;
 
-function latLngToXY(lat, lng, imgWidth, imgHeight) {
-  const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
-  const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
-  return { x, y };
+//function latLngToXY(lat, lng, imgWidth, imgHeight) {
+//  const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
+//  const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
+//  return { x, y };
+//}
+
+const canvas = document.getElementById("guess-canvas");
+const ctx = canvas.getContext("2d");
+
+function draw(x, y) {
+  ctx.beginPath();
+  ctx.arc(x, y, 50, 0, 2 * Math.PI);
+  ctx.stroke(); 
 }
 
-document.getElementById("overlay-map").addEventListener("click", function(event) {
-  const rect = event.target.getBoundingClientRect();
-  guessX = event.clientX - rect.left;
-  guessY = event.clientY - rect.top;
-  drawGuess(guessX, guessY, "blue");
+document.getElementById("guess-canvas").addEventListener("click", function(event) {
+  const rect = this.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  document.getElementById("coordinates").textContent = `X: ${x}, Y: ${y}`;
+  draw(x, y);
 });
 
-function drawGuess(x, y, color) {
-  const canvas = document.getElementById("guess-canvas");
-  const ctx = canvas.getContext("2d");
+//function drawGuess(x, y, color) {
+//  const canvas = document.getElementById("guess-canvas");
+//  const ctx = canvas.getContext("2d");
 
-  canvas.width = canvas.clientWidth;
-  canvas.height = canvas.clientHeight;
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = color;
-  ctx.beginPath();
-  ctx.arc(x, y, 10, 0, 2 * Math.PI);
-  ctx.fill();
-}
+//  canvas.width = canvas.clientWidth;
+//  canvas.height = canvas.clientHeight;
+  
+//  ctx.clearRect(0, 0, canvas.width, canvas.height);
+//  ctx.fillStyle = color;
+//  ctx.beginPath();
+//  ctx.arc(x, y, 10, 0, 2 * Math.PI);
+//  ctx.fill();
+//}
 
 function checkGuess() {
-  const img = document.getElementById("overlay-map");
+  const img = document.getElementById("guess-canvas");
   const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng, img.clientWidth, img.clientHeight);
 
   drawGuess(actualX, actualY, "red");
