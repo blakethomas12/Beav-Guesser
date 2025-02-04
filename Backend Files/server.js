@@ -55,11 +55,12 @@ app.post('/login', (req, res) => {
     
           if (verification === false) {
             //failed verification
-            return res.render('login', { error: 'Username or password are incorrect'});
+            res.render('login', { error: 'Username or password are incorrect'});
+          }else{
+            res.cookie('username', username, { maxAge: 900000, httpOnly: true }); //cookie for username
+            res.render('homePage', { loggedIn: true, username: username }); //goes back to homePage after login
           }
     
-          res.cookie('username', username, { maxAge: 900000, httpOnly: true }); //cookie for username
-          res.render('homePage', { loggedIn: true, username: username }); //goes back to homePage after login
         } catch (error) {
           console.error( error);
           res.status(500).send('error');
