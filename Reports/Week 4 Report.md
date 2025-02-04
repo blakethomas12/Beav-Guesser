@@ -1,51 +1,61 @@
 # Team Report
+### Agenda
+- 
 
 ### Goals From Last Week
 1. Have a basic website running with front-end and back-end.
 2. Ensure everybody has their system set up.
 3. N/A
-
-### Progress
-
-**Status Report** 
-
-    (text here)
-
-**Next Meeting Agenda**
-
-    (text here)
+   
+### Progress and Issues
+Succesfully set up MongoDB connection.\
+Front-End design is in progress.\
+Back-End implementation is in progress.\
+Brainstormed game logic and features to be implemented.
 
 ### Goals For Next Week
-
-1. 
-
-2. 
-
-3. 
+1. Have a basic website running with front-end and back-end.
+2. Test out implemented features and functionalities.
+3. N/A
 
 # Contributions of Individual Team Members
 
-### Progress
-
 - **Blake**
-    Finished database i/o functions.
-- **Joy** 
-    (update here)
+  
+  Finished database i/o functions.\
+  Implement scoring and xp function
+
+- **Joy**
+
+  Continuation of location data gathering\
+  Brainstorm and implement game logic\
+  Implement guess input function
+
 - **Lukas** 
-    (update here)
-- **Kevin** 
-    (update here)
-- **Kevin** 
-    (update here)
-- **Sam** 
-    (update here)
+
+  Continuation of location data gathering\
+  Brainstorm and implement game logic\
+  Implement guess input function
+
+- **Kevin T**
+
+  Solidify back-end \
+  Created log-in page \
+  Created a js to check for the correct username and password
+
+- **Kevin N**
+
+  Solidify back-end \
+  Created log-in page \
+  Connected front-end CSS to the login page
+
+- **Sam**
+
+  Create front-end CSS\
+  Create front-end HTML
+
 - **Gavin**
-    (update here)
 
-### Goals For Next Week
+  Create front-end CSS\
+  Create front-end HTML
 
-1. 
-
-2. 
-
-3. 

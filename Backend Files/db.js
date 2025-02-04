@@ -1,16 +1,16 @@
-import mongoose from "mongoose";
-import fs from "fs/promises";
-import bcrypt from "bcrypt";
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const fs = require('fs/promises');
 
-mongoose.connect(
-  "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
-);
+// mongoose.connect(
+//   "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
+// );
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function () {
-  console.log("Connected to MongoDB");
-});
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", function () {
+//   console.log("Connected to MongoDB");
+// });
 
 const locationSchema = new mongoose.Schema({
   path: String,
@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   high_score: Number,
+  xp: Number
 });
 
 const User = mongoose.model("users", userSchema);
@@ -69,7 +70,16 @@ async function create_user(username, password) {
       username: username,
       password: hashedPassword,
       high_score: 0,
+      xp: 0,
     });
+
+    const leaderboard = new Leaderboard({
+      username: username,
+      score: 0,
+    })
+
+    await leaderboard.save()
+
 
     await user.save();
     console.log(`password and username stored for ${username}`);
@@ -145,17 +155,34 @@ async function get_top_players() {
   }
 }
 
+//todo: make so only update if score if greater
 async function update_leaderboard(username, score) {
   try {
-    await Leaderboard.findOneAndUpdate(
-      { username: username },
-      { score, timestamp: new Date() },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
-    );
+    const user = await User.findOne({username: username})
+    if(user.high_score<=score){
+      await Leaderboard.findOneAndUpdate(
+        { username: username },
+        { score, timestamp: new Date() },
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      );
+      user.high_score = score
+    }
   } catch (error) {
     console.log("error updating leaderboard:", error);
   }
 }
+
+
+module.exports = {
+  get_num_locations,
+  get_location_by_number,
+  create_user,
+  check_cred,
+  get_user,
+  check_name_availability,
+  get_top_players,
+  update_leaderboard,
+};
 
 //==============================IMPORTING FUNCTIONS=========================================
 function extractLatLong(url) {
