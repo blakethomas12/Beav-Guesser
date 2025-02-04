@@ -1,3 +1,9 @@
+// Functions here are used by the html files to perform actions - Gavin Fifer
+
+function goToPage(html_path) {
+    window.location.href = html_path;
+}
+
 function getRandomStreetViewEmbedLink() {
     // define bounding box coordinates
     const bounds = {
@@ -30,5 +36,3 @@ function getRandomStreetViewEmbedLink() {
     const randomLink = getRandomStreetViewEmbedLink();
     iframe.src = randomLink;
   }
-
-  window.onload = loadRandomStreetView;
