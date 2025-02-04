@@ -50,6 +50,7 @@ function drawGuess(x, y, color) {
   ctx.fill();
 }
 
+//dont need to calclate score, send user guess and actual coords to database
 function checkGuess() {
   const img = document.getElementById("guess-canvas");
   const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng, img.clientWidth, img.clientHeight);
