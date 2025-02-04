@@ -1,0 +1,36 @@
+h1 {
+    text-align: center;
+}
+
+button {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#main-div {
+    width: 100%; 
+    overflow: hidden; 
+    height: 600px;
+}
+
+#guess-canvas {
+    background: url('campus-map.jpg') no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    width: 200px;
+    height: 150px;
+    z-index: 1000;
+    border-radius: 2px;
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
+    cursor: crosshair;
+}
+
+#guess-canvas:hover {
+    transform: scale(4);
+}
