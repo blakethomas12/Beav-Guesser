@@ -1,6 +1,19 @@
 let actualLat, actualLng;
 let guessX, guessY;
 
+const mongoose = require('mongoose');
+const dbFunctions = require('../Backend Files/db.js');
+
+mongoose.connect(
+  "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
+);
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('Connected to MongoDB');
+});
+
 const mapBounds = {
   topLeft: { lat: 44.56766730220258, lng: -123.28959983789187 },
   bottomRight: { lat: 44.55977402745042, lng: -123.2750217935866 },
@@ -50,7 +63,7 @@ function drawGuess(x, y, color) {
   ctx.fill();
 }
 
-//dont need to calclate score, send user guess and actual coords to database
+//dont need to calculate score, send user guess and actual coords to database
 function checkGuess() {
   const img = document.getElementById("guess-canvas");
   const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng, img.clientWidth, img.clientHeight);
