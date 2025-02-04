@@ -2,7 +2,7 @@ let actualLat, actualLng;
 let guessX, guessY;
 
 const mongoose = require('mongoose');
-const dbFunctions = require('../Backend Files/db.js');
+const dbFunctions = require('../../Backend Files/db.js');
 
 mongoose.connect(
   "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
