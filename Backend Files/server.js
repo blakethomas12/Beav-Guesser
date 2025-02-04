@@ -67,6 +67,21 @@ app.post('/login', (req, res) => {
         }
 });
 
+app.post('/getLocation', async function(req, res){
+  try{
+    const num = req.body
+
+    if(num > await dbFunctions.get_num_locations()){
+      res.send("Bounds error")
+    }
+    const location = await dbFunctions.get_location_by_number(num)
+
+    res.json(location)
+  }catch(error){
+    console.error(error)
+  }
+})
+
 app.listen(port, function (err) {
   if (err) {
     throw err
