@@ -1,7 +1,7 @@
 // Functions here are used by the html files to perform actions - Gavin Fifer
 
 function goToPage(html_path) {
-    window.location.href = html_path;
+    window.location.href = "../html_files/"+html_path;
 }
 
 function getRandomStreetViewEmbedLink() {
@@ -35,4 +35,40 @@ function getRandomStreetViewEmbedLink() {
     const iframe = document.getElementById("streetViewFrame");
     const randomLink = getRandomStreetViewEmbedLink();
     iframe.src = randomLink;
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var login_form = document.getElementById("login-form").addEventListener('submit', function(event) {
+      event.preventDefault();
+      login();
+    });
+  });
+
+  async function login() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    console.log('Sending:', username, password);
+    
+    const data = `{"username": ${username}, "password": ${password}}`;
+
+    try {
+      const response = await fetch('http://localhost:4000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "username": username, "password": password })
+      });
+  
+      const result = await response.text();
+      console.log('Server response:', result);
+  
+      if (result === 'success') {
+        // Handle successful login
+      } else {
+        // Handle failed login
+      }
+    } catch (error) {
+      console.error('Error logging in:', error);
+    }
   }

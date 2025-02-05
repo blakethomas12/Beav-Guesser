@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-
+app.use(express.static('public'))
 
 app.use((req, res, next) => {
     //cookies of username
@@ -39,26 +39,32 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
   // Render home //
-  res.status(200).render("homePage", { isHomePage: true });
+  res.status(200).sendFile(__dirname+'/public/html_files/Home.html')
+  // res.status(200).render("homePage", { isHomePage: true });
 })
 
 app.get('/login', (req, res) =>{
     //render Login
-    res.status(200).render("login");
+    res.status(200).sendFile(__dirname+'/public/html_files/Login.html')
+    // res.status(200).render("login");
 })
 
-app.post('/login', (req, res) => {
+app.post('/login', async function(req, res){
     const { username, password } = req.body; //gets username and password from body
     
     try {
-      const verification = dbFunctions.check_cred(username, password)
+      const verification = await dbFunctions.check_cred(username, password)
     
-          if (verification === false) {
-            //failed verification
-            res.render('login', { error: 'Username or password are incorrect'});
-          }else{
+          if (verification === true) {
             res.cookie('username', username, { maxAge: 900000, httpOnly: true }); //cookie for username
-            res.render('homePage', { loggedIn: true, username: username }); //goes back to homePage after login
+            // res.render('homePage', { loggedIn: true, username: username }); //goes back to homePage after login
+            console.log('success')
+            res.send('success')
+          }else{
+            //failed verification
+            // res.render('login', { error: 'Username or password are incorrect'});
+            console.log('failed')
+            res.send('failed')
           }
     
         } catch (error) {
