@@ -31,22 +31,54 @@ app.use(cookieParser());
 app.use(express.static('public'))
 
 app.use((req, res, next) => {
-    //cookies of username
-    res.locals.loggedIn = !!req.cookies.username;
-    res.locals.username = req.cookies.username;
-    next();
+  const token = req.cookies.token;
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, 'secretKey');
+      res.locals.isLoggedIn = true;
+      res.locals.username = decoded.username;
+    } catch (err) {
+      res.locals.isLoggedIn = false;
+    }
+  } else {
+    res.locals.isLoggedIn = false;
+  }
+  next();
 });
 
 app.get('/', (req, res) => {
   // Render home //
-  res.status(200).sendFile(__dirname+'/public/html_files/Home.html')
-  // res.status(200).render("homePage", { isHomePage: true });
+  res.status(200).render("home", { isHomePage: true });
 })
 
 app.get('/login', (req, res) =>{
     //render Login
-    res.status(200).sendFile(__dirname+'/public/html_files/Login.html')
-    // res.status(200).render("login");
+    res.status(200).render("login");
+})
+
+app.get('/about', (req, res) =>{
+  //render Login
+  res.status(200).render("about");
+})
+
+app.get('/guesser', (req, res) =>{
+  //render Login
+  res.status(200).render("guesser");
+})
+
+app.get('/leaderboard', (req, res) =>{
+  //render Login
+  res.status(200).render("leaderboard");
+})
+
+app.get('/profile', (req, res) =>{
+  //render Login
+  res.status(200).render("profile");
+})
+
+app.get('/signup', (req, res) =>{
+  //render Login
+  res.status(200).render("signup");
 })
 
 app.post('/login', async function(req, res){
@@ -56,18 +88,12 @@ app.post('/login', async function(req, res){
       const verification = await dbFunctions.check_cred(username, password)
     
           if (verification === true) {
-
             const token = jwt.sign({username}, 'secretKey')
             res.cookie('token', token, {httpOnly: true, secure: true }); //cookie for username
-
-            // res.render('homePage', { loggedIn: true, username: username }); //goes back to homePage after login
-            console.log('success')
-            res.send('success')
+            res.redirect('/')
           }else{
             //failed verification
             // res.render('login', { error: 'Username or password are incorrect'});
-            console.log('failed')
-            res.send('failed')
           }
     
         } catch (error) {

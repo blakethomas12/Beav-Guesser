@@ -1,6 +1,6 @@
 // Functions here are used by the html files to perform actions - Gavin Fifer
-function goToPage(html_path) {
-    window.location.href = "../html_files/"+html_path;
+function goToPage(route) {
+    window.location.href = route;
 }
 
 function getRandomStreetViewEmbedLink() {
@@ -41,7 +41,6 @@ function getRandomStreetViewEmbedLink() {
       event.preventDefault();
       login()
     });
-    update_buttons()
   });
 
   async function login() {
@@ -72,24 +71,4 @@ function getRandomStreetViewEmbedLink() {
     } catch (error) {
       console.error('Error logging in:', error);
     }
-  }
-
-  function update_buttons(){
-    fetch('/profile')
-    .then(response => response.json())
-    .then(data => {
-      if(data){
-
-        console.log("data:",data)
-  
-        const login_button = document.getElementById('login-button')
-        const signup_button = document.getElementById('signup-button')
-  
-        login_button.innerText = 'Profile'
-        login_button.onclick = () => { }//add profile page
-
-
-        signup_button.remove()
-      }
-    })
   }
