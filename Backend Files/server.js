@@ -3,6 +3,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const dbFunctions = require('./db'); //database i/o functions
+const jwt = require('jsonwebtoken')
 //parsers for code
 const bodyParser = require('body-parser'); 
 const cookieParser = require('cookie-parser');
@@ -27,7 +28,6 @@ app.use(express.static('public')); // for styling
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
 app.use(express.static('public'))
 
 app.use((req, res, next) => {
@@ -56,7 +56,10 @@ app.post('/login', async function(req, res){
       const verification = await dbFunctions.check_cred(username, password)
     
           if (verification === true) {
-            res.cookie('username', username, { maxAge: 900000, httpOnly: true }); //cookie for username
+
+            const token = jwt.sign({username}, 'secretKey')
+            res.cookie('token', token, {httpOnly: true, secure: true }); //cookie for username
+
             // res.render('homePage', { loggedIn: true, username: username }); //goes back to homePage after login
             console.log('success')
             res.send('success')
@@ -72,6 +75,27 @@ app.post('/login', async function(req, res){
           res.status(500).send('error');
         }
 });
+
+app.get('/profile',  async (req, res) => {
+  const token = req.cookies.token
+
+  if(token){
+    try{
+
+      const decoded = jwt.verify(token, 'secretKey')
+      const username = decoded.username
+
+      const profile = await dbFunctions.get_user(username)
+      console.log(profile)
+      res.send(profile)
+
+    }catch(error){
+      res.status(404).send('invalid token')
+    }
+  }else{
+      res.status(401).send('no token provided')
+  }
+})
 
 app.post('/getLocation', async function(req, res){
   try{
