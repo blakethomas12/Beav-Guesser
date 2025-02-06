@@ -115,8 +115,12 @@ async function get_user(username) {
       console.log(`User not found: ${username}`);
       return null;
     }
-    
-      return user;
+      const doc  = {
+        username: user.username,
+        high_score: user.high_score,
+        xp: user.high_score
+      }
+      return doc;
 
   } catch (error) {
     console.error("Error getting user:", error);
