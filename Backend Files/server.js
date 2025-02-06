@@ -3,6 +3,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const dbFunctions = require('./db'); //database i/o functions
+const jwt = require('jsonwebtoken')
 //parsers for code
 const bodyParser = require('body-parser'); 
 const cookieParser = require('cookie-parser');
@@ -27,26 +28,57 @@ app.use(express.static('public')); // for styling
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
 app.use(express.static('public'))
 
 app.use((req, res, next) => {
-    //cookies of username
-    res.locals.loggedIn = !!req.cookies.username;
-    res.locals.username = req.cookies.username;
-    next();
+  const token = req.cookies.token;
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, 'secretKey');
+      res.locals.isLoggedIn = true;
+      res.locals.username = decoded.username;
+    } catch (err) {
+      res.locals.isLoggedIn = false;
+    }
+  } else {
+    res.locals.isLoggedIn = false;
+  }
+  next();
 });
 
 app.get('/', (req, res) => {
   // Render home //
-  res.status(200).sendFile(__dirname+'/public/html_files/Home.html')
-  // res.status(200).render("homePage", { isHomePage: true });
+  res.status(200).render("home", { isHomePage: true });
 })
 
 app.get('/login', (req, res) =>{
     //render Login
-    res.status(200).sendFile(__dirname+'/public/html_files/Login.html')
-    // res.status(200).render("login");
+    res.status(200).render("login");
+})
+
+app.get('/about', (req, res) =>{
+  //render Login
+  res.status(200).render("about");
+})
+
+app.get('/guesser', (req, res) =>{
+  //render Login
+  res.status(200).render("guesser");
+})
+
+app.get('/leaderboard', (req, res) =>{
+  //render Login
+  res.status(200).render("leaderboard");
+})
+
+app.get('/profile', (req, res) =>{
+  //render Login
+  res.status(200).render("profile");
+})
+
+app.get('/signup', (req, res) =>{
+  //render Login
+  res.status(200).render("signup");
 })
 
 app.post('/login', async function(req, res){
@@ -56,15 +88,12 @@ app.post('/login', async function(req, res){
       const verification = await dbFunctions.check_cred(username, password)
     
           if (verification === true) {
-            res.cookie('username', username, { maxAge: 900000, httpOnly: true }); //cookie for username
-            // res.render('homePage', { loggedIn: true, username: username }); //goes back to homePage after login
-            console.log('success')
-            res.send('success')
+            const token = jwt.sign({username}, 'secretKey')
+            res.cookie('token', token, {httpOnly: true, secure: true }); //cookie for username
+            res.redirect('/')
           }else{
             //failed verification
             // res.render('login', { error: 'Username or password are incorrect'});
-            console.log('failed')
-            res.send('failed')
           }
     
         } catch (error) {
@@ -72,6 +101,26 @@ app.post('/login', async function(req, res){
           res.status(500).send('error');
         }
 });
+
+app.get('/profile',  async (req, res) => {
+  const token = req.cookies.token
+
+  if(token){
+    try{
+
+      const decoded = jwt.verify(token, 'secretKey')
+      const username = decoded.username
+
+      const profile = await dbFunctions.get_user(username)
+      res.json(profile)
+
+    }catch(error){
+      res.status(404).send('invalid token')
+    }
+  }else{
+      res.status(401).json(null)
+  }
+})
 
 app.post('/getLocation', async function(req, res){
   try{

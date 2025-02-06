@@ -108,21 +108,16 @@ async function check_cred(username, password) {
 }
 
 //function returns user
-async function get_user(username, password) {
+async function get_user(username) {
   try {
     const user = await User.findOne({ username: username });
     if (!user) {
       console.log(`User not found: ${username}`);
       return null;
     }
-
-    const match = await bcrypt.compare(password, user.password);
-
-    if (match) {
+    
       return user;
-    } else {
-      return null;
-    }
+
   } catch (error) {
     console.error("Error getting user:", error);
     return null;
