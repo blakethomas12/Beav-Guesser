@@ -78,6 +78,18 @@ function getRandomStreetViewEmbedLink() {
     fetch('/profile')
     .then(response => response.json())
     .then(data => {
-      console.log("data:",data)
+      if(data){
+
+        console.log("data:",data)
+  
+        const login_button = document.getElementById('login-button')
+        const signup_button = document.getElementById('signup-button')
+  
+        login_button.innerText = 'Profile'
+        login_button.onclick = () => { }//add profile page
+
+
+        signup_button.remove()
+      }
     })
   }

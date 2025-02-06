@@ -86,14 +86,13 @@ app.get('/profile',  async (req, res) => {
       const username = decoded.username
 
       const profile = await dbFunctions.get_user(username)
-      console.log(profile)
-      res.send(profile)
+      res.json(profile)
 
     }catch(error){
       res.status(404).send('invalid token')
     }
   }else{
-      res.status(401).send('no token provided')
+      res.status(401).json(null)
   }
 })
 
