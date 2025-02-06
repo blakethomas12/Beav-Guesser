@@ -34,13 +34,6 @@ function loadRandomStreetView() {
   iframe.src = randomLink;
 }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//   var login_form = document.getElementById("login-form").addEventListener('submit', function(event) {
-//     event.preventDefault();
-//     login()
-//   });
-// });
-
 async function login() {
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
@@ -65,5 +58,34 @@ async function logout() {
   });
   if (response.redirected) {
     window.location.href = response.url;
+  }
+}
+
+async function register() {
+  const username = document.getElementById('username').value.trim()
+  const password1 = document.getElementById('password').value.trim()
+  const password2 = document.getElementById('confirm-password').value.trim()
+
+  if(password1 === password2){
+
+    const response = await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({username: username, password: password1})
+    })
+
+    const result = await response.json()
+    if(result.message === "success"){
+      window.location.href = '/login'
+      alert("Sign Up Successful! You can now log in")
+    }else if(result.message === "taken"){
+      alert("That username is taken! Please try another")
+    }else{
+      alert("There was an error signing up. Please try again soon!")
+    }
+  }else{
+    alert("Passwords do not match!")
   }
 }

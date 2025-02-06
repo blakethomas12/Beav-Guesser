@@ -57,27 +57,39 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-  //render Login
+  //render about
   res.status(200).render("about");
 });
 
 app.get("/guesser", (req, res) => {
-  //render Login
+  //render game page
   res.status(200).render("guesser");
 });
 
 app.get("/leaderboard", (req, res) => {
-  //render Login
+  //render Leaderboard page
   res.status(200).render("leaderboard");
 });
 
-app.get("/profile", (req, res) => {
-  //render Login
-  res.status(200).render("profile");
+app.get("/profile", async (req, res) => {
+  if(res.locals.isLoggedIn){
+    const username = res.locals.username
+    const user = await dbFunctions.get_user(username)
+    const level = Math.round(user.xp/50000)
+    //render profile
+    res.status(200).render("profile", {
+      username: username,
+      high_score: user.high_score,
+      level: level
+    });
+  }else{
+    res.redirect('/login')
+  }
+    
 });
 
 app.get("/signup", (req, res) => {
-  //render Login
+  //render sign up
   res.status(200).render("signup");
 });
 
@@ -123,6 +135,23 @@ app.get("/profile", async (req, res) => {
     res.status(401).json(null);
   }
 });
+
+app.post('/register', async (req, res) => {
+  const { username, password } = req.body
+  console.log(username, password)
+
+  const name_avail = await dbFunctions.check_name_availability(username)
+  try{
+    if(name_avail){
+      await dbFunctions.create_user(username, password)
+      res.json({message: "success"})
+    } else{
+      res.json({message: "taken"})
+    }
+  } catch(error){
+    res.json({message: "fail"})
+  }
+})
 
 app.post("/getLocation", async function (req, res) {
   try {
