@@ -150,6 +150,16 @@ app.post("/getLocation", async function (req, res) {
   }
 });
 
+app.get("/leaderboard", async (req, res) => {
+  try {
+    const leaderboard = await dbFunctions.calculate_total_scores();
+    res.status(200).render("leaderboard", { leaderboard });
+  } catch (error) {
+    console.error("Error rendering leaderboard:", error);
+    res.status(500).send("Error loading leaderboard");
+  }
+});
+
 app.get('*', (req, res) => {
   res.status(404).render('404')
 })

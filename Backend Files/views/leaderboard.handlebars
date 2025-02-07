@@ -1,3 +1,19 @@
-<main>
-  <p>Leaderboard</p>
-</main>
+<h1>Leaderboard</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Username</th>
+      <th>Total Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each leaderboard}}
+    <tr>
+      <td>{{@index + 1}}</td>
+      <td>{{this.username}}</td>
+      <td>{{this.total_score}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
