@@ -11,7 +11,7 @@
 - website now runs with all pages being served and an error page
 
 ### Goals For Next Week
-1. 
+1. Get the clicks to work - user guesses
 2. 
 3. 
 
@@ -31,25 +31,26 @@
 
 - ### Joy
   **Progress and Issues**
-  1) N/A
+  1) Worked on fixing and troubleshooting the clicking issues. The overlay-map and guess-canvas are not working together and one or the other is preventing the clicks on getting through. 
   
   **Goals From Last Week**
   1) Brainstorm and implement game logic
   2) Implement guess input function
      
   **Goals For Next Week**
-  1) N/A
+  1) Get the user clicks to work
 
 - ### Lukas
   **Progress and Issues**
-  1) N/A
+  1) Polish guessing page
+  2) Clicking on guess map not working
   
   **Goals From Last Week**
   1) Brainstorm and implement game logic
   2) Implement guess input function
    
   **Goals For Next Week**
-  1) N/A
+  1) Finish guessing page and game implementation
 
 
 - ### Kevin T
@@ -85,13 +86,15 @@
 
 - ### Gavin
   **Progress and Issues**
-  1) N/A
+  1) Webpage basics and some rough functionality implemented between server and webpages.
   
   **Goals From Last Week**
   1) Create front-end CSS
   2) Create front-end HTML
      
   **Goals For Next Week**
-  1) N/A
+  1) Convert html files into handlebar templates wherever possible for modulality.
+  2) Finish the incomplete html files.
+  3) Implemented functionality for login system.
 
 

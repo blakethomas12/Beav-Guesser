@@ -43,7 +43,9 @@ Brainstormed game logic and features to be implemented.
 
 - ### Lukas
   **Progress and Issues**
-  1) N/A
+  1) Got custom location data
+  2) Created map page with ability to pull a random street view
+  3) Started implementation of guessing on a map
   
   **Goals From Last Week**
   1) Location data gathering

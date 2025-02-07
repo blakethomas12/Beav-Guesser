@@ -89,3 +89,20 @@ async function register() {
     alert("Passwords do not match!")
   }
 }
+
+async function submitScore(score) {
+  const response = await fetch("/submitScore", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ score: score }),
+  });
+
+  const result = await response.json();
+  if (result.message === "success") {
+    alert("Score Submitted!");
+  } else {
+    alert("There was an error submitting your score. Please try again.");
+  }
+}
