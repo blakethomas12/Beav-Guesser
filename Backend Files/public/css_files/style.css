@@ -52,12 +52,14 @@ button {
 }
 
 #guess-canvas {
+    pointer-events: all;
     background-color: transparent;
-    pointer-events: none;
     position: absolute;
     bottom: 5px;
     right: 10px;
     width: 150px;
     height: 113.88px;
-    z-index: 11;
+    z-index: 1000;
+    transform-origin: bottom right;
+    border-style: dashed;
 }
