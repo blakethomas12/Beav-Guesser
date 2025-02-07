@@ -22,7 +22,7 @@ button {
 }
 
 .topnav-group { /* Specific groups within the Navigation bar */
-    padding: 10px 20px;
+    padding: 10px 10px 10px 10px;
     font-size: 16px;
     text-decoration: none;
 }
@@ -31,6 +31,13 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     text-decoration: none;
+}
+
+.body {
+    margin-top: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #overlay-map{
@@ -60,4 +67,14 @@ button {
     width: 150px;
     height: 113.88px;
     z-index: 11;
+}
+
+footer {
+    border-top: solid;
+    border-width: thick;
+
+    text-align: right;
+    font-family: "Garamond", "Trebuchet MS", Verdana, sans-serif;
+
+    margin-bottom: 5px;
 }

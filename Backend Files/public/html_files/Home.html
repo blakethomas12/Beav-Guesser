@@ -9,11 +9,12 @@
         <script src="..\javascript_files\Page_functions.js"></script>
     </head>
 
-    <body>
+    <body class = "body">
         <!-- topnav represents the navigation bar at the top of the page AND IS CURRENTLY UNIQUE FOR EACH HTML FILE-->
+
         <div class="topnav">
             <div class="topnav-group" id="topnav-left-group">
-                <button class="topnav-item" onclick="goToPage('Home.html')">Home</button>
+                <button class="topnav-item" onclick="goToPage('Home.html')"><img src="..\image_files\bevLogo.png" height="10" width="10"></button>
                 <button class="topnav-item" onclick="goToPage('About.html')">About</button>
                 <button class="topnav-item" onclick="goToPage('Leaderboard.html')">Leaderboard</button>
             </div>
@@ -59,6 +60,10 @@
                 window.location.href = "Guesser.html";
             }
         </script>
+
+        <footer>
+            <p>Made by Group 18</p>
+        </footer>
     </body>
 
 </html>
