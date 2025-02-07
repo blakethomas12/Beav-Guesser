@@ -108,21 +108,20 @@ async function check_cred(username, password) {
 }
 
 //function returns user
-async function get_user(username, password) {
+async function get_user(username) {
   try {
     const user = await User.findOne({ username: username });
     if (!user) {
       console.log(`User not found: ${username}`);
       return null;
     }
+      const doc  = {
+        username: user.username,
+        high_score: user.high_score,
+        xp: user.xp
+      }
+      return doc;
 
-    const match = await bcrypt.compare(password, user.password);
-
-    if (match) {
-      return user;
-    } else {
-      return null;
-    }
   } catch (error) {
     console.error("Error getting user:", error);
     return null;
@@ -155,6 +154,38 @@ async function get_top_players() {
   }
 }
 
+// Function to calculate total scores and return the leaderboard with ranks
+async function calculate_total_scores() {
+  try {
+    // Aggregate scores from the Leaderboard collection
+    const leaderboard = await Leaderboard.aggregate([
+      {
+        $group: {
+          _id: "$username",              
+          total_score: { $sum: "$score" } // Sum all scores for each user
+        }
+      },
+      {
+        $sort: { total_score: -1 }       // Sort by total_score in descending order
+      }
+    ]);
+
+    // Add rank after sorting
+    const formattedLeaderboard = leaderboard.map((user, index) => ({
+      rank: index + 1,                   // Add rank based on position
+      username: user._id,
+      total_score: user.total_score
+    }));
+
+    return formattedLeaderboard;
+  } catch (error) {
+    console.error("Error calculating total scores:", error);
+    return [];
+  }
+}
+
+
+
 //todo: make so only update if score if greater
 async function update_leaderboard(username, score) {
   try {
@@ -167,9 +198,16 @@ async function update_leaderboard(username, score) {
       );
       user.high_score = score
     }
+    user.xp = user.xp + calculate_xp(score)
   } catch (error) {
     console.log("error updating leaderboard:", error);
   }
+}
+
+function calculate_xp(score){
+  const SCORE_TO_XP_RATIO = 12
+
+  return score * SCORE_TO_XP_RATIO
 }
 
 
@@ -182,6 +220,7 @@ module.exports = {
   check_name_availability,
   get_top_players,
   update_leaderboard,
+  calculate_total_scores,
 };
 
 //==============================IMPORTING FUNCTIONS=========================================

@@ -1,10 +1,10 @@
-<!-- Web page with information about the project - Gavin Fifer-->
+<!-- Web page for users to enter information and login - Gavin Fifer -->
 
 <!DOCTYPE html>
 
 <html>
     <head> 
-        <title>About</title>
+        <title>Login</title>
         <link rel="stylesheet" href="..\css_files\style.css">
         <script src="..\javascript_files\Page_functions.js"></script>
     </head>
@@ -18,14 +18,23 @@
                 <button class="topnav-item" onclick="goToPage('Leaderboard.html')">Leaderboard</button>
             </div>
             <div class="topnav-group" id="topnav-right-group">
-                <button class="topnav-item" onclick="goToPage('Login.html')">Login</button>
-                <button class="topnav-item" onclick="goToPage('Signup.html')">Signup</button>
+                <button id= "login-button" class="topnav-item" onclick="goToPage('Login.html')">Login</button>
+                <button id="signup-button" class="topnav-item" onclick="goToPage('Signup.html')">Signup</button>
             </div>
         </div>
-
+        
         <main>
-            <p>About</p>
-        </main>
+            <p>Login</p>
 
+            <form id='login-form' method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <br>
+                <button type="submit">Login</button>
+            </form>
+        </main>
     </body>
 <html>
