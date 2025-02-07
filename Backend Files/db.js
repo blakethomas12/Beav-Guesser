@@ -154,7 +154,7 @@ async function get_top_players() {
   }
 }
 
-// Function to calculate total scores and return the leaderboard
+// Function to calculate total scores and return the leaderboard with ranks
 async function calculate_total_scores() {
   try {
     // Aggregate scores from the Leaderboard collection
@@ -170,7 +170,9 @@ async function calculate_total_scores() {
       }
     ]);
 
-    const formattedLeaderboard = leaderboard.map(user => ({
+    // Add rank after sorting
+    const formattedLeaderboard = leaderboard.map((user, index) => ({
+      rank: index + 1,                   // Add rank based on position
       username: user._id,
       total_score: user.total_score
     }));
@@ -181,6 +183,7 @@ async function calculate_total_scores() {
     return [];
   }
 }
+
 
 
 //todo: make so only update if score if greater
