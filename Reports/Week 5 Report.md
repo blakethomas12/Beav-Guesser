@@ -42,14 +42,15 @@
 
 - ### Lukas
   **Progress and Issues**
-  1) N/A
+  1) Polish guessing page
+  2) Clicking on guess map not working
   
   **Goals From Last Week**
   1) Brainstorm and implement game logic
   2) Implement guess input function
    
   **Goals For Next Week**
-  1) N/A
+  1) Finish guessing page and game implementation
 
 
 - ### Kevin T
