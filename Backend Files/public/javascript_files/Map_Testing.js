@@ -56,7 +56,7 @@ function drawGuess(x, y, color) {
   canvas.width = canvas.clientWidth;
   canvas.height = canvas.clientHeight;
   
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = color;
   ctx.beginPath();
   ctx.arc(x, y, 2, 0, 2 * Math.PI);
