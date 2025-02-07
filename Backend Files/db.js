@@ -118,7 +118,7 @@ async function get_user(username) {
       const doc  = {
         username: user.username,
         high_score: user.high_score,
-        xp: user.high_score
+        xp: user.xp
       }
       return doc;
 

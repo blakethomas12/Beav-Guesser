@@ -118,24 +118,6 @@ app.post("/logout", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/profile", async (req, res) => {
-  const token = req.cookies.token;
-
-  if (token) {
-    try {
-      const decoded = jwt.verify(token, "secretKey");
-      const username = decoded.username;
-
-      const profile = await dbFunctions.get_user(username);
-      res.json(profile);
-    } catch (error) {
-      res.status(404).send("invalid token");
-    }
-  } else {
-    res.status(401).json(null);
-  }
-});
-
 app.post('/register', async (req, res) => {
   const { username, password } = req.body
   console.log(username, password)
@@ -177,6 +159,10 @@ app.get("/leaderboard", async (req, res) => {
     res.status(500).send("Error loading leaderboard");
   }
 });
+
+app.get('*', (req, res) => {
+  res.status(404).render('404')
+})
 
 app.listen(port, function (err) {
   if (err) {
