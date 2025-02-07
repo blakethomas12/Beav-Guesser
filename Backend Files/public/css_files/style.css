@@ -9,7 +9,7 @@ button {
 }
 
 .panel { /* Panels on the Home.html page */
-    background-color: orange;
+    background-color: rgb(255, 191, 0);
 }
 
 .topnav { /* Navigation bar at the top */
@@ -17,7 +17,7 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #c47979;
+    background-color: #ff6200;
     
 }
 
