@@ -64,13 +64,13 @@
 
 - ### Kevin N
   **Progress and Issues**
-  1) N/A  
+  1) Working on getting the score for each round.
   
   **Goals From Last Week**
   1) Solidify back-end
   
   **Goals For Next Week**
-  1) N/A
+  1) Finish getting the score from each round. 
 
 - ### Sam
   **Progress and Issues**
