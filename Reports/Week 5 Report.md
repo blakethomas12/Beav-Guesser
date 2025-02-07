@@ -8,7 +8,7 @@
 3. N/A
    
 ### Progress and Issues
-
+- website now runs with all pages being served and an error page
 
 ### Goals For Next Week
 1. 
@@ -19,7 +19,9 @@
 
 - ### Blake
   **Progress and Issues**
-  1) N/A
+  1) Finished login features, includes cookies, and logout function plus register function
+  2) converted the html over to handlebars and connected the server to all pages 
+  3) Implemented scoring function and xp function and update leaderboard function to auto update high scores
   
   **Goals From Last Week**
   1) Implement scoring and xp function
