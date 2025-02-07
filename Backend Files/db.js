@@ -217,6 +217,7 @@ module.exports = {
   check_name_availability,
   get_top_players,
   update_leaderboard,
+  calculate_total_scores,
 };
 
 //==============================IMPORTING FUNCTIONS=========================================
