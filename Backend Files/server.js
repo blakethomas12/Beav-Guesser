@@ -164,6 +164,34 @@ app.get('*', (req, res) => {
   res.status(404).render('404')
 })
 
+app.post("/submitScore", async (req, res) => {
+  const { score } = req.body;
+
+  if (res.locals.isLoggedIn) {
+    const username = res.locals.username;
+    try {
+      const user = await dbFunctions.get_user(username);
+      if (user) {
+        const leaderboard = new dbFunctions.Leaderboard({
+          username: username,
+          score: score,
+        });
+        await leaderboard.save();
+
+        res.json({ message: "success" });
+      } else {
+        res.json({ message: "user not found" });
+      }
+    } catch (error) {
+      console.error(error);
+      res.json({ message: "error" });
+    }
+  } else {
+    res.json({ message: "not logged in" });
+  }
+});
+
+
 app.listen(port, function (err) {
   if (err) {
     throw err;
