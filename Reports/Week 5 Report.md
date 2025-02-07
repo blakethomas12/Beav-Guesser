@@ -86,13 +86,15 @@
 
 - ### Gavin
   **Progress and Issues**
-  1) N/A
+  1) Webpage basics and some rough functionality implemented between server and webpages.
   
   **Goals From Last Week**
   1) Create front-end CSS
   2) Create front-end HTML
      
   **Goals For Next Week**
-  1) N/A
+  1) Convert html files into handlebar templates wherever possible for modulality.
+  2) Finish the incomplete html files.
+  3) Implemented functionality for login system.
 
 
