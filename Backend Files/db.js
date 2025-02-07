@@ -154,6 +154,35 @@ async function get_top_players() {
   }
 }
 
+// Function to calculate total scores and return the leaderboard
+async function calculate_total_scores() {
+  try {
+    // Aggregate scores from the Leaderboard collection
+    const leaderboard = await Leaderboard.aggregate([
+      {
+        $group: {
+          _id: "$username",              
+          total_score: { $sum: "$score" } // Sum all scores for each user
+        }
+      },
+      {
+        $sort: { total_score: -1 }       // Sort by total_score in descending order
+      }
+    ]);
+
+    const formattedLeaderboard = leaderboard.map(user => ({
+      username: user._id,
+      total_score: user.total_score
+    }));
+
+    return formattedLeaderboard;
+  } catch (error) {
+    console.error("Error calculating total scores:", error);
+    return [];
+  }
+}
+
+
 //todo: make so only update if score if greater
 async function update_leaderboard(username, score) {
   try {
