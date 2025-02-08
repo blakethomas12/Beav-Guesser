@@ -9,10 +9,11 @@
    
 ### Progress and Issues
 - website now runs with all pages being served and an error page
+- Login and user authentication functions are fully completed
 
 ### Goals For Next Week
 1. Get the clicks to work - user guesses
-2. 
+2. Integrate Database information into existing pages e.g. leaderboard, profile
 3. 
 
 # Contributions of Individual Team Members
@@ -27,7 +28,8 @@
   1) Implement scoring and xp function
      
   **Goals For Next Week**
-  1) N/A
+  1) Implement a stay signed in option
+  2) Render leaderboard with data
 
 - ### Joy
   **Progress and Issues**
