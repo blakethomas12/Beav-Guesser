@@ -91,15 +91,15 @@ async function create_user(username, password) {
 //checks if the username and password are correct returns true or false
 async function check_cred(username, password) {
   try {
-    console.log(`Checking credentials for user: ${username}`);
+    // console.log(`Checking credentials for user: ${username}`);
     const user = await User.findOne({ username: username });
     if (!user) {
       console.log(`User not found: ${username}`);
       return false;
     }
-    console.log(`User found: ${username}, verifying password...`);
+    // console.log(`User found: ${username}, verifying password...`);
     const match = await bcrypt.compare(password, user.password);
-    console.log(`Password match: ${match}`);
+    // console.log(`Password match: ${match}`);
     return match;
   } catch (error) {
     console.error("Error checking creds:", error);
@@ -189,13 +189,16 @@ async function calculate_total_scores() {
 //todo: make so only update if score if greater
 async function update_leaderboard(username, score) {
   try {
+    await Leaderboard.findOneAndUpdate(
+      { username: username },
+      {
+        $inc: { score: score },                // Increment the score
+        $set: { timestamp: new Date() }        // Set the timestamp
+      },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );      
     const user = await User.findOne({username: username})
-    if(user.high_score<=score){
-      await Leaderboard.findOneAndUpdate(
-        { username: username },
-        { score, timestamp: new Date() },
-        { upsert: true, new: true, setDefaultsOnInsert: true }
-      );
+    if(score >= user.high_score){
       user.high_score = score
     }
     user.xp = user.xp + calculate_xp(score)
