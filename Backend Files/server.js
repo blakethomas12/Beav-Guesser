@@ -3,6 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const dbFunctions = require("./db"); //database i/o functions
+const scoreFunctions = require("./scoring")
 const jwt = require("jsonwebtoken");
 //parsers for code
 const bodyParser = require("body-parser");
@@ -66,10 +67,10 @@ app.get("/guesser", (req, res) => {
   res.status(200).render("guesser");
 });
 
-app.get("/leaderboard", (req, res) => {
-  //render Leaderboard page
-  res.status(200).render("leaderboard");
-});
+// app.get("/leaderboard", (req, res) => {
+//   //render Leaderboard page
+//   res.status(200).render("leaderboard");
+// });
 
 app.get("/profile", async (req, res) => {
   if(res.locals.isLoggedIn){
@@ -160,28 +161,15 @@ app.get("/leaderboard", async (req, res) => {
   }
 });
 
-app.get('*', (req, res) => {
-  res.status(404).render('404')
-})
 
 app.post("/submitScore", async (req, res) => {
   const { score } = req.body;
-
+  
   if (res.locals.isLoggedIn) {
     const username = res.locals.username;
     try {
-      const user = await dbFunctions.get_user(username);
-      if (user) {
-        const leaderboard = new dbFunctions.Leaderboard({
-          username: username,
-          score: score,
-        });
-        await leaderboard.save();
-
+        await dbFunctions.update_leaderboard(username, score)
         res.json({ message: "success" });
-      } else {
-        res.json({ message: "user not found" });
-      }
     } catch (error) {
       console.error(error);
       res.json({ message: "error" });
@@ -191,6 +179,17 @@ app.post("/submitScore", async (req, res) => {
   }
 });
 
+app.post('/calcScore', (req, res) => {
+  const {trueLat, trueLong, userLat, userLong} = req.body
+
+  const score = scoreFunctions.calculate_score(trueLat, trueLong, userLat, userLong)
+  res.json({score: score})
+})
+
+
+app.get('*', (req, res) => {
+  res.status(404).render('404')
+})
 
 app.listen(port, function (err) {
   if (err) {
