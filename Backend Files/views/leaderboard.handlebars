@@ -1,19 +1,15 @@
 <h1>Leaderboard</h1>
 <table>
-  <thead>
+  <tr>
+    <th>Rank</th>
+    <th>Username</th>
+    <th>Total Score</th>
+  </tr>
+  {{#each leaderboard}}
     <tr>
-      <th>Rank</th>
-      <th>Username</th>
-      <th>Total Score</th>
+      <td>{{rank}}</td>
+      <td>{{username}}</td>
+      <td>{{total_score}}</td>
     </tr>
-  </thead>
-  <tbody>
-    {{#each leaderboard}}
-    <tr>
-      <td>{{@index + 1}}</td>
-      <td>{{this.username}}</td>
-      <td>{{this.total_score}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
+  {{/each}}
 </table>
