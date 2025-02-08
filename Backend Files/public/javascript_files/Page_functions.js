@@ -37,22 +37,31 @@ function loadRandomStreetView() {
 async function login() {
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
+  const staySignedIn = document.getElementById('stay-signed-in').checked
 
-  try {
-    const response = await fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username: username, password: password }),
-    });
-  } catch (error) {
-    console.error("Error logging in:", error);
+  if(username && password){
+    try {
+      const response = await fetch("/loginUser", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: username, password: password, staySignedIn: staySignedIn }),
+      });
+      if (response.redirected) {
+        window.location.href = response.url;
+      }
+      const result = await response.json()
+      if(result.message = "fail"){
+        alert("Username or Password is incorrect!")
+      }
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
   }
 }
 
 async function logout() {
-  console.log("logging out");
   const response = await fetch("/logout", {
     method: "POST",
   });

@@ -91,15 +91,15 @@ async function create_user(username, password) {
 //checks if the username and password are correct returns true or false
 async function check_cred(username, password) {
   try {
-    console.log(`Checking credentials for user: ${username}`);
+    // console.log(`Checking credentials for user: ${username}`);
     const user = await User.findOne({ username: username });
     if (!user) {
       console.log(`User not found: ${username}`);
       return false;
     }
-    console.log(`User found: ${username}, verifying password...`);
+    // console.log(`User found: ${username}, verifying password...`);
     const match = await bcrypt.compare(password, user.password);
-    console.log(`Password match: ${match}`);
+    // console.log(`Password match: ${match}`);
     return match;
   } catch (error) {
     console.error("Error checking creds:", error);
