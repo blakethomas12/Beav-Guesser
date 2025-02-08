@@ -65,13 +65,13 @@
 
 - ### Kevin N
   **Progress and Issues**
-  1) Working on getting the score for each round.
+  1) Implemented score port server request
   
   **Goals From Last Week**
   1) Solidify back-end
   
   **Goals For Next Week**
-  1) Finish getting the score from each round. 
+  1) Implement a loop for the 5 rounds for each game
 
 - ### Sam
   **Progress and Issues**
