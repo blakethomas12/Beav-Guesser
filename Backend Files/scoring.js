@@ -21,6 +21,9 @@ function euclidean_distance(lat1, lon1, lat2, lon2){
     return Math.round(dist * 10000)
 }
 
+module.exports = {
+    calculate_score
+}
 
 
 
