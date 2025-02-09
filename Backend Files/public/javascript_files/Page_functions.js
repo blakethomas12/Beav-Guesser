@@ -6,19 +6,6 @@ function goToPage(route) {
 let actualLat, actualLng;
 let guessX, guessY;
 
-const mongoose = require('mongoose');
-const dbFunctions = require('../../Backend Files/db.js');
-
-mongoose.connect(
-  "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
-);
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  console.log('Connected to MongoDB');
-});
-
 const mapBounds = {
   topLeft: { lat: 44.56766730220258, lng: -123.28959983789187 },
   bottomRight: { lat: 44.55977402745042, lng: -123.2750217935866 },
@@ -33,11 +20,39 @@ function getRandomStreetViewEmbedLink() {
 }
 
 function loadRandomStreetView() {
-  const iframe = document.getElementById("street-view-frame");
+  const iframe = document.getElementById("streetViewFrame");
   iframe.src = getRandomStreetViewEmbedLink();
 }
 
-window.onload = loadRandomStreetView;
+document.addEventListener("DOMContentLoaded", function () {
+  loadRandomStreetView();
+
+  const canvas = document.getElementById("guess-canvas");
+  if (canvas) {
+    //debugging: check is canvas if loaded
+    console.log("canvas found");
+    canvas.addEventListener("click", function(event) {
+      //debug: check if click is registered on canvas
+      console.log("canvas click registered");
+      const rect = canvas.getBoundingClientRect();
+      guessX = event.clientX - rect.left;
+      guessY = event.clientY - rect.top;
+
+      //debugging: check click coordinates
+      console.log(`click coordinates: X=${guessX}, Y=${guessY}`);
+
+      //debugging: check what element is clicked on
+      const clickedElement = document.elementFromPoint(event.clientX, event.clientY);
+      console.log("element clicked on:", clickedElement);
+      
+      drawGuess(guessX, guessY, "blue");
+      checkGuess();
+    });
+  } else {
+    //debugging: canvas is not being loaded
+    console.error("guess canvas is not found");
+  }
+});
 
 function latLngToXY(lat, lng, imgWidth, imgHeight) {
   const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
@@ -45,16 +60,10 @@ function latLngToXY(lat, lng, imgWidth, imgHeight) {
   return { x, y };
 }
 
-document.getElementById("guess-canvas").addEventListener("click", function(event) {
-  alert("The click worked");
-  const rect = this.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-  drawGuess(x, y, "blue");
-  checkGuess();
-});
-
 function drawGuess(x, y, color) {
+  //debugging: check if draw guess is succesfully being called
+  console.log("succesfully called drawGuess");
+
   const canvas = document.getElementById("guess-canvas");
   const ctx = canvas.getContext("2d");
 

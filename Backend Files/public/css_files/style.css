@@ -54,6 +54,7 @@ button {
 #guess-canvas {
     pointer-events: all;
     background-color: transparent;
+    pointer-events: auto;
     position: absolute;
     bottom: 5px;
     right: 10px;
