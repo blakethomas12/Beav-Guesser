@@ -57,13 +57,14 @@
 
 - ### Kevin T
   **Progress and Issues**
-  1) N/A
+  1) Implemented Total Scores port server request
+  2) Started work on the leaderboard and placeholders for user data
 
   **Goals From Last Week**
   1) Solidify back-end
 
   **Goals For Next Week**
-  1) N/A
+  1) Saving total scores for the user
 
 - ### Kevin N
   **Progress and Issues**
