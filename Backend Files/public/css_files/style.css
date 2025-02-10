@@ -9,7 +9,7 @@ button {
 }
 
 .panel { /* Panels on the Home.html page */
-    background-color: orange;
+    background-color: rgb(255, 191, 0);
 }
 
 .topnav { /* Navigation bar at the top */
@@ -17,12 +17,12 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #c47979;
+    background-color: #ff6200;
     
 }
 
 .topnav-group { /* Specific groups within the Navigation bar */
-    padding: 10px 20px;
+    padding: 10px 10px 10px 10px;
     font-size: 16px;
     text-decoration: none;
 }
@@ -31,6 +31,23 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     text-decoration: none;
+}
+
+.logo-button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.body {
+    margin-top: auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #overlay-map{
@@ -63,4 +80,14 @@ button {
     z-index: 1000;
     transform-origin: bottom right;
     border-style: dashed;
+}
+
+footer {
+    border-top: solid;
+    border-width: thick;
+
+    text-align: right;
+    font-family: "Garamond", "Trebuchet MS", Verdana, sans-serif;
+
+    margin-bottom: 5px;
 }

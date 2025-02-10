@@ -3,6 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const dbFunctions = require("./db"); //database i/o functions
+const scoreFunctions = require("./scoring") //score function
 const jwt = require("jsonwebtoken");
 //parsers for code
 const bodyParser = require("body-parser");
@@ -53,7 +54,11 @@ app.get("/", (req, res) => {
 
 app.get("/login", (req, res) => {
   //render Login
-  res.status(200).render("login");
+  if(res.locals.isLoggedIn){
+    res.redirect("/profile")
+  }else{
+    res.status(200).render("login");
+  }
 });
 
 app.get("/about", (req, res) => {
@@ -66,9 +71,14 @@ app.get("/guesser", (req, res) => {
   res.status(200).render("guesser");
 });
 
-app.get("/leaderboard", (req, res) => {
-  //render Leaderboard page
-  res.status(200).render("leaderboard");
+app.get("/leaderboard", async (req, res) => {
+  try {
+    const leaderboard = await dbFunctions.calculate_total_scores();
+    res.status(200).render("leaderboard", { leaderboard });
+  } catch (error) {
+    console.error("Error rendering leaderboard:", error);
+    res.status(500).send("Error loading leaderboard");
+  }
 });
 
 app.get("/profile", async (req, res) => {
@@ -90,22 +100,29 @@ app.get("/profile", async (req, res) => {
 
 app.get("/signup", (req, res) => {
   //render sign up
-  res.status(200).render("signup");
+  if(res.locals.isLoggedIn){
+    res.redirect("/profile")
+  }else{
+    res.status(200).render("signup");
+  }
 });
 
-app.post("/login", async function (req, res) {
-  const { username, password } = req.body; //gets username and password from body
+app.post("/loginUser", async function (req, res) {
+  const { username, password, staySignedIn } = req.body; //gets username and password from body
 
   try {
     const verification = await dbFunctions.check_cred(username, password);
 
     if (verification === true) {
       const token = jwt.sign({ username }, "secretKey");
-      res.cookie("token", token, { httpOnly: true, secure: true }); //cookie for username
-      res.redirect("/");
+      res.cookie("token", token, { 
+        httpOnly: true, 
+        secure: true,
+        maxAge: staySignedIn ? 30*24*60*60*1000 : 1800000 //30 days if stay signed in, or 30 mins if not
+      }); //cookie for username
+      res.redirect("/profile");
     } else {
-      //failed verification
-      // res.render('login', { error: 'Username or password are incorrect'});
+      res.json({message: "fail"})
     }
   } catch (error) {
     console.error(error);
@@ -150,15 +167,32 @@ app.post("/getLocation", async function (req, res) {
   }
 });
 
-app.get("/leaderboard", async (req, res) => {
-  try {
-    const leaderboard = await dbFunctions.calculate_total_scores();
-    res.status(200).render("leaderboard", { leaderboard });
-  } catch (error) {
-    console.error("Error rendering leaderboard:", error);
-    res.status(500).send("Error loading leaderboard");
+
+
+app.post("/submitScore", async (req, res) => {
+  const { score } = req.body;
+  
+  if (res.locals.isLoggedIn) {
+    const username = res.locals.username;
+    try {
+        await dbFunctions.update_leaderboard(username, score)
+        res.json({ message: "success" });
+    } catch (error) {
+      console.error(error);
+      res.json({ message: "error" });
+    }
+  } else {
+    res.json({ message: "not logged in" });
   }
 });
+
+app.post('/calcScore', (req, res) => {
+  const {trueLat, trueLong, userLat, userLong} = req.body
+
+  const score = scoreFunctions.calculate_score(trueLat, trueLong, userLat, userLong)
+  res.json({score: score})
+})
+
 
 app.get('*', (req, res) => {
   res.status(404).render('404')
