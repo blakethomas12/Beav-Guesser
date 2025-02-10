@@ -78,10 +78,10 @@ Brainstormed game logic and features to be implemented.
 
 - ### Sam
   **Progress and Issues**
-  1) N/A
+  1) Designed UI layout
   
   **Goals From Last Week**
-  1) N/A
+  1) Work on initial start, ingame, and leaderboard ui design.
      
   **Goals For Next Week**
   1) Create front-end CSS

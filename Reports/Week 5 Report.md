@@ -78,14 +78,15 @@
 
 - ### Sam
   **Progress and Issues**
-  1) N/A
+  1) All images for webpages made
   
   **Goals From Last Week**
   1) Create front-end CSS
   2) Create front-end HTML
      
   **Goals For Next Week**
-  1) N/A
+  1) Finalize design of navbar
+  2) Finish home, sign-up, and log-in desgins
 
 - ### Gavin
   **Progress and Issues**
