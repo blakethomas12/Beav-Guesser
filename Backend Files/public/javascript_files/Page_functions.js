@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const clickedElement = document.elementFromPoint(event.clientX, event.clientY);
       console.log("element clicked on:", clickedElement);
       
-      drawGuess(guessX, guessY, "blue");
+      //drawGuess(guessX, guessY, "blue");
       checkGuess();
     });
   } else {
@@ -82,6 +82,7 @@ function checkGuess() {
   const img = document.getElementById("guess-canvas");
   const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng, img.clientWidth, img.clientHeight);
 
+  drawGuess(guessX, guessY, "blue");
   drawGuess(actualX, actualY, "red");
 
   const distance = Math.sqrt((actualX - guessX) ** 2 + (actualY - guessY) ** 2);
