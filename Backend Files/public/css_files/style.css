@@ -33,6 +33,16 @@ button {
     text-decoration: none;
 }
 
+.logo-button {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
 .body {
     margin-top: auto;
     width: 100%;
