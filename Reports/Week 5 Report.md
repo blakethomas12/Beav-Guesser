@@ -14,7 +14,7 @@
 ### Goals For Next Week
 1. Get the clicks to work - user guesses
 2. Integrate Database information into existing pages e.g. leaderboard, profile
-3. 
+3. N/A
 
 # Contributions of Individual Team Members
 
@@ -57,14 +57,15 @@
 
 - ### Kevin T
   **Progress and Issues**
-  1) Implemented Total Scores port server request
-  2) Started work on the leaderboard and placeholders for user data
+  1) Implemented total scores port server request for leaderboard
+  2) Started work on the leaderboard and placeholders for user data for the leaderboard page
 
   **Goals From Last Week**
   1) Solidify back-end
 
   **Goals For Next Week**
-  1) Saving total scores for the user
+  1) Saving total scores across all users
+  2) Display leaderboard with real-time updates
 
 - ### Kevin N
   **Progress and Issues**
