@@ -45,7 +45,6 @@ function loadRandomStreetView() {
 
 document.addEventListener("DOMContentLoaded", function () {
   loadRandomStreetView();
-
   const canvas = document.getElementById("guess-canvas");
   if (canvas) {
     //debugging: check is canvas if loaded
