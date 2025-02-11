@@ -3,6 +3,25 @@ function goToPage(route) {
   window.location.href = route;
 }
 
+function showMap() {
+  const map = document.getElementById("overlay-map");
+  const canvas = document.getElementById("guess-canvas");
+  const button = document.getElementById("show-map-button")
+  if (map.style.display === "none") {
+    map.style.display = "block";
+    button.textContent = "Hide Map";
+  } else {
+    map.style.display = "none";
+    button.textContent = "Show Map";
+  }
+  if (canvas.style.display === "none") {
+    canvas.style.display = "block";
+  } else {
+    canvas.style.display = "none";
+  }
+
+}
+
 let actualLat, actualLng;
 let guessX, guessY;
 
@@ -73,7 +92,7 @@ function drawGuess(x, y, color) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = color;
   ctx.beginPath();
-  ctx.arc(x, y, 2, 0, 2 * Math.PI);
+  ctx.arc(x, y, 5, 0, 2 * Math.PI);
   ctx.fill();
 }
 
