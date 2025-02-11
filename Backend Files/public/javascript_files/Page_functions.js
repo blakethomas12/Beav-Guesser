@@ -3,35 +3,110 @@ function goToPage(route) {
   window.location.href = route;
 }
 
+function showMap() {
+  const map = document.getElementById("overlay-map");
+  const canvas = document.getElementById("guess-canvas");
+  const button = document.getElementById("show-map-button")
+  if (map.style.display === "none") {
+    map.style.display = "block";
+    button.textContent = "Hide Map";
+  } else {
+    map.style.display = "none";
+    button.textContent = "Show Map";
+  }
+  if (canvas.style.display === "none") {
+    canvas.style.display = "block";
+  } else {
+    canvas.style.display = "none";
+  }
+
+}
+
+let actualLat, actualLng;
+let guessX, guessY;
+
+const mapBounds = {
+  topLeft: { lat: 44.56766730220258, lng: -123.28959983789187 },
+  bottomRight: { lat: 44.55977402745042, lng: -123.2750217935866 },
+};
+
 function getRandomStreetViewEmbedLink() {
-  // define bounding box coordinates
-  const bounds = {
-    topLeft: { lat: 44.56766730220258, lng: -123.28959983789187 },
-    topRight: { lat: 44.56725015537913, lng: -123.2722258248906 },
-    bottomRight: { lat: 44.55977402745042, lng: -123.2750217935866 },
-    bottomLeft: { lat: 44.55767469824912, lng: -123.2896888691443 },
-  };
-
   // generate random latitude and longitude within bounds
-  const randomLat =
-    Math.random() * (bounds.topLeft.lat - bounds.bottomLeft.lat) +
-    bounds.bottomLeft.lat;
-  const randomLng =
-    Math.random() * (bounds.topRight.lng - bounds.topLeft.lng) +
-    bounds.topLeft.lng;
+  actualLat = Math.random() * (mapBounds.topLeft.lat - mapBounds.bottomRight.lat) + mapBounds.bottomRight.lat;
+  actualLng = Math.random() * (mapBounds.bottomRight.lng - mapBounds.topLeft.lng) + mapBounds.topLeft.lng;
 
-  // construct street view embed link
-  const embedLink = `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sPLACEHOLDER!2m2!1d${randomLat.toFixed(
-    6
-  )}!2d${randomLng.toFixed(6)}!3f0!4f0!5f0.7820865974627469`;
-
-  return embedLink;
+  return `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sPLACEHOLDER!2m2!1d${actualLat.toFixed(6)}!2d${actualLng.toFixed(6)}!3f0!4f0!5f0.7820865974627469`;
 }
 
 function loadRandomStreetView() {
   const iframe = document.getElementById("streetViewFrame");
-  const randomLink = getRandomStreetViewEmbedLink();
-  iframe.src = randomLink;
+  iframe.src = getRandomStreetViewEmbedLink();
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  loadRandomStreetView();
+  const canvas = document.getElementById("guess-canvas");
+  if (canvas) {
+    //debugging: check is canvas if loaded
+    console.log("canvas found");
+    canvas.addEventListener("click", function(event) {
+      //debug: check if click is registered on canvas
+      console.log("canvas click registered");
+      const rect = canvas.getBoundingClientRect();
+      guessX = event.clientX - rect.left;
+      guessY = event.clientY - rect.top;
+
+      //debugging: check click coordinates
+      console.log(`click coordinates: X=${guessX}, Y=${guessY}`);
+
+      //debugging: check what element is clicked on
+      const clickedElement = document.elementFromPoint(event.clientX, event.clientY);
+      console.log("element clicked on:", clickedElement);
+      
+      checkGuess();
+    });
+  } else {
+    //debugging: canvas is not being loaded
+    console.error("guess canvas is not found");
+  }
+});
+
+function latLngToXY(lat, lng, imgWidth, imgHeight) {
+  const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
+  const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
+  return { x, y };
+}
+
+function drawGuess(guessx, guessy, actualx, actualy) {
+  //debugging: check if draw guess is succesfully being called
+  console.log("succesfully called drawGuess");
+
+  const canvas = document.getElementById("guess-canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = canvas.clientWidth;
+  canvas.height = canvas.clientHeight;
+  
+  ctx.fillStyle = "blue";
+  ctx.beginPath();
+  ctx.arc(guessx, guessy, 5, 0, 2 * Math.PI);
+  ctx.fill();
+
+  ctx.fillStyle = "red";
+  ctx.beginPath();
+  ctx.arc(actualx, actualy, 5, 0, 2 * Math.PI);
+  ctx.fill();
+}
+
+//dont need to calculate score, send user guess and actual coords to database
+function checkGuess() {
+  const img = document.getElementById("guess-canvas");
+  const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng, img.clientWidth, img.clientHeight);
+
+  drawGuess(guessX, guessY, actualX, actualY);
+
+  const distance = Math.sqrt((actualX - guessX) ** 2 + (actualY - guessY) ** 2);
+  document.getElementById("feedback").innerText = `Distance: ${Math.round(distance)} pixels`;
 }
 
 async function login() {
