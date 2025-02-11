@@ -87,11 +87,21 @@ function drawGuess(guessx, guessy, actualx, actualy) {
   canvas.width = canvas.clientWidth;
   canvas.height = canvas.clientHeight;
   
+  //draws line between guess and actual location 
+  ctx.strokeStyle = "grey";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(guessX, guessY);
+  ctx.lineTo(actualx, actualy)
+  ctx.stroke();
+
+  //guess location
   ctx.fillStyle = "blue";
   ctx.beginPath();
   ctx.arc(guessx, guessy, 5, 0, 2 * Math.PI);
   ctx.fill();
 
+  //actual location
   ctx.fillStyle = "red";
   ctx.beginPath();
   ctx.arc(actualx, actualy, 5, 0, 2 * Math.PI);

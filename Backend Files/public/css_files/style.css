@@ -63,6 +63,7 @@ button {
 }
 
 #guess-canvas {
+    cursor: crosshair;
     pointer-events: all;
     background-color: transparent;
     position: absolute;
