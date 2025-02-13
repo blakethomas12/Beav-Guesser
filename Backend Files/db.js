@@ -12,29 +12,30 @@ const fs = require('fs/promises');
 //   console.log("Connected to MongoDB");
 // });
 
+
+//location schemes
 const locationSchema = new mongoose.Schema({
   path: String,
   long: Number,
   lat: Number,
 });
-
 const Location = mongoose.model("location", locationSchema);
 
+//user schemes
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
   high_score: Number,
   xp: Number
 });
-
 const User = mongoose.model("users", userSchema);
 
+//leaderboard schemes
 const leaderboardSchema = new mongoose.Schema({
   username: String,
   score: Number,
   timestamp: { type: Date, default: Date.now },
 });
-
 const Leaderboard = mongoose.model("leaderboard", leaderboardSchema);
 
 //==========================LOCATION FUNCTIONS===========================================
@@ -63,6 +64,7 @@ async function get_location_by_number(num) {
 //creates a user with the given username and password, encrypts password before storing
 async function create_user(username, password) {
   try {
+    //hashes password
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
@@ -73,15 +75,15 @@ async function create_user(username, password) {
       xp: 0,
     });
 
+    //creates leaderboard object for user
     const leaderboard = new Leaderboard({
       username: username,
       score: 0,
     })
 
     await leaderboard.save()
-
-
     await user.save();
+
     console.log(`password and username stored for ${username}`);
   } catch (error) {
     console.error("Error creating and storing user", error);
@@ -92,11 +94,14 @@ async function create_user(username, password) {
 async function check_cred(username, password) {
   try {
     // console.log(`Checking credentials for user: ${username}`);
+    //checks if username exists
     const user = await User.findOne({ username: username });
     if (!user) {
       console.log(`User not found: ${username}`);
       return false;
     }
+
+    //checks is password matches username
     // console.log(`User found: ${username}, verifying password...`);
     const match = await bcrypt.compare(password, user.password);
     // console.log(`Password match: ${match}`);
@@ -110,16 +115,21 @@ async function check_cred(username, password) {
 //function returns user
 async function get_user(username) {
   try {
+
+    //checks if user exists
     const user = await User.findOne({ username: username });
     if (!user) {
       console.log(`User not found: ${username}`);
       return null;
     }
+
+    //creates object with needed information
       const doc  = {
         username: user.username,
         high_score: user.high_score,
         xp: user.xp
       }
+
       return doc;
 
   } catch (error) {
@@ -144,6 +154,7 @@ async function check_name_availability(name) {
 }
 
 //==============================LEADERBOARD FUNCTIONS===============================================
+//currently not used
 async function get_top_players() {
   try {
     const topPlayers = await Leaderboard.find().sort({ score: -1 }).limit(10);
@@ -185,10 +196,10 @@ async function calculate_total_scores() {
 }
 
 
-
-//todo: make so only update if score if greater
+//updates the users information after a game
 async function update_leaderboard(username, score) {
   try {
+    //finds and updates leaderboard object with new score
     await Leaderboard.findOneAndUpdate(
       { username: username },
       {
@@ -196,17 +207,22 @@ async function update_leaderboard(username, score) {
         $set: { timestamp: new Date() }        // Set the timestamp
       },
       { upsert: true, new: true, setDefaultsOnInsert: true }
-    );      
+    );   
+    
+    //checks if a high score has been achieved
     const user = await User.findOne({username: username})
     if(score >= user.high_score){
       user.high_score = score
     }
+
+    //adds xp to user file
     user.xp = user.xp + calculate_xp(score)
   } catch (error) {
     console.log("error updating leaderboard:", error);
   }
 }
 
+//calcs xp of a game
 function calculate_xp(score){
   const SCORE_TO_XP_RATIO = 12
 
@@ -214,6 +230,7 @@ function calculate_xp(score){
 }
 
 
+//exports the needed functions
 module.exports = {
   get_num_locations,
   get_location_by_number,
@@ -225,59 +242,3 @@ module.exports = {
   update_leaderboard,
   calculate_total_scores,
 };
-
-//==============================IMPORTING FUNCTIONS=========================================
-function extractLatLong(url) {
-  const regex = /!2m2!1d([0-9.\-]+)!2d([0-9.\-]+)/;
-  const match = url.match(regex);
-  if (match) {
-    const latitude = match[1];
-    const longitude = match[2];
-    return { latitude, longitude };
-  }
-  return null;
-}
-
-async function saveLocation(link, latitude, longitude) {
-  const location = new Location({
-    path: link,
-    lat: latitude,
-    long: longitude,
-  });
-
-  await location.save();
-  console.log(`Saved location: ${link}`);
-}
-
-async function extractLinksFromFile(filename) {
-  const data = await fs.readFile(filename, "utf-8");
-  const regex = /src="([^"]+)"/g;
-  const links = [];
-  let match;
-  while ((match = regex.exec(data)) !== null) {
-    links.push(match[1]);
-  }
-  return links;
-}
-
-async function processFile(filename) {
-  const links = await extractLinksFromFile(filename);
-  if (!Array.isArray(links) || links.length === 0) {
-    console.log("No valid links found in the file.");
-    return;
-  }
-  for (const link of links) {
-    const coordinates = extractLatLong(link);
-    if (coordinates) {
-      try {
-        await saveLocation(link, coordinates.latitude, coordinates.longitude);
-      } catch (err) {
-        console.error("Error saving location:", err);
-      }
-    } else {
-      console.log("Coordinates not found in the link");
-    }
-  }
-}
-
-//processFile('links.txt');

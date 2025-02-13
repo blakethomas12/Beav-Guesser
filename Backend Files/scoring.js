@@ -1,26 +1,32 @@
+//calculates the score of a single round with the users guess and location of image
 function calculate_score(true_lat, true_long, user_lat, user_long){
+    //finds a distance between the 2 locations
    const dist = euclidean_distance(true_lat, true_long, user_lat, user_long)
 
    let score 
-   if(dist <= 5){
+
+   if(dist <= 5){ //padding around area for 100% points
     score = 5000
    }else{
+    //removes padding from distances
     const ad_dist = dist - 5
     const ad_max = 178 - 5
-    score = Math.max(0, Math.min(5000, 5000 * (1 - ad_dist / ad_max) ** 2))
+    score = Math.max(0, Math.min(5000, 5000 * (1 - ad_dist / ad_max) ** 2)) //calcs score with an exponential fall off of points
    }
-   return Math.round(score)
+   return Math.round(score) //removes decimal
 }
 
 function euclidean_distance(lat1, lon1, lat2, lon2){
-   
+   //differences
     const dlat = lat2 - lat1
     const dlon = lon2 - lon1
 
+    //distance equation
     const dist = Math.sqrt(dlat * dlat + dlon * dlon)
-    return Math.round(dist * 10000)
+    return Math.round(dist * 10000) //multiply by high number to reduce any need for decimal places
 }
 
+//export the function
 module.exports = {
     calculate_score
 }
