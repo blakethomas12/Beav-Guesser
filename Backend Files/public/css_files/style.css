@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Stratum 2';
+    src: url('../font_files/stratum2-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 h1 {
     text-align: center;
 }
@@ -31,17 +38,29 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     text-decoration: none;
+    font-family: 'Stratum 2', sans-serif;
 }
 
-.logo-button {
+.button-background-fix {
     border: none;
     background: none;
     padding: 0;
-    margin: 0;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 10px;
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
+    font-size:large;
+    transform: scale(1.5);
+    transform-origin: center;
 }
+
+.logo-fix {
+    transform: scale(2.3);
+    transform-origin: center;
+}
+
 
 .body {
     margin-top: auto;

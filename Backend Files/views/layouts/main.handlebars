@@ -11,9 +11,9 @@
         <!-- topnav represents the navigation bar at the top of the page AND IS CURRENTLY UNIQUE FOR EACH HTML FILE-->
         <div class="topnav">
             <div class="topnav-group" id="topnav-left-group">
-                <button class="topnav-item logo-button" onclick="goToPage('/')"><img src="..\image_files\bevLogo.png" height="45" width="90"></button>
-                <button class="topnav-item" onclick="goToPage('/about')">About</button>
-                <button class="topnav-item" onclick="goToPage('leaderboard')">Leaderboard</button>
+                <button class="topnav-item button-background-fix logo-fix" onclick="goToPage('/')"><img src="..\image_files\bevLogo.png" height="25" width="50"></button>
+                <button class="topnav-item button-background-fix" onclick="goToPage('/about')">About</button>
+                <button class="topnav-item button-background-fix" onclick="goToPage('leaderboard')">Leaderboard</button>
             </div>
             <div class="topnav-group" id="topnav-right-group">
                 {{#if isLoggedIn}}
