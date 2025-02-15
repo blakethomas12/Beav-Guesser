@@ -1,11 +1,19 @@
-How to obtain the source code. If your system uses multiple repositories or submodules, provide clear instructions for how to obtain all relevant sources.
+# Source Code
+All the source code for this project is contained within the repo on Github. 
 
-The layout of your directory structure. What do the various directories (folders) contain, and where to find source files, tests, documentation, data files, etc.
+# Directory Layout
+All of the code is contained within Backend Files. In Backend Files there are three JS files that make up the server of the program. Additionally there are two folders public and views. The public folder contains four other folders. A CSS folder that holds the CSS style sheet. A font folder that holds the different font files. An image folder that holds the various images and a Javascript folder that holds the front end JS files. The views folder contains a layout folder and the different page handlebars files. The layout folder holds the main handlebar file.
 
-How to build the software. Provide clear instructions for how to use your project’s build system to build all system components.
+# Building the System
+Once the repo has been cloned, open a terminal and cd into the repo. Then run these commands:  
+>cd Backend Files  
+>npm install  
+>npm run start  
+  
+These commands will install the node modules required for server and start a local instance of the server. You can then visit the server via a web browser and searching for 'localhost:4000/'. To stop the server type CRTL + C in the terminal where the server is running.
 
-How to test the software. Provide clear instructions for how to run the system’s test cases. In some cases, the instructions may need to include information such as how to access data sources or how to interact with external systems. You may reference the user documentation (e.g., prerequisites) to avoid duplication.
+# Testing
+Majority of the functionality can be tested by accessing and using the website. For API requests user can use a tool like ReqBin to send HTTP requests to the server to check their functionality. Since the database is private users wishing to test a database will have to create their own and connect it to the server. After that sending HTTPS requests and checking the contents of the database are the best testing method.  
 
-How to add new tests. Are there any naming conventions/patterns to follow when naming test files? Is there a particular test harness to use?
-
-How to build a release of the software. Describe any tasks that are not automated. For example, should a developer update a version number (in code and documentation) prior to invoking the build system? Are there any sanity checks a developer should perform after building a release?
+# Building release
+Building a release is done in the exact same way as building the system. There are no extra things to do.
