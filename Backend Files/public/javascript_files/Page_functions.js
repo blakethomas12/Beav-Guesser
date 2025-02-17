@@ -202,9 +202,12 @@ async function submitScore(score) {
 }
 
 async function deleteProfile() {
-  const response = await fetch('/delete', {method: "POST"})
-
-  if(response.redirected){
-    window.location.href = response.url;
+  const confirmed = window.confirm('Are you sure you want to delete your account. This action can not be undone.')
+  if(confirmed){
+    const response = await fetch('/delete', {method: "POST"})
+    
+      if(response.redirected){
+        window.location.href = response.url;
+      }
   }
 }
