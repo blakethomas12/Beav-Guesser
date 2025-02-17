@@ -43,7 +43,8 @@
   1) Get the user clicks to work
      
   **Goals For Next Week**
-  1) 
+  1) Implement a game loop to simulate 5 rounds
+  2) Ensure game features and logic connect (submit guess, scoring, etc.)
 
 - ### Lukas
   **Progress and Issues**
