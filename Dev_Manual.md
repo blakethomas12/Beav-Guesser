@@ -16,4 +16,4 @@ These commands will install the node modules required for server and start a loc
 Majority of the functionality can be tested by accessing and using the website. For API requests user can use a tool like ReqBin to send HTTP requests to the server to check their functionality. Since the database is private users wishing to test a database will have to create their own and connect it to the server. After that sending HTTPS requests and checking the contents of the database are the best testing method.  
 
 # Building release
-Building a release is done in the exact same way as building the system. There are no extra things to do.
+To build a release you will first want to find a platform to host the server. Once you have found a service follow the Building the System steps to set up the server. Our release will use Heroku Dynos and has a built in web address. If you plan to use another service understand the process to make it available to the web.
