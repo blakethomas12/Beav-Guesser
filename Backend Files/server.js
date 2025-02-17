@@ -191,6 +191,25 @@ app.post('/register', async (req, res) => {
   }
 })
 
+//deletes user
+app.post('/delete', async (req, res) => {
+  try{
+    if(res.locals.isLoggedIn){
+      //gets username
+      const username = res.locals.username
+      //deletes user
+      await dbFunctions.delete_user(username)
+      //clears cookies and sends to home page
+      res.clearCookie("token", { httpOnly: true, secure: true });
+      res.redirect('/')
+    }else{
+      res.status(403).send('not logged in')
+    }
+  }catch(error){
+    console.log(error)
+  }
+})
+
 //returns location file of the index provided
 app.post("/getLocation", async function (req, res) {
   try {
