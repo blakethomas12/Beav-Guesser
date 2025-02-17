@@ -153,6 +153,15 @@ async function check_name_availability(name) {
   }
 }
 
+async function delete_user(username) {
+  try{
+    await User.findOneAndDelete({username: username})
+    await Leaderboard.findOneAndDelete({username: username})
+  }catch(error){
+    console.log(error)
+  }
+}
+
 //==============================LEADERBOARD FUNCTIONS===============================================
 //currently not used
 async function get_top_players() {
@@ -241,4 +250,5 @@ module.exports = {
   get_top_players,
   update_leaderboard,
   calculate_total_scores,
+  delete_user
 };
