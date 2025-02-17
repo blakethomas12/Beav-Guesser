@@ -43,7 +43,8 @@
   1) Get the user clicks to work
      
   **Goals For Next Week**
-  1) 
+  1) Implement a game loop to simulate 5 rounds
+  2) Ensure game features and logic connect (submit guess, scoring, etc.)
 
 - ### Lukas
   **Progress and Issues**
@@ -60,37 +61,41 @@
 
 - ### Kevin T
   **Progress and Issues**
-  1) Implemented total scores port server request for leaderboard
-  2) Started work on the leaderboard and placeholders for user data for the leaderboard page
+  1) Total Score is saved across users
+  2) Waiting on scores/rounds to be finished to update the leaderboard in real-time
+  3) Started on about section with how to play
 
   **Goals From Last Week**
-  1) Solidify back-end
+  1) Saving total scores across all users
+  2) Update leaderboard in real time
 
   **Goals For Next Week**
-  1) Saving total scores across all users
-  2) Display leaderboard with real-time updates
+  1) Have account creation have password rules
+  2) Finish about section
 
 - ### Kevin N
   **Progress and Issues**
-  1) Implemented score port server request
+  1) Helping create the 5-round loop logic for the game
+  2) Seeing what front and backend features need to connect like submitting score.
   
   **Goals From Last Week**
-  1) Solidify back-end
+  1) Implement a loop for the 5 rounds for each game
   
   **Goals For Next Week**
-  1) Implement a loop for the 5 rounds for each game
+  1) Finish the loop implementation
+  2) Work on touching up backend
 
 - ### Sam
   **Progress and Issues**
-  1) All images for webpages made
+  1) Navbar design is complete and home page format is done
   
   **Goals From Last Week**
-  1) Create front-end CSS
-  2) Create front-end HTML
-     
-  **Goals For Next Week**
   1) Finalize design of navbar
   2) Finish home, sign-up, and log-in desgins
+     
+  **Goals For Next Week**
+  1) Complete format for all pages
+  2) Start styling pages according to drawn UI designs
 
 - ### Gavin
   **Progress and Issues**
