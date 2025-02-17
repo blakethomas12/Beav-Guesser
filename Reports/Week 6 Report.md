@@ -60,15 +60,17 @@
 
 - ### Kevin T
   **Progress and Issues**
-  1) Implemented total scores port server request for leaderboard
-  2) Started work on the leaderboard and placeholders for user data for the leaderboard page
+  1) Total Score is saved across users
+  2) Waiting on scores/rounds to be finished to update the leaderboard in real-time
+  3) Started on about section with how to play
 
   **Goals From Last Week**
-  1) Solidify back-end
+  1) Saving total scores across all users
+  2) Update leaderboard in real time
 
   **Goals For Next Week**
-  1) Saving total scores across all users
-  2) Display leaderboard with real-time updates
+  1) Have account creation have password rules
+  2) Finish about section
 
 - ### Kevin N
   **Progress and Issues**
