@@ -41,6 +41,10 @@ button {
     font-family: 'Stratum 2', sans-serif;
 }
 
+.topnav-item.active { /* The topnav item for the currently active page (ie: when on the "about" page, this will affect the 'about' nav item) */
+    background-color: #c45109;
+}
+
 .button-background-fix {
     border: none;
     background: none;

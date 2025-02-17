@@ -24,6 +24,12 @@ db.once("open", function () {
   console.log("Connected to MongoDB");
 });
 
+// Register Handlebars helper for changing navbar button css based on current page
+const hbsHelper = exphbs.create(); 
+hbsHelper.handlebars.registerHelper("isActive", function (expectedPath, currentPath) {
+  return expectedPath === currentPath ? "active" : "";
+});
+
 app.engine("handlebars", exphbs.engine({ defaultLayout: "main" })); //default look on every site
 app.set("view engine", "handlebars");
 
@@ -47,6 +53,12 @@ app.use((req, res, next) => {
   } else {
     res.locals.isLoggedIn = false;
   }
+  next();
+});
+
+// Stores the current page path for navbar use
+app.use((req, res, next) => {
+  res.locals.currentPagePath = req.path; // Stores current URL
   next();
 });
 
