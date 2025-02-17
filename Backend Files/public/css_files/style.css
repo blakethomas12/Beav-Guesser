@@ -135,7 +135,6 @@ button {
     align-items: center;
     justify-content: center;
     border: 1px solid black;
-    background-color: rgb(255, 191, 0);
 }
 
 /* 2-3-2 Panel Size Distribution */
@@ -143,6 +142,41 @@ button {
 .home-middle-panel { flex: 3; }
 .home-right-panel { flex: 2; }
 
+.about-page h1 {
+    font-family: 'Stratum 2 Bold', sans-serif;
+    font-size: 3rem; /* Adjust size as needed */
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    color:#ff6200;
+}
+
+.about-page h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Distance from text */
+    left: 0;
+    width: 100%;
+    height: 2px; /* Line thickness */
+    background-color: black; /* Line color */
+}
+
+.about-page {
+    margin-left: 1in;
+    margin-right: 1in;
+}
+
+.about-content {
+    font-size: 1.1rem;
+}
+
+.about-image {
+    float: left; /* Makes the image float to the left */
+    width: 300px; /* Adjust the image size as needed */
+    height: auto;
+    margin-right: 20px; /* Adds space between the image and text */
+    margin-bottom: 10px; /* Adds space below the image */
+}
 
 footer {
     border-top: solid;
