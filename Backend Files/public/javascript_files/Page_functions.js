@@ -200,3 +200,11 @@ async function submitScore(score) {
     alert("There was an error submitting your score. Please try again.");
   }
 }
+
+async function deleteProfile() {
+  const response = await fetch('/delete')
+
+  if(response.redirected){
+    window.location.href = response.url;
+  }
+}
