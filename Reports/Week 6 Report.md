@@ -62,14 +62,15 @@
   **Progress and Issues**
   1) Total Score is saved across users
   2) Waiting on scores/rounds to be finished to update the leaderboard in real-time
+  3) Started on about section with how to play
 
   **Goals From Last Week**
   1) Saving total scores across all users
   2) Update leaderboard in real time
 
   **Goals For Next Week**
-  1) Give user manual on the About page
-  2) 
+  1) Have account creation have password rules
+  2) Finish about section
 
 - ### Kevin N
   **Progress and Issues**
