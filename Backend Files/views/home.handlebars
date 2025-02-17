@@ -1,29 +1,21 @@
-<main>
-  <p>Home</p>
-  <h1>Welcome to Beav-Guesser</h1>
+<main class="home-main">
+  <h1 class="home-title">Welcome to Beav-Guesser</h1>
 
-  <!-- Div for ui related to playing the game -->
-  <div>
-    <button id="play_game_button" type="button" onclick="goToPage('/guesser')">Play
-      Game</button>
+  <div class="home-button-container">
+    <button class="home-play-button" type="button" onclick="goToPage('/guesser')">
+      Play Game
+    </button>
   </div>
 
-  <div class="panel" id="left-panel">
-    <p>
-      left panel
-    </p>
+  <div class="home-panel-container">
+    <div class="home-panel-box home-left-panel">
+      <p>Left Panel</p>
+    </div>
+    <div class="home-panel-box home-middle-panel">
+      <p>Middle Panel</p>
+    </div>
+    <div class="home-panel-box home-right-panel">
+      <p>Right Panel</p>
+    </div>
   </div>
-
-  <div class="panel" id="middle-panel">
-    <p>
-      middle panel
-    </p>
-  </div>
-
-  <div class="panel" id="right-panel">
-    <p>
-      right panel
-    </p>
-  </div>
-
 </main>

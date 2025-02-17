@@ -99,6 +99,51 @@ button {
     display: none;
 }
 
+.home-main {
+    width: 100%;
+    height: 80vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.home-title,
+.home-button-container {
+    position: absolute; /* Overlays content */
+    top: 20%; /* Adjust this value to move it up/down */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers horizontally */
+    text-align: center;
+    z-index: 10; /* Ensure it's above panels */
+}
+
+.home-button-container {
+    top: 35%; /* Position the button separately */
+}
+
+.home-panel-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+}
+
+.home-panel-box {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background-color: rgb(255, 191, 0);
+}
+
+/* 2-3-2 Panel Size Distribution */
+.home-left-panel { flex: 2; }
+.home-middle-panel { flex: 3; }
+.home-right-panel { flex: 2; }
+
+
 footer {
     border-top: solid;
     border-width: thick;

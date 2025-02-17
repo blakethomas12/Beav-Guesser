@@ -82,15 +82,15 @@
 
 - ### Sam
   **Progress and Issues**
-  1) All images for webpages made
+  1) Navbar design is complete and home page format is done
   
   **Goals From Last Week**
-  1) Create front-end CSS
-  2) Create front-end HTML
-     
-  **Goals For Next Week**
   1) Finalize design of navbar
   2) Finish home, sign-up, and log-in desgins
+     
+  **Goals For Next Week**
+  1) Complete format for all pages
+  2) Start styling pages according to drawn UI designs
 
 - ### Gavin
   **Progress and Issues**
