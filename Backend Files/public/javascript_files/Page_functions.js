@@ -202,7 +202,7 @@ async function submitScore(score) {
 }
 
 async function deleteProfile() {
-  const response = await fetch('/delete')
+  const response = await fetch('/delete', {method: "POST"})
 
   if(response.redirected){
     window.location.href = response.url;
