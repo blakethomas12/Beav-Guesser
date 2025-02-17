@@ -9,32 +9,35 @@
    
 ### Progress and Issues
 - User clicks succesfully register and appears on the map
-- 
+- leaderboard and profile now render with data
+- lat/long cord not rendering in correct place
 
 ### Goals For Next Week
-1. 
-2. 
-3. 
+1. have the game loop functioning
+2. fix lat/long to x/y conversion
+3. have all pages finished
 
 # Contributions of Individual Team Members
 
 - ### Blake
   **Progress and Issues**
-  1) Finished login features, includes cookies, and logout function plus register function
-  2) converted the html over to handlebars and connected the server to all pages 
-  3) Implemented scoring function and xp function and update leaderboard function to auto update high scores
+  1) Added a calculate score port to server
+  2) Added stay signed in option for login
+  3) Leader now renders with data
+  4) 
   
   **Goals From Last Week**
-  1) Implement scoring and xp function
-     
-  **Goals For Next Week**
   1) Implement a stay signed in option
   2) Render leaderboard with data
+     
+  **Goals For Next Week**
+  1) added delete user functionality to back end
+
 
 - ### Joy
   **Progress and Issues**
   1) Game functions and features need to connect
-  2) Changing hwo the game starts, instead of having a random location pulled, a loop will start to simulate the 5 rounds. 
+  2) Changing how the game starts, instead of having a random location pulled, a loop will start to simulate the 5 rounds. 
   
   **Goals From Last Week**
   1) Get the user clicks to work
