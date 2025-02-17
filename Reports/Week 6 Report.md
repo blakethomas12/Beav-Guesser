@@ -74,13 +74,15 @@
 
 - ### Kevin N
   **Progress and Issues**
-  1) Implemented score port server request
+  1) Helping create the 5-round loop logic for the game
+  2) Seeing what front and backend features need to connect like submitting score.
   
   **Goals From Last Week**
-  1) Solidify back-end
+  1) Implement a loop for the 5 rounds for each game
   
   **Goals For Next Week**
-  1) Implement a loop for the 5 rounds for each game
+  1) Finish the loop implementation
+  2) Work on touching up backend
 
 - ### Sam
   **Progress and Issues**
