@@ -187,3 +187,10 @@ footer {
 
     margin-bottom: 5px;
 }
+
+#game-result-message{
+    display: none; 
+    font-size: 20px; 
+    font-weight: bold; 
+    text-align: center;
+}

@@ -1,7 +1,11 @@
 <main>
   <p>Guesser</p>
   <!-- This is the window for the google street view api -->
-  <button onclick="loadRandomStreetView()">Start Round</button>
+  {{!-- <button onclick="loadRandomStreetView()">New Round</button> --}}
+
+  {{!-- show current round --}}
+  <p id="current-round"></p>
+
   <div id="street-view-window">
     <div style="width: 100%; overflow: hidden; height: 600px;">
       <iframe
@@ -23,4 +27,9 @@
   </div>
   <div id="feedback"></div>
   <button onclick="showMap()" id="show-map-button">Show Map</button>
+
+  {{!-- message that shows when game ends --}}
+  <p id="game-result-message" style ="display: none;"></p>
+  {{!-- restart game only when current game is over --}}
+  <button id = "restart-game-button" onclick="startGame()" style = "display: none;"> Start Game Again</button>
 </main>
