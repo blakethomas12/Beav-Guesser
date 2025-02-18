@@ -46,7 +46,7 @@ function loadRandomStreetView() {
   iframe.src = getRandomStreetViewEmbedLink();
 }
 
-function startGame(event){
+function startGame(){
   console.log("game started");  //debugging
   totalScore = 0;
   currentRound = 1;
@@ -54,6 +54,21 @@ function startGame(event){
   const roundMessage = document.getElementById("current-round");
   if(roundMessage){
     roundMessage.textContent = `Round: ${currentRound}/${totalRounds}`;
+  }
+
+  const resultMessage = document.getElementById("game-result-message");
+  if (resultMessage) {
+    resultMessage.style.display = "none"; //hide previous score
+  }
+
+  const restartButton = document.getElementById("restart-game-button");
+  if (restartButton) {
+    restartButton.style.display = "none"; //hide restart button
+  }
+
+  const streetViewFrame = document.getElementById("streetViewFrame");
+  if (streetViewFrame) {
+    streetViewFrame.style.display = "block"; //show street view
   }
   
   loadRandomStreetView();
