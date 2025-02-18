@@ -267,6 +267,16 @@ async function submitScore(score) {
   }
 }
 
+async function calcScore(true_lat, true_long, user_lat, user_long) {
+  const response = await fetch('/calcScore',{
+    method: "POST",
+    body: JSON.stringify({trueLat: true_lat, trueLong: true_long, userLat: user_lat, userLong: user_long})
+  })
+
+  const result = await response.json()
+  console.log(result.score)
+}
+
 async function deleteProfile() {
   const confirmed = window.confirm('Are you sure you want to delete your account. This action can not be undone.')
   if(confirmed){
