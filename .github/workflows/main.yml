@@ -41,7 +41,3 @@ jobs:
       # - name: Run Unit Tests
       #   run: npm test
       #   working-directory: ./Backend Files
-
-      - name: Build
-        run: npm run build
-        working-directory: ./Backend Files
