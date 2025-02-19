@@ -22,9 +22,9 @@ jobs:
         run: npm install
         working-directory: ./Backend Files
 
-      # - name: Run Lint
-      #   run: npm run lint
-      #   working-directory: ./Backend Files
+      - name: Run Lint
+        run: npm run lint
+        working-directory: ./Backend Files
 
       - name: Run Prettier
         run: npm run prettier
