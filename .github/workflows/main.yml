@@ -20,28 +20,28 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./backend
+        working-directory: ./Backend\ Files
 
       - name: Run Lint
         run: npm run lint
-        working-directory: ./backend
+        working-directory: ./Backend\ Files
 
       - name: Run Prettier
         run: npm run prettier
-        working-directory: ./backend
+        working-directory: ./Backend\ Files
 
       - name: Run Static Code Analysis
         run: npm run analyze
-        working-directory: ./backend
+        working-directory: ./Backend\ Files
 
       - name: Run Security Scan
         run: npm audit
-        working-directory: ./backend
+        working-directory: ./Backend\ Files
 
       - name: Run Unit Tests
         run: npm test
-        working-directory: ./backend
+        working-directory: ./Backend\ Files
 
       - name: Build
         run: npm run build
-        working-directory: ./backend
+        working-directory: ./Backend\ Files
