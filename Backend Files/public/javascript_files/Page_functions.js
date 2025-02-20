@@ -54,6 +54,13 @@ function startGame(){
   totalScore = 0;
   currentRound = 1;
 
+  //displays show map button
+  const showMapButton = document.getElementById("show-map-button");
+  if(showMapButton){
+    showMapButton.style.display = "block";
+    showMapButton.textContent = "Show Map"; //reverts text back
+  }
+
   //displays current round
   const roundMessage = document.getElementById("current-round");
   if(roundMessage){
@@ -63,7 +70,7 @@ function startGame(){
   //hides the result score
   const resultMessage = document.getElementById("game-result-message");
   if (resultMessage) {
-    resultMessage.style.display = "none"; //hide previous score
+    resultMessage.style.display = "none"; //hide score
   }
 
   //hides the restart game button
@@ -94,6 +101,24 @@ function endGame(){
   if (iframe) {
     iframe.style.display = "none";
   }
+
+  //hide show map button
+  const showMapButton = document.getElementById("show-map-button");
+  if(showMapButton){
+    showMapButton.style.display = "none";
+  }
+
+  //hide map
+  const map = document.getElementById("overlay-map");
+  if(map){
+    map.style.display="none";
+  }
+
+  //hide guess canvas
+  const guessCanvas = document.getElementById("guess-canvas");
+  if(guessCanvas){
+    guessCanvas.style.display="none";
+  }  
 
   //show the final score and replace the round message
   const roundMessage = document.getElementById("current-round");
