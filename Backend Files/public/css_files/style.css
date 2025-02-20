@@ -439,3 +439,35 @@ footer {
     font-weight: bold; 
     text-align: center;
 }
+
+#current-round{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e54e00;
+}
+
+/* fade effect for show map button */
+#show-map-button{
+    background-color: #ff6200;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#show-map-button:hover {
+    opacity: 1;
+}
