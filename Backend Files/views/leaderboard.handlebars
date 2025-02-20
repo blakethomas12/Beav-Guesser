@@ -1,15 +1,18 @@
-<h1>Leaderboard</h1>
-<table>
-  <tr>
-    <th>Rank</th>
-    <th>Username</th>
-    <th>Total Score</th>
-  </tr>
-  {{#each leaderboard}}
+<main class="leaderboard-page">
+  <h1>Leaderboard</h1>
+  <table>
     <tr>
-      <td>{{rank}}</td>
-      <td>{{username}}</td>
-      <td>{{total_score}}</td>
+      <th>Rank</th>
+      <th>Username</th>
+      <th>Total Score</th>
     </tr>
-  {{/each}}
-</table>
+    {{#each leaderboard}}
+      <tr>
+        <td>{{rank}}</td>
+        <td>{{username}}</td>
+        <td>{{total_score}}</td>
+      </tr>
+    {{/each}}
+  </table>
+</main>
+

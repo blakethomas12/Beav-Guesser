@@ -348,6 +348,64 @@ button {
     background-color: #e54e00;
 }
 
+.leaderboard-page {
+    height: 110vh;
+}
+
+.leaderboard-page h1 {
+    font-family: 'Stratum 2 Bold', sans-serif;
+    font-size: 4rem;
+    color: #ff6200;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    position: relative;
+}
+
+.leaderboard-page h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 70%;
+    height: 2px;
+    margin-left: 195px;
+    margin-right: 30px;
+    background-color: black;
+}
+
+.leaderboard-page table {
+    width: 80%;
+    max-width: 800px;
+    padding-top: 30px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.leaderboard-page th, .leaderboard-page td {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.leaderboard-page th {
+    background-color: #ff6200;
+    color: white;
+}
+
+.leaderboard-page tr:nth-child(even) {
+    background-color: #f0f0f0;
+}
+
+.leaderboard-page tr:hover {
+    background-color: #e4e4e4;
+}
+
 footer {
     border-top: solid;
     border-width: thick;
