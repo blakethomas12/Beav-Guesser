@@ -406,6 +406,23 @@ button {
     background-color: #e4e4e4;
 }
 
+.error-404-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-family: 'Stratum 2', sans-serif;
+    color: #ff6200;
+    text-align: center;
+}
+
+.error-404-page h1 {
+    margin: 0;
+    font-size: 4rem;
+}
+
+
 footer {
     border-top: solid;
     border-width: thick;
