@@ -254,10 +254,10 @@ app.post("/submitScore", async (req, res) => {
 //calcs the score of a single round
 app.post('/calcScore', (req, res) => {
   //gets users guess and location of image
-  const {trueLat, trueLong, userLat, userLong} = req.body
+  const {true_x, true_y, user_x, user_y} = req.body
   
   //calcs score
-  const score = scoreFunctions.calculate_score(trueLat, trueLong, userLat, userLong)
+  const score = scoreFunctions.calculate_score(true_x, true_y, user_x, user_y)
   //returns score
   res.json({score: score})
 })

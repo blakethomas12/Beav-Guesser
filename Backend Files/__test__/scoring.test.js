@@ -1,23 +1,19 @@
-const { calculate_score } = require('../scoring'); // Adjust the path to your file
+const { calculate_score } = require('../scoring'); // Update the path to your file
 
-// Test cases for calculate_score
 describe('calculate_score', () => {
-    test('returns 5000 for distances less than or equal to 5', () => {
-        expect(calculate_score(44.56766730220258, -123.28959983789187, 44.56766730220258, -123.28959983789187)).toBe(5000);
-    });
+    test('returns correct score for given coordinates', () => {
+        // Test cases
+        const testCases = [
+            { true_x: 0, true_y: 0, user_x: 0, user_y: 0, expected: 5000 },
+            { true_x: 0, true_y: 0, user_x: 781, user_y: 0, expected: 0 },
+            { true_x: 100, true_y: 100, user_x: 200, user_y: 200, expected: 3353 },
+            { true_x: 400, true_y: 400, user_x: 600, user_y: 600, expected: 2034 },
+            { true_x: 500, true_y: 500, user_x: 500, user_y: 500, expected: 5000 }
+        ];
 
-    test('returns correct score for distances greater than 5', () => {
-        expect(calculate_score(44.56766730220258, -123.28959983789187, 44.55767469824912, -123.2896888691443)).toBeLessThan(5000);
-        expect(calculate_score(44.56766730220258, -123.28959983789187, 44.55767469824912, -123.2896888691443)).toBeGreaterThan(0);
-    });
-
-    test('returns 0 for distances very far away', () => {
-        expect(calculate_score(44.56766730220258, -123.28959983789187, 0, 0)).toBe(0);
-    });
-
-    test('handles edge case for rounding', () => {
-        const result = calculate_score(44.564864, -123.278903, 44.564871, -123.278666);
-        expect(result).toBeGreaterThan(0);
-        expect(result).toBeLessThan(5000);
+        testCases.forEach(({ true_x, true_y, user_x, user_y, expected }) => {
+            const result = calculate_score(true_x, true_y, user_x, user_y);
+            expect(result).toBe(expected)
+        });
     });
 });

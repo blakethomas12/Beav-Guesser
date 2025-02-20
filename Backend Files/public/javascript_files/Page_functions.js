@@ -267,10 +267,10 @@ async function submitScore(score) {
   }
 }
 
-async function calcScore(true_lat, true_long, user_lat, user_long) {
+async function calcScore(true_x, true_y, user_x, user_y) {
   const response = await fetch('/calcScore',{
     method: "POST",
-    body: JSON.stringify({trueLat: true_lat, trueLong: true_long, userLat: user_lat, userLong: user_long})
+    body: JSON.stringify({true_x: true_x, true_y: true_y, user_x: user_x, user_y: user_y})
   })
 
   const result = await response.json()
