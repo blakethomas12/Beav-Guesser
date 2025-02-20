@@ -91,7 +91,7 @@
   2) Start styling pages according to drawn UI designs
      
   **Goals For Next Week**
-  1) Complete leaderboard, profile, and 404 handlbar format
+  1) Complete profile handlbar format
   2) Write tests for page functions
 
 - ### Gavin
