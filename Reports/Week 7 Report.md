@@ -95,17 +95,16 @@
 
 - ### Gavin
   **Progress and Issues**
-  1) Got more of the handlebar html done
-  2) Navbar buttons have darker background when their page is currently being displayed
+  1) Connected some game functionality
+  2) Implimented profile deletion
   
   **Goals From Last Week**
-  1) Convert html files into handlebar templates wherever possible for modulality.
-  2) Finish the incomplete html files.
-  3) Implemented functionality for login system.
-     
-  **Goals For Next Week**
   1) Continue connecting game functionality to the web pages
   2) Finish About page
   3) Impliment user profile deletion option in profile page
+     
+  **Goals For Next Week**
+  1) Finish about page
+  2) Write tests for page functions
 
 
