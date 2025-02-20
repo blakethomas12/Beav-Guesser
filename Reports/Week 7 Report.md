@@ -32,15 +32,17 @@
 
 - ### Joy
   **Progress and Issues**
-  1) Game functions and features need to connect
-  2) Changing how the game starts, instead of having a random location pulled, a loop will start to simulate the 5 rounds. 
+  1) Modified page_functions file to simulate 5 rounds.
+  2) Currently, lat/lng to x/y conversion is poor and has to be polished.
+  3) Score system is not accurate.
   
   **Goals From Last Week**
-  1) Get the user clicks to work
-     
-  **Goals For Next Week**
   1) Implement a game loop to simulate 5 rounds
   2) Ensure game features and logic connect (submit guess, scoring, etc.)
+     
+  **Goals For Next Week**
+  1) (Continuation) Ensure game features and logic connect (submit guess, scoring, etc.)
+  2) Assist Lukas on polishing lat/lng conversion
 
 - ### Lukas
   **Progress and Issues**
