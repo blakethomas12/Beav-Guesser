@@ -5,14 +5,13 @@ function calculate_score(true_lat, true_long, user_lat, user_long){
 
    let score 
 
-   if(dist <= 5){ //padding around area for 100% points
-    score = 5000
-   }else{
-    //removes padding from distances
-    const ad_dist = dist - 5
-    const ad_max = 178 - 5
-    score = Math.max(0, Math.min(5000, 5000 * (1 - ad_dist / ad_max) ** 2)) //calcs score with an exponential fall off of points
+   if(dist>179){
+    return 0;
    }
+
+    //removes padding from distances
+    const max = 178
+    score = Math.max(0, Math.min(5000, 5000 * (1 - dist / max) ** 2)) //calcs score with an exponential fall off of points
    return Math.round(score) //removes decimal
 }
 
