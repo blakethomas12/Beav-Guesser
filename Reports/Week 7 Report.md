@@ -83,15 +83,16 @@
 
 - ### Sam
   **Progress and Issues**
-  1) Navbar design is complete and home page format is done
+  1) About page formatted with new image file
+  2) Signup and login pages are properly formatted
   
   **Goals From Last Week**
-  1) Finalize design of navbar
-  2) Finish home, sign-up, and log-in desgins
-     
-  **Goals For Next Week**
   1) Complete format for all pages
   2) Start styling pages according to drawn UI designs
+     
+  **Goals For Next Week**
+  1) Complete leaderboard, profile, and 404 handlbar format
+  2) Write tests for page functions
 
 - ### Gavin
   **Progress and Issues**

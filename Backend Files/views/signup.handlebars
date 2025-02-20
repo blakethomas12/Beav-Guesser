@@ -1,7 +1,7 @@
-<main>
-  <p>Sign Up</p>
+<main class="signup-page">
+  <h1 class="signup-title">Sign Up</h1>
 
-  <form method="POST">
+  <form id="signup-form" method="POST">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required />
     <br />
@@ -9,7 +9,8 @@
     <input type="password" id="password" name="password" required />
     <br />
     <label for="confirm-password">Confirm Password:</label>
-    <input type="password" id="confirm-password" name="confirm-password" required/><br/>
+    <input type="password" id="confirm-password" name="confirm-password" required />
+    <br />
     <button type="button" onclick="register()">Sign Up</button>
   </form>
 </main>
