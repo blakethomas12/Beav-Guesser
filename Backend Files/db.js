@@ -2,17 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const fs = require('fs/promises');
 
-// mongoose.connect(
-//   "mongodb+srv://thomblak:Q8w8rOO3EisNKGTA@beavguesser.q3c0f.mongodb.net/?retryWrites=true&w=majority&appName=BeavGuesser"
-// );
-
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error:"));
-// db.once("open", function () {
-//   console.log("Connected to MongoDB");
-// });
-
-
 //location schemes
 const locationSchema = new mongoose.Schema({
   path: String,
@@ -55,7 +44,6 @@ async function get_location_by_number(num) {
     const doc = await Location.findOne().skip(num).exec();
     return doc;
   } catch (error) {
-    console.error("error retrieving document: (check bounds)", error);
     throw error;
   }
 }
@@ -84,9 +72,8 @@ async function create_user(username, password) {
     await leaderboard.save()
     await user.save();
 
-    console.log(`password and username stored for ${username}`);
   } catch (error) {
-    console.error("Error creating and storing user", error);
+    throw error
   }
 }
 
@@ -107,7 +94,6 @@ async function check_cred(username, password) {
     // console.log(`Password match: ${match}`);
     return match;
   } catch (error) {
-    console.error("Error checking creds:", error);
     return false;
   }
 }
@@ -119,7 +105,6 @@ async function get_user(username) {
     //checks if user exists
     const user = await User.findOne({ username: username });
     if (!user) {
-      console.log(`User not found: ${username}`);
       return null;
     }
 
@@ -133,7 +118,6 @@ async function get_user(username) {
       return doc;
 
   } catch (error) {
-    console.error("Error getting user:", error);
     return null;
   }
 }
@@ -148,7 +132,6 @@ async function check_name_availability(name) {
       return true;
     }
   } catch (error) {
-    console.error("error checking name", error);
     return false;
   }
 }
@@ -158,7 +141,7 @@ async function delete_user(username) {
     await User.findOneAndDelete({username: username})
     await Leaderboard.findOneAndDelete({username: username})
   }catch(error){
-    console.log(error)
+    throw error
   }
 }
 
@@ -169,7 +152,6 @@ async function get_top_players() {
     const topPlayers = await Leaderboard.find().sort({ score: -1 }).limit(10);
     return topPlayers;
   } catch (error) {
-    console.error("error getting leaderboard data", error);
     return null;
   }
 }
@@ -199,7 +181,6 @@ async function calculate_total_scores() {
 
     return formattedLeaderboard;
   } catch (error) {
-    console.error("Error calculating total scores:", error);
     return [];
   }
 }
@@ -227,7 +208,6 @@ async function update_leaderboard(username, score) {
     //adds xp to user file
     user.xp = user.xp + calculate_xp(score)
   } catch (error) {
-    console.log("error updating leaderboard:", error);
   }
 }
 

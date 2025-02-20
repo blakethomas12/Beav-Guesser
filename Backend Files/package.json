@@ -13,7 +13,6 @@
     "app",
     "node"
   ],
-  "type": "module",
   "author": "Team 18",
   "license": "ISC",
   "description": "",
