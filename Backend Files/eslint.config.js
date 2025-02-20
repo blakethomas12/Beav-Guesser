@@ -1,8 +1,8 @@
 // eslint.config.js
-import { defineConfig } from 'eslint-define-config';
+const defineConfig  = require('eslint-define-config');
 
-export default defineConfig({
+module.exports = {
   rules: {
     // Your custom rules
   },
-});
+};
