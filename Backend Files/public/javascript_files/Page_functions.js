@@ -33,6 +33,7 @@ const mapBounds = {
   bottomRight: { lat: 44.55977402745042, lng: -123.2750217935866 },
 };
 
+//gets a random street veiw 
 function getRandomStreetViewEmbedLink() {
   // generate random latitude and longitude within bounds
   actualLat = Math.random() * (mapBounds.topLeft.lat - mapBounds.bottomRight.lat) + mapBounds.bottomRight.lat;
@@ -41,31 +42,37 @@ function getRandomStreetViewEmbedLink() {
   return `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sPLACEHOLDER!2m2!1d${actualLat.toFixed(6)}!2d${actualLng.toFixed(6)}!3f0!4f0!5f0.7820865974627469`;
 }
 
+//loads the random streetview
 function loadRandomStreetView() {
   const iframe = document.getElementById("streetViewFrame");
   iframe.src = getRandomStreetViewEmbedLink();
 }
 
+//when "play game", game will start from here
 function startGame(){
   console.log("game started");  //debugging
   totalScore = 0;
   currentRound = 1;
 
+  //displays current round
   const roundMessage = document.getElementById("current-round");
   if(roundMessage){
     roundMessage.textContent = `Round: ${currentRound}/${totalRounds}`;
   }
 
+  //hides the result score
   const resultMessage = document.getElementById("game-result-message");
   if (resultMessage) {
     resultMessage.style.display = "none"; //hide previous score
   }
 
+  //hides the restart game button
   const restartButton = document.getElementById("restart-game-button");
   if (restartButton) {
     restartButton.style.display = "none"; //hide restart button
   }
 
+  //displays the street view, it will be blocked when the game ends
   const streetViewFrame = document.getElementById("streetViewFrame");
   if (streetViewFrame) {
     streetViewFrame.style.display = "block"; //show street view
@@ -80,24 +87,29 @@ function startGame(){
   }
 }
 
+//game end display
 function endGame(){
+  //hide street view
   const iframe = document.getElementById("streetViewFrame");
   if (iframe) {
-    iframe.style.display = "none"; //hide street view
+    iframe.style.display = "none";
   }
 
+  //show the final score
   const resultMessage = document.getElementById("game-result-message");
   if (resultMessage) {
     resultMessage.textContent = `Game Over! Your total score: ${totalScore}`;
-    resultMessage.style.display = "block"; //show the final score
+    resultMessage.style.display = "block"; 
   }
   
+  //show restart game button
   const restartGameButton = document.getElementById("restart-game-button");
   if(restartGameButton){
-    restartGameButton.style.display = "block"; //show restart game button
+    restartGameButton.style.display = "block";
   }
 }
 
+//how user guesses are processed
 function processClick(event){
   //debugging: check click coordinates
   const canvas = event.target;
@@ -127,12 +139,14 @@ function processClick(event){
   } 
 }
 
+//conversion (need to change or remove)
 function latLngToXY(lat, lng, imgWidth, imgHeight) {
   const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
   const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
   return { x, y };
 }
 
+//draws the user guess and actual location
 function drawGuess(guessx, guessy, actualx, actualy) {
   //debugging: check if draw guess is succesfully being called
   console.log("succesfully called drawGuess");
