@@ -95,11 +95,17 @@ function endGame(){
     iframe.style.display = "none";
   }
 
-  //show the final score
+  //show the final score and replace the round message
+  const roundMessage = document.getElementById("current-round");
   const resultMessage = document.getElementById("game-result-message");
-  if (resultMessage) {
+  if (resultMessage && roundMessage) {
+    roundMessage.style.display = "none";
     resultMessage.textContent = `Game Over! Your total score: ${totalScore}`;
     resultMessage.style.display = "block"; 
+    resultMessage.style.position = "absolute"
+    resultMessage.style.top = "30%"; //move it higher
+    resultMessage.style.left = "50%";
+    resultMessage.style.transform = "translateX(-50%)";
   }
   
   //show restart game button
