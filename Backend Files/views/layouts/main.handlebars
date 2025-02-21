@@ -13,10 +13,10 @@
             </div>
             <div class="topnav-group" id="topnav-right-group">
                 {{#if isLoggedIn}}
-                <button id="profile-button" class="topnav-item" onclick="goToPage('/profile')">Profile</button> 
+                <button id="profile-button" class="topnav-item button-background-fix {{isActive '/profile' currentPagePath}}" onclick="goToPage('/profile')">Profile</button> 
                 {{else}}
-                <button id="login-button" class="topnav-item" onclick="goToPage('login')">Login</button>
-                <button id="signup-button" class="topnav-item" onclick="goToPage('signup')">Signup</button>
+                <button id="login-button" class="topnav-item button-background-fix {{isActive '/login' currentPagePath}}" onclick="goToPage('/login')">Login</button>
+                <button id="signup-button" class="topnav-item button-background-fix {{isActive '/signup' currentPagePath}}" onclick="goToPage('/signup')">Signup</button>
                 {{/if}}
             </div>
         </div>
