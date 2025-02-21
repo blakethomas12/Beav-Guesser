@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-
-<html>
     <head> 
         <title>Beav Guesser</title>
         <link rel="stylesheet" href="..\css_files\style.css">
-        <script src="..\javascript_files\Page_functions.js"></script>
     </head>
 
-    <body class = "body">
+    <body class="body">
         <!-- topnav represents the navigation bar at the top of the page AND IS CURRENTLY UNIQUE FOR EACH HTML FILE-->
         <div class="topnav">
             <div class="topnav-group" id="topnav-left-group">
@@ -17,9 +13,9 @@
             </div>
             <div class="topnav-group" id="topnav-right-group">
                 {{#if isLoggedIn}}
-                <button id= "profile-button" class="topnav-item" onclick="goToPage('/profile')">Profile</button> 
+                <button id="profile-button" class="topnav-item" onclick="goToPage('/profile')">Profile</button> 
                 {{else}}
-                <button id= "login-button" class="topnav-item" onclick="goToPage('login')">Login</button>
+                <button id="login-button" class="topnav-item" onclick="goToPage('login')">Login</button>
                 <button id="signup-button" class="topnav-item" onclick="goToPage('signup')">Signup</button>
                 {{/if}}
             </div>
@@ -27,5 +23,7 @@
 
        {{{body}}}
 
+       <script src="/javascript_files/scoring.js"></script>
+       <script src="/javascript_files/Page_functions.js"></script>
     </body>
 </html>
