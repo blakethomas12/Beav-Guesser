@@ -88,5 +88,19 @@ describe('Database Functions', () => {
   });
 
   // Additional tests for leaderboard, etc. can be added similarly
+  
+  // Tests for profile functions - Gavin is working on this
+  it('should create a user profile', async () => {
+    // attempts to create profile
+
+    // attempts to get newly created profile (should succeed)
+
+  });
+  it('should delete a user profile', async () => {
+    // attempts to delete profile
+
+    // attempts to get deletled profile (should fail)
+    
+  });
 
 });
