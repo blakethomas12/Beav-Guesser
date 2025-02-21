@@ -13,7 +13,7 @@ Once the repo has been cloned, open a terminal and cd into the repo. Then run th
 These commands will install the node modules required for server and start a local instance of the server. You can then visit the server via a web browser and searching for 'localhost:4000/'. To stop the server type CRTL + C in the terminal where the server is running.
 
 # Testing
-Majority of the functionality can be tested by accessing and using the website. For API requests user can use a tool like ReqBin to send HTTP requests to the server to check their functionality. Since the database is private users wishing to test a database will have to create their own and connect it to the server. After that sending HTTPS requests and checking the contents of the database are the best testing method.  
+Majority of the functionality can be tested by accessing and using the website. For API requests user can use a tool like ReqBin to send HTTP requests to the server to check their functionality. Since the database is private users wishing to test a database will have to create their own and connect it to the server. After that sending HTTPS requests and checking the contents of the database are the best testing method. Any unit test can be added to the __ test__ file and can be run with the command npm run test.
 
 # Building release
 To build a release you will first want to find a platform to host the server. Once you have found a service follow the Building the System steps to set up the server. Our release will use Heroku Dynos and has a built in web address. If you plan to use another service understand the process to make it available to the web.
