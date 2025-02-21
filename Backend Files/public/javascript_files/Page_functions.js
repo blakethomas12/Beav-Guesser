@@ -141,22 +141,23 @@ function endGame(){
 }
 
 //how user guesses are processed
-function processClick(event){
-  //debugging: check click coordinates
+function processClick(event) {
   const canvas = event.target;
   const rect = canvas.getBoundingClientRect();
   guessX = event.clientX - rect.left;
   guessY = event.clientY - rect.top;
-  console.log(`click coordinates: X=${guessX}, Y=${guessY}`);
-  //
 
-  if (currentRound <= totalRounds){
+  if (currentRound <= totalRounds) {
+    // Log the current round before processing the guess
+    console.log(`Current Round: ${currentRound}`);
+
     checkGuess();
-    console.log(`Guess registerd for round:`, currentRound);  //check current round
+    
+    // Increment current round
     currentRound++;
 
     //checks to see if more rounds are left
-    if (currentRound <= totalRounds){
+    if (currentRound <= totalRounds) {
       const roundMessage = document.getElementById("current-round");
       //update round message
       if (roundMessage) {
@@ -164,10 +165,10 @@ function processClick(event){
       }
       loadRandomStreetView();
     } else {
-      console.log("submitting score:", totalScore); //debugging
-      submitScore(totalScore).then(() => endGame()); //show the final score & stop new rounds
+      // After the final round, calculate and display the total score
+      submitScore(totalScore).then(() => endGame()); // Submit score and end the game
     }
-  } 
+  }
 }
 
 //conversion (need to change or remove)
@@ -211,7 +212,6 @@ function drawGuess(guessx, guessy, actualx, actualy) {
 
 //dont need to calculate score, send user guess and actual coords to database
 function checkGuess() {
-  console.log("succesfully called checking guess");
   const img = document.getElementById("guess-canvas");
   const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng, img.clientWidth, img.clientHeight);
 
@@ -219,6 +219,10 @@ function checkGuess() {
 
   const distance = Math.sqrt((actualX - guessX) ** 2 + (actualY - guessY) ** 2);
   document.getElementById("feedback").innerText = `Distance: ${Math.round(distance)} pixels`;
+
+  const score = calculate_score(actualX, actualY, guessX, guessY); 
+  totalScore += score; // Add the score to the total score
+  console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
 }
 
 //make sure everything is laoded 
