@@ -3,7 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const dbFunctions = require("./db"); //database i/o functions
-const scoreFunctions = require("./scoring") //score function
+const scoreFunctions = require("./scoring"); //score function
 const jwt = require("jsonwebtoken");
 //parsers for code
 const bodyParser = require("body-parser");
@@ -37,9 +37,11 @@ app.use(express.static("public")); // for styling
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(express.static("public"));
 
-//checks if user is logged in whenever a request is sen to the server
+// Serve scoring.js as a static file
+app.use('/javascript_files/scoring.js', express.static(__dirname + '/Backend Files/scoring.js'));
+
+//checks if user is logged in whenever a request is sent to the server
 app.use((req, res, next) => {
   const token = req.cookies.token;
   if (token) {
