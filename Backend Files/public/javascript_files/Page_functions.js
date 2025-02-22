@@ -49,6 +49,7 @@ function loadRandomStreetView() {
 }
 
 //when "play game", game will start from here
+//manages what is shown and hidden
 function startGame(){
   console.log("game started");  //debugging
   totalScore = 0;
@@ -64,6 +65,7 @@ function startGame(){
   //displays current round
   const roundMessage = document.getElementById("current-round");
   if(roundMessage){
+    roundMessage.style.display = "block";
     roundMessage.textContent = `Round: ${currentRound}/${totalRounds}`;
   }
 
@@ -77,6 +79,12 @@ function startGame(){
   const restartButton = document.getElementById("restart-game-button");
   if (restartButton) {
     restartButton.style.display = "none"; //hide restart button
+  }
+
+  //hides the next round button
+  const nextRoundButton = document.getElementById("next-round-button");
+  if(nextRoundButton){
+    nextRoundButton.style.display = "none";    //hide the next round button 
   }
 
   //displays the street view, it will be blocked when the game ends
@@ -95,6 +103,7 @@ function startGame(){
 }
 
 //game end display
+//manages what is shown and hidden
 function endGame(){
   //hide street view
   const iframe = document.getElementById("streetViewFrame");
@@ -119,6 +128,12 @@ function endGame(){
   if(guessCanvas){
     guessCanvas.style.display="none";
   }  
+
+  //hides the next round button
+  const nextRoundButton = document.getElementById("next-round-button");
+  if(nextRoundButton){
+    nextRoundButton.style.display = "none";    //hide the next round button 
+  }
 
   //show the final score and replace the round message
   const roundMessage = document.getElementById("current-round");
@@ -152,22 +167,43 @@ function processClick(event) {
     console.log(`Current Round: ${currentRound}`);
 
     checkGuess();
-    
+
     // Increment current round
     currentRound++;
 
-    //checks to see if more rounds are left
-    if (currentRound <= totalRounds) {
-      const roundMessage = document.getElementById("current-round");
-      //update round message
-      if (roundMessage) {
-        roundMessage.textContent = `Round: ${currentRound}/${totalRounds}`;
-      }
-      loadRandomStreetView();
-    } else {
-      // After the final round, calculate and display the total score
-      submitScore(totalScore).then(() => endGame()); // Submit score and end the game
+    //show the next round button when user makes a guess
+    const nextRoundButton = document.getElementById("next-round-button");
+    if(nextRoundButton){
+      nextRoundButton.style.display = "block";   
     }
+  }
+}
+
+//moves to the next round, triggered by next-round-button 
+function nextRound(){
+  //checks to see if more rounds are left
+  if (currentRound <= totalRounds) {
+    const roundMessage = document.getElementById("current-round");
+    //update round message
+    if (roundMessage) {
+      roundMessage.textContent = `Round: ${currentRound}/${totalRounds}`;
+    }
+
+    //clear the canvas 
+    const canvas = document.getElementById("guess-canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    loadRandomStreetView();
+
+    //hide the button again after clicking on it
+    const nextRoundButton = document.getElementById("next-round-button");
+    if(nextRoundButton){
+      nextRoundButton.style.display = "none";
+    }
+  } else {
+    // After the final round, calculate and display the total score
+    submitScore(totalScore).then(() => endGame()); // Submit score and end the game
   }
 }
 
@@ -220,9 +256,9 @@ function checkGuess() {
   const distance = Math.sqrt((actualX - guessX) ** 2 + (actualY - guessY) ** 2);
   document.getElementById("feedback").innerText = `Distance: ${Math.round(distance)} pixels`;
 
-  const score = calculate_score(actualX, actualY, guessX, guessY); 
-  totalScore += score; // Add the score to the total score
-  console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
+  // const score = calculate_score(actualX, actualY, guessX, guessY); 
+  // totalScore += score; // Add the score to the total score
+  // console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
 }
 
 //make sure everything is laoded 
