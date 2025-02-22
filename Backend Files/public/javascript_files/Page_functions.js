@@ -179,7 +179,7 @@ function processClick(event) {
   }
 }
 
-//moves to the next round, triggered by next-round-button 
+//simulates each round, triggered by next-round-button 
 function nextRound(){
   //checks to see if more rounds are left
   if (currentRound <= totalRounds) {
@@ -189,10 +189,15 @@ function nextRound(){
       roundMessage.textContent = `Round: ${currentRound}/${totalRounds}`;
     }
 
-    //clear the canvas 
+    //clear and hide the canvas/map 
     const canvas = document.getElementById("guess-canvas");
     const ctx = canvas.getContext("2d");
+    const map = document.getElementById("overlay-map");
+    const button = document.getElementById("show-map-button")
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.style.display = "none";
+    map.style.display = "none";
+    button.textContent = "Show Map";
     
     loadRandomStreetView();
 
