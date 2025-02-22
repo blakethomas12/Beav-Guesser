@@ -33,8 +33,7 @@
 - ### Joy
   **Progress and Issues**
   1) Modified page_functions file to simulate 5 rounds.
-  2) Currently, lat/lng to x/y conversion is poor and has to be polished.
-  3) Score system is not accurate.
+  2) Game logic flows correctly
   
   **Goals From Last Week**
   1) Implement a game loop to simulate 5 rounds
@@ -42,7 +41,8 @@
      
   **Goals For Next Week**
   1) (Continuation) Ensure game features and logic connect (submit guess, scoring, etc.)
-  2) Assist Lukas on polishing lat/lng conversion
+  2) Map canvas should be cleared after each round
+  3) Implement a submit guess button to allows users to submit a guess when they are ready instead of the system automatically submitting a guess
 
 - ### Lukas
   **Progress and Issues**
