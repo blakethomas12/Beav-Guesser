@@ -479,8 +479,11 @@ footer {
     color: #e54e00;
 }
 
-/* fade effect for show map button */
+/* position and fade effect for show map button */
 #show-map-button{
+    position: absolute;
+    left: 1%;
+    top: 88%;
     background-color: #ff6200;
     border: none;
     color: white;
@@ -498,7 +501,7 @@ footer {
     opacity: 1;
 }
 
-/* move button to the middle and add fade effect */
+/* position button to the middle and add fade effect */
 #restart-game-button{
     position: absolute;
     left: 50%;
@@ -518,5 +521,27 @@ footer {
 }
 
 #restart-game-button:hover {
+    opacity: 1;
+  }
+
+/* position button to the right and add fade effect */
+#next-round-button{
+    position: absolute;
+    top: 15%;
+    left: 89%;
+    background-color: #ff6200;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;    
+}
+
+#next-round-button:hover {
     opacity: 1;
   }

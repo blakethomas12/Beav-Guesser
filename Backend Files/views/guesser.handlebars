@@ -1,10 +1,11 @@
 <main>
   <p>Guesser</p>
   <!-- This is the window for the google street view api -->
-  {{!-- <button onclick="loadRandomStreetView()">New Round</button> --}}
 
   {{!-- show current round --}}
   <p id="current-round"></p>
+  {{!-- next round button --}}
+  <button id ="next-round-button" onclick="nextRound()">Submit Guess</button>
 
   <div id="street-view-window">
     <div style="width: 100%; overflow: hidden; height: 600px;">
