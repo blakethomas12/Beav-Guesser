@@ -261,9 +261,9 @@ function checkGuess() {
   const distance = Math.sqrt((actualX - guessX) ** 2 + (actualY - guessY) ** 2);
   document.getElementById("feedback").innerText = `Distance: ${Math.round(distance)} pixels`;
 
-  // const score = calculate_score(actualX, actualY, guessX, guessY); 
-  // totalScore += score; // Add the score to the total score
-  // console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
+  const score = calculate_score(actualX, actualY, guessX, guessY); 
+  totalScore += score; // Add the score to the total score
+  console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
 }
 
 //make sure everything is laoded 
