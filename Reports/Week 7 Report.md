@@ -59,17 +59,18 @@
 
 - ### Kevin T
   **Progress and Issues**
-  1) Total Score is saved across users
-  2) Waiting on scores/rounds to be finished to update the leaderboard in real-time
-  3) Started on about section with how to play
+  1) Leaderboard is updated with total scores when round is done
+  2) Create unit test
+  3) Still testing so password rules not enforced yet
 
   **Goals From Last Week**
-  1) Saving total scores across all users
-  2) Update leaderboard in real time
-
-  **Goals For Next Week**
   1) Have account creation have password rules
   2) Finish about section
+
+  **Goals For Next Week**
+  1) Finish about section (continuing)
+  2) Save the highest score in profile
+
 
 - ### Kevin N
   **Progress and Issues**
