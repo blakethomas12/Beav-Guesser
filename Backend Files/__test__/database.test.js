@@ -140,5 +140,5 @@ describe('Database Functions', () => {
     expect(mockUserDoc.xp).toBe(50 + 150 * 12); // Assuming calculate_xp(score) returns score * 12
     expect(mockUserDoc.save).toHaveBeenCalled();
   });
-
+  
 });
