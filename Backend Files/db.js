@@ -200,14 +200,18 @@ async function update_leaderboard(username, score) {
     );   
     
     //checks if a high score has been achieved
-    const user = await User.findOne({username: username})
+    const user = await User.findOne({username: username});
     if(score >= user.high_score){
-      user.high_score = score
+      user.high_score = score;
     }
 
     //adds xp to user file
-    user.xp = user.xp + calculate_xp(score)
+    user.xp = user.xp + calculate_xp(score);
+
+    // Save the updated user document
+    await user.save();
   } catch (error) {
+    console.error(error);
   }
 }
 
