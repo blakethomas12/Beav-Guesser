@@ -24,14 +24,27 @@ function showMap() {
 
 let actualLat, actualLng;
 let guessX, guessY;
+const canvasX = 600;
+const canvasY = 452;
+
 let totalScore = 0;
 let currentRound = 1;
 const totalRounds = 5;
 
+//map boundaries
 const mapBounds = {
   topLeft: { lat: 44.56766730220258, lng: -123.28959983789187 },
   bottomRight: { lat: 44.55977402745042, lng: -123.2750217935866 },
 };
+
+//conversion
+function latLngToXY(lat, lng) {
+  const scaleX = canvasX / (mapBounds.topLeft.lng - mapBounds.bottomRight.lng);
+  const scaleY = canvasY / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat);
+  let x = (lng - mapBounds.bottomRight.lng) * scaleX;
+  let y = (mapBounds.topLeft.lat - lat) * scaleY;
+  return { x, y };
+}
 
 //gets a random street veiw 
 function getRandomStreetViewEmbedLink() {
@@ -212,13 +225,6 @@ function nextRound(){
   }
 }
 
-//conversion (need to change or remove)
-function latLngToXY(lat, lng, imgWidth, imgHeight) {
-  const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
-  const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
-  return { x, y };
-}
-
 //draws the user guess and actual location
 function drawGuess(guessx, guessy, actualx, actualy) {
   //debugging: check if draw guess is succesfully being called
@@ -254,7 +260,12 @@ function drawGuess(guessx, guessy, actualx, actualy) {
 //dont need to calculate score, send user guess and actual coords to database
 function checkGuess() {
   const img = document.getElementById("guess-canvas");
-  const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng, img.clientWidth, img.clientHeight);
+  const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng);
+  
+  //debug
+  console.log(`coords of real location: ${actualLat}, ${actualLng}`);
+  console.log(`xy of real location: ${actualX}, ${actualY}`);
+  console.log(`xy of guess: ${guessX}, ${guessY}`);
 
   drawGuess(guessX, guessY, actualX, actualY);
 
