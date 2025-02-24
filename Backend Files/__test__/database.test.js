@@ -112,4 +112,33 @@ describe('Database Functions', () => {
     expect(mockLeaderboard.aggregate).toHaveBeenCalledTimes(1);
   });  
 
+  it('should update leaderboard', async () => {
+    const mockLeaderboard = mongoose.model('Leaderboard');
+    const mockUser = mongoose.model('User');
+    const mockUserDoc = {
+      username: 'testUser',
+      high_score: 100,
+      xp: 50,
+      save: jest.fn().mockResolvedValue({})
+    };
+    mockLeaderboard.findOneAndUpdate.mockResolvedValue({});
+    mockUser.findOne.mockResolvedValue(mockUserDoc);
+
+    await update_leaderboard('testUser', 150);
+
+    expect(mockLeaderboard.findOneAndUpdate).toHaveBeenCalledWith(
+      { username: 'testUser' },
+      {
+        $inc: { score: 150 },
+        $set: { timestamp: expect.any(Date) }
+      },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
+
+    expect(mockUser.findOne).toHaveBeenCalledWith({ username: 'testUser' });
+    expect(mockUserDoc.high_score).toBe(150);
+    expect(mockUserDoc.xp).toBe(50 + 150 * 12); // Assuming calculate_xp(score) returns score * 12
+    expect(mockUserDoc.save).toHaveBeenCalled();
+  });
+
 });
