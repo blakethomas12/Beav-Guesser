@@ -88,6 +88,28 @@ describe('Database Functions', () => {
   });
 
   // Additional tests for leaderboard, etc. can be added similarly
+  it('should correctly calculate total scores and assign ranks', async () => {
+    const mockLeaderboard = mongoose.model('Leaderboard');
 
+    // Simulated aggregated leaderboard data
+    const mockAggregatedData = [
+      { _id: 'player1', total_score: 300 },
+      { _id: 'player2', total_score: 250 },
+      { _id: 'player3', total_score: 200 }
+    ];
+
+    // Mock the aggregate function to return our fake leaderboard data
+    mockLeaderboard.aggregate.mockResolvedValue(mockAggregatedData);
+
+    const result = await calculate_total_scores();
+
+    expect(result).toEqual([
+      { rank: 1, username: 'player1', total_score: 300 },
+      { rank: 2, username: 'player2', total_score: 250 },
+      { rank: 3, username: 'player3', total_score: 200 }
+    ]);
+
+    expect(mockLeaderboard.aggregate).toHaveBeenCalledTimes(1);
+  });  
 
 });
