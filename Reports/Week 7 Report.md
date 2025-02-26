@@ -47,14 +47,15 @@
 - ### Lukas
   **Progress and Issues**
   1) Polish guessing page
-  2) Clicking on guess map not working
+  2) lat/lng to x/y still not perfect
   
   **Goals From Last Week**
-  1) Brainstorm and implement game logic
-  2) Implement guess input function
+  1) Finish guessing page and game implementation
+  2) Polish lat/lng to x/y conversion
    
   **Goals For Next Week**
-  1) Finish guessing page and game implementation
+  1) lat/lng working
+  2) error checking for no street view
 
 
 - ### Kevin T

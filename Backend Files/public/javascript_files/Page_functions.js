@@ -19,7 +19,6 @@ function showMap() {
   } else {
     canvas.style.display = "none";
   }
-
 }
 
 let actualLat, actualLng;
