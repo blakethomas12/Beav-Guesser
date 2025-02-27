@@ -251,17 +251,6 @@ app.post("/submitScore", async (req, res) => {
   }
 });
 
-//calcs the score of a single round
-app.post('/calcScore', (req, res) => {
-  //gets users guess and location of image
-  const {true_x, true_y, user_x, user_y} = req.body
-  
-  //calcs score
-  const score = calculate_score(true_x, true_y, user_x, user_y)
-  //returns score
-  res.json({score: score})
-})
-
 //catch all page for errors
 app.get('*', (req, res) => {
   res.status(404).render('404')

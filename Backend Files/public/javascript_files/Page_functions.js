@@ -348,23 +348,6 @@ async function submitScore(score) {
     },
     body: JSON.stringify({ score: score }),
   });
-
-  const result = await response.json();
-  if (result.message === "success") {
-    alert("Score Submitted!");
-  } else {
-    alert("There was an error submitting your score. Please try again.");
-  }
-}
-
-async function calcScore(true_x, true_y, user_x, user_y) {
-  const response = await fetch('/calcScore',{
-    method: "POST",
-    body: JSON.stringify({true_x: true_x, true_y: true_y, user_x: user_x, user_y: user_y})
-  })
-
-  const result = await response.json()
-  console.log(result.score)
 }
 
 async function deleteProfile() {
