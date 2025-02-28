@@ -147,6 +147,17 @@ function endGame(){
     nextRoundButton.style.display = "none";    //hide the next round button 
   }
 
+  //hides score display
+  const score = document.getElementById("score");
+  if(score){
+    score.style.display = "none";    //hide the next round button 
+  }
+
+  //clear canvas
+  const canvas = document.getElementById("guess-canvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   //show the final score and replace the round message
   const roundMessage = document.getElementById("current-round");
   const resultMessage = document.getElementById("game-result-message");
@@ -268,13 +279,12 @@ function checkGuess() {
 
   drawGuess(guessX, guessY, actualX, actualY);
 
-  const distance = Math.sqrt((actualX - guessX) ** 2 + (actualY - guessY) ** 2);
-  document.getElementById("feedback").innerText = `Distance: ${Math.round(distance)} pixels`;
-
-  calcScore(actualX, actualY, guessX, guessY);
+  let score = calcScore(actualX, actualY, guessX, guessY);
   // const score = calculate_score(actualX, actualY, guessX, guessY); 
   // totalScore += score; // Add the score to the total score
   // console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
+
+  document.getElementById("score").innerText = `Score: ${score} points`;
 }
 
 //make sure everything is laoded 
