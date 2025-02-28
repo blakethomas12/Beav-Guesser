@@ -81,6 +81,12 @@ function startGame(){
     restartButton.style.display = "none"; //hide restart button
   }
 
+  //hide home button
+  const homeButton = document.getElementById("go-home-button");
+  if(homeButton){
+    homeButton.style.display = "none";
+  }
+
   //hides the next round button
   const nextRoundButton = document.getElementById("next-round-button");
   if(nextRoundButton){
@@ -142,16 +148,18 @@ function endGame(){
     roundMessage.style.display = "none";
     resultMessage.textContent = `Game Over! Your total score: ${totalScore}`;
     resultMessage.style.display = "block"; 
-    resultMessage.style.position = "absolute"
-    resultMessage.style.top = "30%"; //move it higher
-    resultMessage.style.left = "50%";
-    resultMessage.style.transform = "translateX(-50%)";
   }
   
   //show restart game button
   const restartGameButton = document.getElementById("restart-game-button");
   if(restartGameButton){
     restartGameButton.style.display = "block";
+  }
+
+  //show home button
+  const homeButton = document.getElementById("go-home-button");
+  if(homeButton){
+    homeButton.style.display = "block";
   }
 }
 

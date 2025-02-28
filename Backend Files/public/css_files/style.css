@@ -465,6 +465,10 @@ footer {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     color: #b03b00;
+    top: 30%; 
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
 }
 
 #current-round{
@@ -502,7 +506,7 @@ footer {
 }
 
 /* position button to the middle and add fade effect */
-#restart-game-button{
+#restart-game-button, go-home-button{
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -521,6 +525,29 @@ footer {
 }
 
 #restart-game-button:hover {
+    opacity: 1;
+  }
+
+/* position button to the middle and add fade effect */
+#go-home-button{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 60%;
+    background-color: #ff6200;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#go-home-button:hover {
     opacity: 1;
   }
 
