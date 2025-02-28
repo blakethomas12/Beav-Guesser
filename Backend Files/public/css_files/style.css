@@ -188,20 +188,20 @@ button {
     min-height: 250px;
     padding: 20px;
     text-align: left;
-    position: relative; /* Ensure the panel is positioned relative */
+    position: relative;
     width: 11%;
 }
 
 .home-right-panel ul {
     list-style-type: disc;
     padding-left: 20px;
-    font-size: 1.2rem; /* Keep the original font size */
+    font-size: 1.2rem;
     font-family: 'Stratum2-Medium', sans-serif;
-    transform: scale(1.25); /* Scale the text size */
-    transform-origin: left top; /* Ensure scaling starts from the top left */
-    position: absolute; /* Position the text absolutely within the panel */
-    top: 40px; /* Adjust this value to move text down */
-    left: 10px; /* Adjust this value to move text right */
+    transform: scale(1.25);
+    transform-origin: left top;
+    position: absolute;
+    top: 40px;
+    left: 10px;
     right: 10px;
 }
 
@@ -523,6 +523,144 @@ button {
 .error-404-page h1 {
     margin: 0;
     font-size: 4rem;
+}
+
+.profile-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 79vh;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.profile-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-picture {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+}
+
+.profile-username {
+    font-family: 'stratum2-bold-webfont.ttf', sans-serif;
+    font-size: 2rem;
+    color: #ff6200;
+    margin-top: 10px;
+}
+
+.profile-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-info {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 15px 25px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-info h3 {
+    font-family: 'stratum2-medium-webfont.ttf', sans-serif;
+    color: #ff6200;
+    font-size: 1.5rem;
+}
+
+.profile-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.logout-button {
+    background-color: #ff6200;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #e55a00;
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+.delete-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.popup-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.confirm-delete, .cancel-delete {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirm-delete {
+    background-color: red;
+    color: white;
+}
+
+.cancel-delete {
+    background-color: gray;
+    color: white;
+    margin-left: 10px;
+}
+
+.confirm-delete:hover {
+    background-color: darkred;
+}
+
+.cancel-delete:hover {
+    background-color: darkgray;
 }
 
 

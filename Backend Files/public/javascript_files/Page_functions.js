@@ -387,3 +387,12 @@ async function deleteProfile() {
       }
   }
 }
+
+function openDeletePopup() {
+  document.getElementById("delete-popup").style.display = "flex";
+}
+
+function closeDeletePopup() {
+  document.getElementById("delete-popup").style.display = "none";
+}
+

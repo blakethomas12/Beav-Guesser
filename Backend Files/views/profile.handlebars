@@ -1,7 +1,30 @@
-<main>
-    <button id="signout-button" type="submit" onclick="logout()">Log Out</button>
-    <h1>{{username}}</h1>
-    <h3>High Score: {{high_score}}</h3>
-    <h3>Level: {{level}}</h3>
-    <button id="delete-profile-button" type="button" onclick="deleteProfile()">Delete this Profile</button>
+<main class="profile-main">
+    <div class="profile-container">
+        <!-- Left Side: Profile Picture & Username -->
+        <div class="profile-left">
+            <img src="../image_files/profilePlaceholder.png" alt="Profile Picture" class="profile-picture">
+            <h1 class="profile-username">{{username}}</h1>
+        </div>
+
+        <!-- Right Side: Score, Level, and Buttons -->
+        <div class="profile-right">
+            <div class="profile-info">
+                <h3>High Score: {{high_score}}</h3>
+                <h3>Level: {{level}}</h3>
+            </div>
+            <div class="profile-buttons">
+                <button class="logout-button" type="submit" onclick="logout()">Log Out</button>
+                <button class="delete-button" type="button" onclick="openDeletePopup()">Delete this Profile</button>
+            </div>
+        </div>
+    </div>
 </main>
+
+<!-- Delete Confirmation Popup -->
+<div id="delete-popup" class="delete-popup">
+    <div class="popup-content">
+        <p>Are you sure you want to delete your profile?</p>
+        <button class="confirm-delete" onclick="deleteProfile()">Delete</button>
+        <button class="cancel-delete" onclick="closeDeletePopup()">Cancel</button>
+    </div>
+</div>
