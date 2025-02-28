@@ -72,15 +72,16 @@
 
 - ### Kevin N
   **Progress and Issues**
-  1) Helping create the 5-round loop logic for the game
-  2) Seeing what front and backend features need to connect like submitting score.
+  1) Finishing up project proposal document with professor feedback
+  2) Create a update profile button
   
   **Goals From Last Week**
-  1) Implement a loop for the 5 rounds for each game
-  
-  **Goals For Next Week**
   1) Finish the loop implementation
   2) Work on touching up backend
+  
+  **Goals For Next Week**
+  1) Work on touching up backend
+  2) Create update profile for the user be able to update username and password
 
 - ### Sam
   **Progress and Issues**
