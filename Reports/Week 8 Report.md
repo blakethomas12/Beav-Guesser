@@ -84,16 +84,17 @@
 
 - ### Sam
   **Progress and Issues**
-  1) About page formatted with new image file
-  2) Signup and login pages are properly formatted
+  1) Footers formatted and implemented into every page
+  2) Home page is done being formated
+  3) Profile page was made with extra pop-up for profile deletion
   
   **Goals From Last Week**
-  1) Complete format for all pages
-  2) Start styling pages according to drawn UI designs
-     
-  **Goals For Next Week**
   1) Complete profile and game handlbar format
   2) Write tests for page functions
+     
+  **Goals For Next Week**
+  1) Touch up and finish stylizing all pages
+  2) Go over pages with accessibility grading system
 
 - ### Gavin
   **Progress and Issues**
