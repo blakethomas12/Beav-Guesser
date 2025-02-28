@@ -7,18 +7,12 @@ function showMap() {
   const map = document.getElementById("overlay-map");
   const canvas = document.getElementById("guess-canvas");
   const button = document.getElementById("show-map-button")
-  if (map.style.display === "none") {
-    map.style.display = "block";
-    button.textContent = "Hide Map";
-  } else {
-    map.style.display = "none";
-    button.textContent = "Show Map";
-  }
-  if (canvas.style.display === "none") {
-    canvas.style.display = "block";
-  } else {
-    canvas.style.display = "none";
-  }
+
+  const isHidden = window.getComputedStyle(map).display === "none";
+
+  map.style.display = isHidden ? "block" : "none";
+  canvas.style.display = isHidden ? "block" : "none";
+  button.textContent = isHidden ? "Hide Map" : "Show Map";
 }
 
 let actualLat, actualLng;
@@ -224,6 +218,8 @@ function nextRound(){
     
     loadRandomStreetView();
 
+    canvas.style.pointerEvents = "all";
+
     //hide the button again after clicking on it
     const nextRoundButton = document.getElementById("next-round-button");
     if(nextRoundButton){
@@ -269,7 +265,7 @@ function drawGuess(guessx, guessy, actualx, actualy) {
 
 //dont need to calculate score, send user guess and actual coords to database
 function checkGuess() {
-  const img = document.getElementById("guess-canvas");
+  const canvas = document.getElementById("guess-canvas");
   const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng);
   
   //debug
@@ -278,6 +274,8 @@ function checkGuess() {
   console.log(`xy of guess: ${guessX}, ${guessY}`);
 
   drawGuess(guessX, guessY, actualX, actualY);
+  
+  canvas.style.pointerEvents = "none";
 
   let score = calcScore(actualX, actualY, guessX, guessY);
   // const score = calculate_score(actualX, actualY, guessX, guessY); 
