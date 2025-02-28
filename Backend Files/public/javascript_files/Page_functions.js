@@ -105,12 +105,24 @@ function startGame(){
     streetViewFrame.style.display = "block"; //show street view
   }
   
+  const scoreElement = document.getElementById("score");
+  if (scoreElement) {
+    scoreElement.style.display = "block";
+    scoreElement.innerText = "Score: 0 points";
+  }
+
   loadRandomStreetView();
 
   const canvas = document.getElementById("guess-canvas")
-  if (canvas && !canvas.hasClickListener) {
+  // if (canvas && !canvas.hasClickListener) {
+  //   canvas.style.display = "block";
+  //   canvas.addEventListener("click", processClick);
+  //   canvas.hasClickListener = true; //prevent duplicate listeners
+  // }
+  if (canvas) {
+    canvas.style.pointerEvents = "all";
+    canvas.removeEventListener("click", processClick);
     canvas.addEventListener("click", processClick);
-    canvas.hasClickListener = true; //prevent duplicate listeners
   }
 }
 
