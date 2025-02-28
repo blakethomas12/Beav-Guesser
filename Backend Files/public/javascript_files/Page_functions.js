@@ -40,18 +40,32 @@ function latLngToXY(lat, lng) {
 }
 
 //gets a random street veiw 
-function getRandomStreetViewEmbedLink() {
-  // generate random latitude and longitude within bounds
+async function getRandomStreetViewEmbedLink() {
+  //generates random latitude and longitude within bounds
   actualLat = Math.random() * (mapBounds.topLeft.lat - mapBounds.bottomRight.lat) + mapBounds.bottomRight.lat;
   actualLng = Math.random() * (mapBounds.bottomRight.lng - mapBounds.topLeft.lng) + mapBounds.topLeft.lng;
 
-  return `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sPLACEHOLDER!2m2!1d${actualLat.toFixed(6)}!2d${actualLng.toFixed(6)}!3f0!4f0!5f0.7820865974627469`;
+  const streetViewUrl = `https://www.google.com/maps/embed?pb=!4v0!6m8!1m7!1sPLACEHOLDER!2m2!1d${actualLat.toFixed(6)}!2d${actualLng.toFixed(6)}!3f0!4f0!5f0.7820865974627469`;
+
+  // Check if the street view is available
+  const response = await fetch(streetViewUrl);
+  if (response.ok) {
+    return streetViewUrl;
+  } else {
+    return null;
+  }
 }
 
-//loads the random streetview
-function loadRandomStreetView() {
+//loads the random street view
+async function loadRandomStreetView() {
   const iframe = document.getElementById("streetViewFrame");
-  iframe.src = getRandomStreetViewEmbedLink();
+  const streetViewLink = await getRandomStreetViewEmbedLink();
+  if (streetViewLink) {
+    iframe.src = streetViewLink;
+    iframe.style.display = "block";
+  } else {
+    iframe.style.display = "none";
+  }
 }
 
 //when "play game", game will start from here
