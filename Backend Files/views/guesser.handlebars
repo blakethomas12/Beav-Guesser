@@ -1,7 +1,5 @@
 <main>
-  <p>Guesser</p>
   <!-- This is the window for the google street view api -->
-
   {{!-- show current round --}}
   <p id="current-round"></p>
   {{!-- next round button --}}
@@ -26,7 +24,7 @@
     <img src="..\image_files\campus-map.jpg" alt="Map" id="overlay-map">
     <canvas id="guess-canvas"></canvas>
   </div>
-  <div id="feedback"></div>
+  <div id="score"></div>
   <button onclick="showMap()" id="show-map-button">Show Map</button>
 
   {{!-- message that shows when game ends --}}

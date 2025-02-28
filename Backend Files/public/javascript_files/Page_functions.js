@@ -7,31 +7,37 @@ function showMap() {
   const map = document.getElementById("overlay-map");
   const canvas = document.getElementById("guess-canvas");
   const button = document.getElementById("show-map-button")
-  if (map.style.display === "none") {
-    map.style.display = "block";
-    button.textContent = "Hide Map";
-  } else {
-    map.style.display = "none";
-    button.textContent = "Show Map";
-  }
-  if (canvas.style.display === "none") {
-    canvas.style.display = "block";
-  } else {
-    canvas.style.display = "none";
-  }
 
+  const isHidden = window.getComputedStyle(map).display === "none";
+
+  map.style.display = isHidden ? "block" : "none";
+  canvas.style.display = isHidden ? "block" : "none";
+  button.textContent = isHidden ? "Hide Map" : "Show Map";
 }
 
 let actualLat, actualLng;
 let guessX, guessY;
+const canvasX = 325;
+const canvasY = 385;
+
 let totalScore = 0;
 let currentRound = 1;
 const totalRounds = 5;
 
+//map boundaries
 const mapBounds = {
-  topLeft: { lat: 44.56766730220258, lng: -123.28959983789187 },
-  bottomRight: { lat: 44.55977402745042, lng: -123.2750217935866 },
+  topLeft: { lat: 44.567887, lng: -123.289790 },
+  bottomRight: { lat: 44.557734, lng: -123.272139 },
 };
+
+//conversion
+function latLngToXY(lat, lng) {
+  const scaleX = canvasX / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng);
+  const scaleY = canvasY / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat);
+  let x = (lng - mapBounds.topLeft.lng) * scaleX;
+  let y = (mapBounds.topLeft.lat - lat) * scaleY;
+  return { x, y };
+}
 
 //gets a random street veiw 
 function getRandomStreetViewEmbedLink() {
@@ -141,6 +147,17 @@ function endGame(){
     nextRoundButton.style.display = "none";    //hide the next round button 
   }
 
+  //hides score display
+  const score = document.getElementById("score");
+  if(score){
+    score.style.display = "none";    //hide the next round button 
+  }
+
+  //clear canvas
+  const canvas = document.getElementById("guess-canvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   //show the final score and replace the round message
   const roundMessage = document.getElementById("current-round");
   const resultMessage = document.getElementById("game-result-message");
@@ -209,6 +226,8 @@ function nextRound(){
     
     loadRandomStreetView();
 
+    canvas.style.pointerEvents = "all";
+
     //hide the button again after clicking on it
     const nextRoundButton = document.getElementById("next-round-button");
     if(nextRoundButton){
@@ -218,13 +237,6 @@ function nextRound(){
     // After the final round, calculate and display the total score
     submitScore(totalScore).then(() => endGame()); // Submit score and end the game
   }
-}
-
-//conversion (need to change or remove)
-function latLngToXY(lat, lng, imgWidth, imgHeight) {
-  const x = ((lng - mapBounds.topLeft.lng) / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng)) * imgWidth;
-  const y = ((mapBounds.topLeft.lat - lat) / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat)) * imgHeight;
-  return { x, y };
 }
 
 //draws the user guess and actual location
@@ -261,17 +273,24 @@ function drawGuess(guessx, guessy, actualx, actualy) {
 
 //dont need to calculate score, send user guess and actual coords to database
 function checkGuess() {
-  const img = document.getElementById("guess-canvas");
-  const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng, img.clientWidth, img.clientHeight);
+  const canvas = document.getElementById("guess-canvas");
+  const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng);
+  
+  //debug
+  console.log(`coords of real location: ${actualLat}, ${actualLng}`);
+  console.log(`xy of real location: ${actualX}, ${actualY}`);
+  console.log(`xy of guess: ${guessX}, ${guessY}`);
 
   drawGuess(guessX, guessY, actualX, actualY);
+  
+  canvas.style.pointerEvents = "none";
 
-  const distance = Math.sqrt((actualX - guessX) ** 2 + (actualY - guessY) ** 2);
-  document.getElementById("feedback").innerText = `Distance: ${Math.round(distance)} pixels`;
+  let score = calcScore(actualX, actualY, guessX, guessY);
+  // const score = calculate_score(actualX, actualY, guessX, guessY); 
+  // totalScore += score; // Add the score to the total score
+  // console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
 
-  const score = calculate_score(actualX, actualY, guessX, guessY); 
-  totalScore += score; // Add the score to the total score
-  console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
+  document.getElementById("score").innerText = `Score: ${score} points`;
 }
 
 //make sure everything is laoded 

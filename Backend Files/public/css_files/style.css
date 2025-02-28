@@ -91,13 +91,27 @@ button {
     pointer-events: all;
     background-color: transparent;
     position: absolute;
-    bottom: 5px;
-    right: 10px;
-    width: 600px;
-    height: 452px;
+    bottom: 30px;
+    right: 120px;
+    width: 385px;
+    height: 325px;
     z-index: 10;
     border-style: dashed;
+    border-color: red;
     display: none;
+}
+
+#score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 20px;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e54e00;
 }
 
 .home-main {
