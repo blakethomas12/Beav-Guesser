@@ -96,8 +96,8 @@ button {
     width: 385px;
     height: 325px;
     z-index: 10;
-    border-style: dashed;
-    border-color: red;
+    /* border-style: dashed; */
+    /* border-color: red; */
     display: none;
 }
 

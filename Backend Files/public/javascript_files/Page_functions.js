@@ -285,10 +285,8 @@ function checkGuess() {
   
   canvas.style.pointerEvents = "none";
 
-  let score = calcScore(actualX, actualY, guessX, guessY);
-  // const score = calculate_score(actualX, actualY, guessX, guessY); 
-  // totalScore += score; // Add the score to the total score
-  // console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
+  const score = calculate_score(actualX, actualY, guessX, guessY); 
+  totalScore += score; // Add the score to the total score
 
   document.getElementById("score").innerText = `Score: ${score} points`;
 }
