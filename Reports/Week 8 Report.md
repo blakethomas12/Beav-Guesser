@@ -57,17 +57,17 @@
 
 - ### Kevin T
   **Progress and Issues**
-  1) Leaderboard is updated with total scores when round is done
-  2) Create unit test
-  3) Still testing so password rules not enforced yet
+  1) About section is finished
+  2) Level and High Score are updated on profile
+  3) Bugs with location showing no image and wrong "actual" location
 
   **Goals From Last Week**
-  1) Have account creation have password rules
-  2) Finish about section
-
-  **Goals For Next Week**
   1) Finish about section (continuing)
   2) Save the highest score in profile
+
+  **Goals For Next Week**
+  1) Update ReadMe with use cases 
+  2) Fix Map bugs
 
 
 - ### Kevin N
