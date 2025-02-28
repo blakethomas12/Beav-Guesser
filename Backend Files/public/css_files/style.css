@@ -90,12 +90,13 @@ button {
     pointer-events: all;
     background-color: transparent;
     position: absolute;
-    bottom: 5px;
-    right: 10px;
-    width: 600px;
-    height: 452px;
+    bottom: 30px;
+    right: 120px;
+    width: 385px;
+    height: 325px;
     z-index: 10;
     border-style: dashed;
+    border-color: red;
     display: none;
 }
 

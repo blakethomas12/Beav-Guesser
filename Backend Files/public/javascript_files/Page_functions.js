@@ -23,8 +23,8 @@ function showMap() {
 
 let actualLat, actualLng;
 let guessX, guessY;
-const canvasX = 600;
-const canvasY = 452;
+const canvasX = 325;
+const canvasY = 385;
 
 let totalScore = 0;
 let currentRound = 1;
@@ -32,15 +32,15 @@ const totalRounds = 5;
 
 //map boundaries
 const mapBounds = {
-  topLeft: { lat: 44.56766730220258, lng: -123.28959983789187 },
-  bottomRight: { lat: 44.55977402745042, lng: -123.2750217935866 },
+  topLeft: { lat: 44.567887, lng: -123.289790 },
+  bottomRight: { lat: 44.557734, lng: -123.272139 },
 };
 
 //conversion
 function latLngToXY(lat, lng) {
-  const scaleX = canvasX / (mapBounds.topLeft.lng - mapBounds.bottomRight.lng);
+  const scaleX = canvasX / (mapBounds.bottomRight.lng - mapBounds.topLeft.lng);
   const scaleY = canvasY / (mapBounds.topLeft.lat - mapBounds.bottomRight.lat);
-  let x = (lng - mapBounds.bottomRight.lng) * scaleX;
+  let x = (lng - mapBounds.topLeft.lng) * scaleX;
   let y = (mapBounds.topLeft.lat - lat) * scaleY;
   return { x, y };
 }
@@ -271,6 +271,7 @@ function checkGuess() {
   const distance = Math.sqrt((actualX - guessX) ** 2 + (actualY - guessY) ** 2);
   document.getElementById("feedback").innerText = `Distance: ${Math.round(distance)} pixels`;
 
+  calcScore(actualX, actualY, guessX, guessY);
   // const score = calculate_score(actualX, actualY, guessX, guessY); 
   // totalScore += score; // Add the score to the total score
   // console.log(`Round ${currentRound} score: ${score}, Total score: ${totalScore}`);
