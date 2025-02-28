@@ -5,7 +5,6 @@
     </head>
 
     <body class="body">
-        <!-- topnav represents the navigation bar at the top of the page AND IS CURRENTLY UNIQUE FOR EACH HTML FILE-->
         <div class="topnav">
             <div class="topnav-group" id="topnav-left-group">
                 <button class="topnav-item button-background-fix logo-fix" onclick="goToPage('/')"><img src="..\image_files\bevLogo.png" height="25" width="50"></button>
@@ -14,10 +13,10 @@
             </div>
             <div class="topnav-group" id="topnav-right-group">
                 {{#if isLoggedIn}}
-                <button id="profile-button" class="topnav-item" onclick="goToPage('/profile')">Profile</button> 
+                <button id="profile-button" class="topnav-item button-background-fix {{isActive '/profile' currentPagePath}}" onclick="goToPage('/profile')">Profile</button> 
                 {{else}}
-                <button id="login-button" class="topnav-item" onclick="goToPage('login')">Login</button>
-                <button id="signup-button" class="topnav-item" onclick="goToPage('signup')">Signup</button>
+                <button id="login-button" class="topnav-item button-background-fix {{isActive '/login' currentPagePath}}" onclick="goToPage('/login')">Login</button>
+                <button id="signup-button" class="topnav-item button-background-fix {{isActive '/signup' currentPagePath}}" onclick="goToPage('/signup')">Signup</button>
                 {{/if}}
             </div>
         </div>
@@ -27,4 +26,8 @@
        <script src="/javascript_files/scoring.js"></script>
        <script src="/javascript_files/Page_functions.js"></script>
     </body>
+
+    <footer>
+    <p>Created by Team 18</p>
+  </footer>
 </html>

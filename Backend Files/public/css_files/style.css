@@ -25,7 +25,7 @@ button {
     align-items: center;
     padding: 20px;
     background-color: #ff6200;
-    
+    border: 1px solid black;
 }
 
 .topnav-group { /* Specific groups within the Navigation bar */
@@ -71,6 +71,7 @@ button {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: -5px;
 }
 
 #overlay-map{
@@ -115,7 +116,7 @@ button {
 
 .home-main {
     width: 100%;
-    height: 80vh;
+    height: 78.8vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -154,6 +155,10 @@ button {
 .home-left-panel { flex: 2; }
 .home-middle-panel { flex: 3; }
 .home-right-panel { flex: 2; }
+
+.about-page {
+    height: 75.3vh;
+}
 
 .about-page h1 {
     font-family: 'Stratum 2 Bold', sans-serif;
@@ -202,7 +207,7 @@ button {
     flex-direction: column;
     align-items: center;
     /*justify-content: center;*/
-    height: 80vh;
+    height: 77.0vh;
     padding-left: 50px;
     padding-right: 50px;
     font-family: 'Stratum 2', sans-serif;
@@ -289,7 +294,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 80vh;
+    height: 81.5vh;
     padding-left: 50px;
     padding-right: 50px;
     font-family: 'Stratum 2', sans-serif;
@@ -363,7 +368,17 @@ button {
 }
 
 .leaderboard-page {
-    height: 110vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.leaderboard-page main {
+    flex-grow: 1;
+}
+
+.leaderboard-page footer {
+    margin-top: auto;
 }
 
 .leaderboard-page h1 {
@@ -398,6 +413,7 @@ button {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    padding-bottom: 30px;
 }
 
 .leaderboard-page th, .leaderboard-page td {
@@ -425,7 +441,7 @@ button {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 79vh;
     font-family: 'Stratum 2', sans-serif;
     color: #ff6200;
     text-align: center;
@@ -441,10 +457,20 @@ footer {
     border-top: solid;
     border-width: thick;
 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
     text-align: right;
     font-family: "Garamond", "Trebuchet MS", Verdana, sans-serif;
-
-    margin-bottom: 5px;
+    font-size: 12px; /* Make the text small enough to fit */
+    
+    height: 15px;
+    padding-top: 2px; /* Slight padding to push text down from the top */
+    padding-right: 10px; /* Adds space on the right */
+    
+    background-color: #ff6200;
+    overflow: hidden; /* Prevents content overflow */
 }
 
 #game-result-message{
@@ -453,6 +479,10 @@ footer {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     color: #b03b00;
+    top: 30%; 
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
 }
 
 #current-round{
@@ -471,7 +501,7 @@ footer {
 #show-map-button{
     position: absolute;
     left: 1%;
-    top: 88%;
+    top: 90%;
     background-color: #ff6200;
     border: none;
     color: white;
@@ -490,7 +520,7 @@ footer {
 }
 
 /* position button to the middle and add fade effect */
-#restart-game-button{
+#restart-game-button, go-home-button{
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -509,6 +539,29 @@ footer {
 }
 
 #restart-game-button:hover {
+    opacity: 1;
+  }
+
+/* position button to the middle and add fade effect */
+#go-home-button{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 60%;
+    background-color: #ff6200;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#go-home-button:hover {
     opacity: 1;
   }
 

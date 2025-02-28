@@ -88,5 +88,57 @@ describe('Database Functions', () => {
   });
 
   // Additional tests for leaderboard, etc. can be added similarly
+  it('should correctly calculate total scores and assign ranks', async () => {
+    const mockLeaderboard = mongoose.model('Leaderboard');
 
+    // Simulated aggregated leaderboard data
+    const mockAggregatedData = [
+      { _id: 'player1', total_score: 300 },
+      { _id: 'player2', total_score: 250 },
+      { _id: 'player3', total_score: 200 }
+    ];
+
+    // Mock the aggregate function to return our fake leaderboard data
+    mockLeaderboard.aggregate.mockResolvedValue(mockAggregatedData);
+
+    const result = await calculate_total_scores();
+
+    expect(result).toEqual([
+      { rank: 1, username: 'player1', total_score: 300 },
+      { rank: 2, username: 'player2', total_score: 250 },
+      { rank: 3, username: 'player3', total_score: 200 }
+    ]);
+
+    expect(mockLeaderboard.aggregate).toHaveBeenCalledTimes(1);
+  });  
+
+  it('should update leaderboard', async () => {
+    const mockLeaderboard = mongoose.model('Leaderboard');
+    const mockUser = mongoose.model('User');
+    const mockUserDoc = {
+      username: 'testUser',
+      high_score: 100,
+      xp: 50,
+      save: jest.fn().mockResolvedValue({})
+    };
+    mockLeaderboard.findOneAndUpdate.mockResolvedValue({});
+    mockUser.findOne.mockResolvedValue(mockUserDoc);
+
+    await update_leaderboard('testUser', 150);
+
+    expect(mockLeaderboard.findOneAndUpdate).toHaveBeenCalledWith(
+      { username: 'testUser' },
+      {
+        $inc: { score: 150 },
+        $set: { timestamp: expect.any(Date) }
+      },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    );
+
+    expect(mockUser.findOne).toHaveBeenCalledWith({ username: 'testUser' });
+    expect(mockUserDoc.high_score).toBe(150);
+    expect(mockUserDoc.xp).toBe(50 + 150 * 12); // Assuming calculate_xp(score) returns score * 12
+    expect(mockUserDoc.save).toHaveBeenCalled();
+  });
+  
 });

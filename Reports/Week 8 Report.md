@@ -3,59 +3,56 @@
 - 
 
 ### Goals From Last Week
-1. have the game loop functioning
-2. fix lat/long to x/y conversion
-3. have all pages finished
-   
-### Progress and Issues
-- Have a game loop that runs 5 times
-- adding CI and unit tests
-
-### Goals For Next Week
 1. get each round to get score from server
 2. have page ready for beta test
+   
+### Progress and Issues
+- game if fully functional and scores every round
+- all pages are fully desgined and css done
+
+### Goals For Next Week
+1. solidfy user guess and coordinate conversion
 
 # Contributions of Individual Team Members
 
 - ### Blake
   **Progress and Issues**
-  1) Set up CI
-  2) creating unit test
+  1) set up web hosting for server ready for beta release
+  2) created unit tests for db and scoring functions
   
   **Goals From Last Week**
-  1) added delete user functionality to back end
+  1) have all unit tests done
+  3) have web service of server up
      
   **Goals For Next Week**
-  3) have all unit tests done
-  4) have web service of server up
+  1) push beta version to web host
+  2) clean up documents
+  3) reseach other ways to get user guess
 
 
 - ### Joy
   **Progress and Issues**
-  1) Modified page_functions file to simulate 5 rounds.
-  2) Game logic flows correctly
+  1) Map canvas clears after each round, submit guess after each round, start game again button and home button after game ends
   
   **Goals From Last Week**
-  1) Implement a game loop to simulate 5 rounds
-  2) Ensure game features and logic connect (submit guess, scoring, etc.)
-     
-  **Goals For Next Week**
   1) (Continuation) Ensure game features and logic connect (submit guess, scoring, etc.)
   2) Map canvas should be cleared after each round
   3) Implement a submit guess button to allows users to submit a guess when they are ready instead of the system automatically submitting a guess
+     
+  **Goals For Next Week**
+  1)
 
 - ### Lukas
   **Progress and Issues**
   1) Polish guessing page
-  2) lat/lng to x/y still not perfect
+  2) Clicking on guess map not working
   
   **Goals From Last Week**
-  1) Finish guessing page and game implementation
-  2) Polish lat/lng to x/y conversion
+  1) Brainstorm and implement game logic
+  2) Implement guess input function
    
   **Goals For Next Week**
-  1) lat/lng working
-  2) error checking for no street view
+  1) Finish guessing page and game implementation
 
 
 - ### Kevin T

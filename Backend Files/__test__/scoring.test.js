@@ -1,4 +1,4 @@
-const { calculate_score } = require('../scoring'); // Update the path to your file
+const { calculate_score } = require('../public/javascript_files/scoring'); // Update the path to your file
 
 describe('calculate_score', () => {
     test('returns correct score for given coordinates', () => {

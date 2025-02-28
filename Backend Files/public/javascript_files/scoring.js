@@ -27,7 +27,7 @@ if (typeof window !== 'undefined') {
     window.euclidean_distance = euclidean_distance;
 }
 
-//export the functions
+//export the functions for Node.js environment
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         calculate_score,

@@ -1,11 +1,9 @@
-//requires
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const dbFunctions = require("./db"); //database i/o functions
-const scoreFunctions = require("./scoring"); //score function
+// const scoreFunctions = require("../public/javascript_files/scoring"); // Remove this line
 const jwt = require("jsonwebtoken");
-//parsers for code
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
@@ -39,7 +37,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Serve scoring.js as a static file
-app.use('/javascript_files/scoring.js', express.static(__dirname + '/Backend Files/scoring.js'));
+app.use('/javascript_files/scoring.js', express.static(__dirname + '/../public/javascript_files/scoring.js'));
 
 //checks if user is logged in whenever a request is sent to the server
 app.use((req, res, next) => {
@@ -252,17 +250,6 @@ app.post("/submitScore", async (req, res) => {
     res.json({ message: "not logged in" });
   }
 });
-
-//calcs the score of a single round
-app.post('/calcScore', (req, res) => {
-  //gets users guess and location of image
-  const {true_x, true_y, user_x, user_y} = req.body
-  
-  //calcs score
-  const score = scoreFunctions.calculate_score(true_x, true_y, user_x, user_y)
-  //returns score
-  res.json({score: score})
-})
 
 //catch all page for errors
 app.get('*', (req, res) => {
