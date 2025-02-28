@@ -98,16 +98,15 @@
 
 - ### Gavin
   **Progress and Issues**
-  1) Connected some game functionality
-  2) Implimented profile deletion
+  1) Game functionality connected to webpage
+  2) User profile deletion connected to webpage
   
   **Goals From Last Week**
-  1) Continue connecting game functionality to the web pages
-  2) Finish About page
-  3) Impliment user profile deletion option in profile page
-     
-  **Goals For Next Week**
   1) Finish about page
   2) Write tests for page functions
+     
+  **Goals For Next Week**
+  1) Finish the slide for the poster
+  2) Add more test cases for profile creation and deletion
 
 
