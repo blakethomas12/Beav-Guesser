@@ -17,8 +17,8 @@ function showMap() {
 
 let actualLat, actualLng;
 let guessX, guessY;
-const canvasX = 325;
-const canvasY = 385;
+const canvasX = 600;
+const canvasY = 487;
 
 let totalScore = 0;
 let currentRound = 1;
