@@ -68,6 +68,7 @@
   **Goals For Next Week**
   1) Update ReadMe with use cases 
   2) Fix Map bugs
+  3) Update Project Proposal
 
 
 - ### Kevin N
