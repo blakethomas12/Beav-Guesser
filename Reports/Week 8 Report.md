@@ -58,30 +58,32 @@
 
 - ### Kevin T
   **Progress and Issues**
-  1) Leaderboard is updated with total scores when round is done
-  2) Create unit test
-  3) Still testing so password rules not enforced yet
+  1) About section is finished
+  2) Level and High Score are updated on profile
+  3) Bugs with location showing no image and wrong "actual" location
 
   **Goals From Last Week**
-  1) Have account creation have password rules
-  2) Finish about section
-
-  **Goals For Next Week**
   1) Finish about section (continuing)
   2) Save the highest score in profile
+
+  **Goals For Next Week**
+  1) Update ReadMe with use cases 
+  2) Fix Map bugs
+  3) Update Project Proposal
 
 
 - ### Kevin N
   **Progress and Issues**
-  1) Helping create the 5-round loop logic for the game
-  2) Seeing what front and backend features need to connect like submitting score.
+  1) Finishing up project proposal document with professor feedback
+  2) Create a update profile button
   
   **Goals From Last Week**
-  1) Implement a loop for the 5 rounds for each game
-  
-  **Goals For Next Week**
   1) Finish the loop implementation
   2) Work on touching up backend
+  
+  **Goals For Next Week**
+  1) Work on touching up backend
+  2) Create update profile for the user be able to update username and password
 
 - ### Sam
   **Progress and Issues**
@@ -99,16 +101,15 @@
 
 - ### Gavin
   **Progress and Issues**
-  1) Connected some game functionality
-  2) Implimented profile deletion
+  1) Game functionality connected to webpage
+  2) User profile deletion connected to webpage
   
   **Goals From Last Week**
-  1) Continue connecting game functionality to the web pages
-  2) Finish About page
-  3) Impliment user profile deletion option in profile page
-     
-  **Goals For Next Week**
   1) Finish about page
   2) Write tests for page functions
+     
+  **Goals For Next Week**
+  1) Finish the slide for the poster
+  2) Add more test cases for profile creation and deletion
 
 

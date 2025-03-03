@@ -79,8 +79,6 @@ button {
     position: absolute;
     bottom: 5px;
     right: 10px;
-    width: 600px;
-    height: auto;
     z-index: 9;
     border-radius: 2px;
     display: none;
@@ -91,13 +89,13 @@ button {
     pointer-events: all;
     background-color: transparent;
     position: absolute;
-    bottom: 30px;
-    right: 120px;
-    width: 385px;
-    height: 325px;
+    bottom: 4px;
+    right: 10px;
+    width: 600px;
+    height: 487px;
     z-index: 10;
-    border-style: dashed;
-    border-color: red;
+    /* border-style: dashed; */
+    /* border-color: red; */
     display: none;
 }
 
@@ -200,9 +198,13 @@ button {
     transform: scale(1.25);
     transform-origin: left top;
     position: absolute;
-    top: 40px;
+    top: 37px;
     left: 10px;
-    right: 10px;
+    right: 55px;
+}
+
+.home-right-panel li {
+    padding-bottom: 20px;
 }
 
 .home-button-container {
