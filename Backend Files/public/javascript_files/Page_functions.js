@@ -268,7 +268,7 @@ function nextRound(){
 //draws the user guess and actual location
 function drawGuess(guessx, guessy, actualx, actualy) {
   //debugging: check if draw guess is succesfully being called
-  console.log("succesfully called drawGuess");
+  //console.log("succesfully called drawGuess");
 
   const canvas = document.getElementById("guess-canvas");
   const ctx = canvas.getContext("2d");
@@ -303,9 +303,9 @@ function checkGuess() {
   const { x: actualX, y: actualY } = latLngToXY(actualLat, actualLng);
   
   //debug
-  console.log(`coords of real location: ${actualLat}, ${actualLng}`);
-  console.log(`xy of real location: ${actualX}, ${actualY}`);
-  console.log(`xy of guess: ${guessX}, ${guessY}`);
+  //console.log(`coords of real location: ${actualLat}, ${actualLng}`);
+  //console.log(`xy of real location: ${actualX}, ${actualY}`);
+  //console.log(`xy of guess: ${guessX}, ${guessY}`);
 
   drawGuess(guessX, guessY, actualX, actualY);
   
