@@ -87,6 +87,20 @@ describe('Database Functions', () => {
     expect(user).toEqual(mockDoc);
   });
 
+  it('should return false if username is taken and true if available', async () => {
+    const mockUser = mongoose.model('User');
+  
+    // Case 1: Username is taken
+    mockUser.findOne.mockResolvedValue({ username: 'existingUser' });
+    const isAvailable = await check_name_availability('existingUser');
+    expect(isAvailable).toBe(false);
+  
+    // Case 2: Username is available
+    mockUser.findOne.mockResolvedValue(null);
+    const isAvailable2 = await check_name_availability('newUser');
+    expect(isAvailable2).toBe(true);
+  });  
+
   // Additional tests for leaderboard, etc. can be added similarly
   it('should correctly calculate total scores and assign ranks', async () => {
     const mockLeaderboard = mongoose.model('Leaderboard');
@@ -139,6 +153,29 @@ describe('Database Functions', () => {
     expect(mockUserDoc.high_score).toBe(150);
     expect(mockUserDoc.xp).toBe(50 + 150 * 12); // Assuming calculate_xp(score) returns score * 12
     expect(mockUserDoc.save).toHaveBeenCalled();
+  });
+
+  // Test for delete_user function
+  it('should delete user and leaderboard entries', async () => {
+    const mockUser = mongoose.model('User');
+    const mockLeaderboard = mongoose.model('Leaderboard');
+
+    mockUser.findOneAndDelete.mockResolvedValue({});
+    mockLeaderboard.findOneAndDelete.mockResolvedValue({});
+
+    await delete_user('testUser');
+
+    expect(mockUser.findOneAndDelete).toHaveBeenCalledWith({ username: 'testUser' });
+    expect(mockLeaderboard.findOneAndDelete).toHaveBeenCalledWith({ username: 'testUser' });
+  });
+
+  it('should throw an error if deletion fails', async () => {
+    const errorMessage = 'Deletion failed';
+    const mockUser = mongoose.model('User');
+
+    mockUser.findOneAndDelete.mockRejectedValue(new Error(errorMessage));
+
+    await expect(delete_user('testUser')).rejects.toThrow(errorMessage);
   });
   
 });
