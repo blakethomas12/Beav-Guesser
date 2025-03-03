@@ -1,6 +1,15 @@
 # Beav-Guesser
 Our project is a take on the game Geoguesser adapted to the OSU campus. Our game will be a web-based application where users are shown a 360 image from around the Oregon State University Campus and asked to guess the location of the image taken. Our major developmental goals are, a user authentication system, user profile, leaderboard system, and integrated locational data.
 
+**How to build and run tests:**
+1. Within your terminal clone our GitHub Repository
+2. Cd into the "Backend Files" directory
+3. Use "npm install" to install node modules
+4. Use "npm start" to build the application on the local host
+
+**How to run the system:**
+To run this system, go to the website https://beavguesser-095f2d551c81.herokuapp.com/ .
+
 **Each team member’s role in the project:**
 
 Blake - Database
@@ -36,6 +45,7 @@ Give everyone a chance to talk and main communication will be done on Discord
 
 Ask for help when there’s an issue with their task within Discord or group meetups
 
+**Use Cases:**
 1. Title: Changing your username
    Written by: Blake
    Actors: User
