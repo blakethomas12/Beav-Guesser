@@ -8,6 +8,7 @@ Our project is a take on the game Geoguesser adapted to the OSU campus. Our game
 4. Use "npm start" to build the application on the local host
 
 **How to run the system:**
+
 To run this system, go to the website https://beavguesser-095f2d551c81.herokuapp.com/ .
 
 **Each team member’s role in the project:**
