@@ -47,24 +47,24 @@ Give everyone a chance to talk and main communication will be done on Discord
 Ask for help when there’s an issue with their task within Discord or group meetups
 
 **Use Cases:**
-1. Title: Changing your username
-   Written by: Blake
-   Actors: User
-   Triggers: Change of Username
-   Preconditions: User exists, new name is different than old name, new name is not taken
-   Postconditions (success scenario): Username has been changed
-   List of steps (success scenario)
-       1. User requests change of username
-       2. User asked for new username
-       3. Check if old username = new username, reprompt if true
-       4. Check if new username is taken, reprompt if true
-       5. Username passes checks and is updated in database
-   Extensions/variations of the success scenario
-       1. User fails check if old name = new name, then corrects name
-       2. User fails check if name is taken, then enters a free name
-   Exceptions: failure conditions and scenarios
-       1. User does not exist
-       2. Database is unreachable(on update or checks)
+1. Title: Changing your username\
+   Written by: Blake\
+   Actors: User\
+   Triggers: Change of Username\
+   Preconditions: User exists, new name is different than old name, new name is not taken\
+   Postconditions (success scenario): Username has been changed\
+   List of steps (success scenario)\
+       1. User requests change of username\
+       2. User asked for new username\
+       3. Check if old username = new username, reprompt if true\
+       4. Check if new username is taken, reprompt if true\
+       5. Username passes checks and is updated in database\
+   Extensions/variations of the success scenario\
+       1. User fails check if old name = new name, then corrects name\
+       2. User fails check if name is taken, then enters a free name\
+   Exceptions: failure conditions and scenarios\
+       1. User does not exist\
+       2. Database is unreachable(on update or checks)\
 
 2. Title: Moving onto a new round
    Written by: Lukas
