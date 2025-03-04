@@ -174,22 +174,31 @@ app.post("/logout", (req, res) => {
 app.post('/register', async (req, res) => {
   //gets info from request
   const { username, password } = req.body
+  const maxUsernameLength = 20; 
   //checks if username is available
   const name_avail = await dbFunctions.check_name_availability(username)
-  try{
-    if(name_avail){
-      //creates user file
-      await dbFunctions.create_user(username, password)
-      //sends success message
-      res.json({message: "success"})
-    } else{
-      //sends message saying username is taken
-      res.json({message: "taken"})
+  try {
+    // Sends user exceeds character limit message
+    if (username.length > maxUsernameLength) {
+      return res.json({ message: "exceed" });
     }
-  } catch(error){
-    res.json({message: "fail"})
+
+    // Checks if username is available
+    const name_avail = await dbFunctions.check_name_availability(username);
+    
+    if (name_avail) {
+      // Creates user file
+      await dbFunctions.create_user(username, password);
+      // Sends success message
+      res.json({ message: "success" });
+    } else {
+      // Sends message saying username is taken
+      res.json({ message: "taken" });
+    }
+  } catch (error) {
+    res.json({ message: "fail" });
   }
-})
+});
 
 //deletes user
 app.post('/delete', async (req, res) => {
