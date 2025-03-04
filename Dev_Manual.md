@@ -5,6 +5,7 @@ All the source code for this project is contained within the repo on Github.
 All of the code is contained within Backend Files. In Backend Files there are three JS files that make up the server of the program. Additionally there are two folders public and views. The public folder contains four other folders. A CSS folder that holds the CSS style sheet. A font folder that holds the different font files. An image folder that holds the various images and a Javascript folder that holds the front end JS files. The views folder contains a layout folder and the different page handlebars files. The layout folder holds the main handlebar file.
 
 # Building the System
+Requirements: Have nodejs installed  
 Once the repo has been cloned, open a terminal and cd into the repo. Then run these commands:  
 >cd Backend Files  
 >npm install  
