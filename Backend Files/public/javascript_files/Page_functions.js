@@ -367,6 +367,7 @@ async function register() {
   const password1 = document.getElementById('password').value.trim()
   const password2 = document.getElementById('confirm-password').value.trim()
 
+
   if(password1 === password2){
 
     const response = await fetch("/register", {
@@ -383,6 +384,8 @@ async function register() {
       alert("Sign Up Successful! You can now log in")
     }else if(result.message === "taken"){
       alert("That username is taken! Please try another")
+    }else if (result.message === "exceed") {
+      alert(`Username cannot exceed 20 characters!`);
     }else{
       alert("There was an error signing up. Please try again soon!")
     }
