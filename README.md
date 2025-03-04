@@ -64,7 +64,7 @@ Ask for help when there’s an issue with their task within Discord or group mee
        2. User fails check if name is taken, then enters a free name\
    Exceptions: failure conditions and scenarios\
        1. User does not exist\
-       2. Database is unreachable(on update or checks)\
+       2. Database is unreachable(on update or checks)
 
 2. Title: Moving onto a new round\
    Written by: Lukas\
@@ -81,7 +81,7 @@ Ask for help when there’s an issue with their task within Discord or group mee
        1. Database is unreachable\
        2. API is unreachable\
        3. Incorrect location\
-       4. Incorrect streetview\
+       4. Incorrect streetview
 
 3. Title: Submitting your guess\
    Written by: Kevin Tran\
@@ -99,7 +99,7 @@ Ask for help when there’s an issue with their task within Discord or group mee
    Exceptions: failure conditions and scenarios\
        1. Invalid Guess\
        2. API unreachable\
-       3. Database Unreachable\
+       3. Database Unreachable
 
 4. Title: Viewing the leaderboard\
    Written by: Joy Lim\
@@ -118,7 +118,7 @@ Ask for help when there’s an issue with their task within Discord or group mee
    Extensions/Variations of the success scenario\
        1. User leaves before scores are recorded\
    Exceptions: failure conditions and scenarios\
-       1. Leaderboard is empty meaning the database contains no scores\
+       1. Leaderboard is empty meaning the database contains no scores
 
 5. Title: Logging in to game\
    Written by: Gavin Fifer\
@@ -138,7 +138,7 @@ Ask for help when there’s an issue with their task within Discord or group mee
    Exceptions: failure conditions and scenarios\
        1. Invalid Username/Password\
        2. The account is already logged into somewhere else\
-       3. Database with Usernames/Passwords cannot be reached\
+       3. Database with Usernames/Passwords cannot be reached
 
 6. Title: Creating a new account\
    Written by: Sam\
@@ -161,7 +161,7 @@ Ask for help when there’s an issue with their task within Discord or group mee
        2. A “forgot password” routine is initiated\
    Exceptions: failure conditions and scenarios\
        1. Username/email already exists in database\
-       2. Database is currently unavailable\
+       2. Database is currently unavailable
 
 7. Title: Changing your password\
    Written by: Kevin Nguyen\
@@ -183,4 +183,4 @@ Ask for help when there’s an issue with their task within Discord or group mee
        1. User enters an invalid current password and a message pops up saying to try again\
    Exceptions: failure conditions and scenarios\
        1. Database is down\
-       2. Current password is not found\
+       2. Current password is not found
