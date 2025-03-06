@@ -28,3 +28,25 @@
         <button class="cancel-delete" onclick="closeDeletePopup()">Cancel</button>
     </div>
 </div>
+
+<!-- Edit Profile Popup -->
+<div id="edit-popup" class="edit-popup">
+    <div class="popup-content">
+        <h2>Edit Profile</h2>
+        <form id="editProfileForm">
+            <input type="hidden" id="oldUsername" name="oldUsername" value="{{username}}">
+            <label for="newUsername">New Username:</label>
+            <input type="text" id="newUsername" name="newUsername" required>
+
+            <label for="newPassword">New Password:</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <label for="confirmPassword">Confirm New Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="button" onclick="updateProfile()">Save Changes</button>
+            <button type="button" onclick="closeEditPopup()">Cancel</button>
+        </form>
+    </div>
+</div>
+
