@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-const port = 4000;
+const port = 2000;
 const app = express();
 
 //connect to MongoDB
@@ -218,6 +218,49 @@ app.post('/delete', async (req, res) => {
     console.log(error)
   }
 })
+
+app.post('/updateProfile', async (req, res) => {
+  const { oldUsername, newUsername, newPassword, confirmPassword } = req.body;
+
+  try {
+    // Check if passwords match
+    if (newPassword !== confirmPassword) {
+      return res.json({ message: "Passwords do not match" });
+    }
+
+    // Check if user exists
+    const user = await dbFunctions.get_user(oldUsername);
+    if (!user) {
+      return res.json({ message: "User not found" });
+    }
+
+    // Check username availability
+    if (newUsername && newUsername !== oldUsername) {
+      const nameAvailable = await dbFunctions.check_name_availability(newUsername);
+      if (!nameAvailable) {
+        return res.json({ message: "Username is already taken" });
+      }
+    }
+
+    const updatedUser = await dbFunctions.update_user(oldUsername, newUsername, newPassword);
+
+    if (!updatedUser) {
+      return res.json({ message: "Failed to update profile" });
+    }
+
+    // Update the token with the new username if it was changed
+    if (newUsername && newUsername !== oldUsername) {
+      const token = jwt.sign({ username: newUsername }, "secretKey");
+      res.cookie("token", token, { httpOnly: true, secure: true });
+    }
+
+    // Return success message
+    return res.json({ message: "Profile updated successfully" });
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    res.status(500).json({ message: "Error updating profile" });
+  }
+});
 
 //returns location file of the index provided
 app.post("/getLocation", async function (req, res) {
