@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
-const port = 2000;
+const port = 4000;
 const app = express();
 
 //connect to MongoDB
@@ -240,6 +240,10 @@ app.post('/updateProfile', async (req, res) => {
       if (!nameAvailable) {
         return res.json({ message: "Username is already taken" });
       }
+    }
+    // Check username length
+    if (newUsername.length > 20) {
+      return res.json({ message: "Username cannot exceed 20 characters" });
     }
 
     const updatedUser = await dbFunctions.update_user(oldUsername, newUsername, newPassword);
