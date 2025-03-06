@@ -274,5 +274,6 @@ module.exports = {
   get_top_players,
   update_leaderboard,
   calculate_total_scores,
-  delete_user
+  delete_user,
+  update_user
 };
