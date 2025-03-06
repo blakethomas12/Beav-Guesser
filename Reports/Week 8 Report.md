@@ -40,7 +40,8 @@
   3) Implement a submit guess button to allows users to submit a guess when they are ready instead of the system automatically submitting a guess
      
   **Goals For Next Week**
-  1)
+  1) Polish the game UI
+  2) Test for any bugs 
 
 - ### Lukas
   **Progress and Issues**
