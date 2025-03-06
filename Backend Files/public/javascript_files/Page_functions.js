@@ -440,6 +440,11 @@ async function updateProfile() {
   const confirmPasswordValue = confirmPassword.value.trim();
   const oldUsernameValue = oldUsernameElement.value.trim();
 
+  if (usernameValue.length > 20) {
+    alert("Username cannot exceed 20 characters.");
+    return;
+  }
+
   if (passwordValue !== confirmPasswordValue) {
       console.error("Passwords do not match!");
       alert("Passwords do not match!");
@@ -498,5 +503,4 @@ function openEditPopup() {
 function closeEditPopup() {
   document.getElementById("edit-popup").style.display = "none";
 }
-
 
