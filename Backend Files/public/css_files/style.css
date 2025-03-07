@@ -286,7 +286,7 @@ button {
 
 .about-container.reverse {
     flex-direction: row-reverse;
-    height: 210px;
+    height: 215px;
 }
 
 .login-page body, h1 {
@@ -475,8 +475,9 @@ button {
     margin-top: auto;
     padding-top: 20px;
 }
+
 .leaderboard-page h1 {
-    font-family: 'Stratum 2 Bold', sans-serif;
+    font-family: 'BaseballClubSolid', sans-serif;
     font-size: 4rem;
     color: #ff6200;
     text-align: center;
@@ -495,6 +496,13 @@ button {
     margin-left: 195px;
     margin-right: 30px;
     background-color: black;
+}
+
+.leaderboard-icon {
+    width: 80px; /* Adjust size as needed */
+    height: 80px;
+    vertical-align: middle;
+    margin: 0 10px; /* Adjust spacing as needed */
 }
 
 .leaderboard-page table {
