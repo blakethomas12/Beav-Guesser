@@ -99,19 +99,6 @@ button {
     display: none;
 }
 
-#score {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    padding-top: 20px;
-    padding-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #e54e00;
-}
-
 .home-main {
     width: 100%;
     height: 79vh;
@@ -686,6 +673,7 @@ footer {
     overflow: hidden; /* Prevents content overflow */
 }
 
+/* guesser page style */
 #game-result-message{
     font-size: 40px; 
     font-weight: bold; 
@@ -698,16 +686,52 @@ footer {
     transform: translateX(-50%);
 }
 
-#current-round{
+#game-top-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+#round-container, #score-container, #button-container{
+    flex: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: center;    
+}
+
+#round-container{
+    justify-content: flex-start;    /*move round message to the left*/
+}
+
+#button-container{
+    justify-content: flex-end;      /*move button to the right*/
+}
+
+#score{
+    text-align: center;             /*move score to the center*/
+}
+
+#current-round, #score{
+    display: flex;
     font-size: 24px;
     font-weight: bold;
-    padding-left: 10px;
     font-family: Arial, Helvetica, sans-serif;
     color: #e54e00;
+}
+
+/* position button to the right and add fade effect */
+#next-round-button{
+    background-color: #ff6200;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    opacity: 0.6;
+    transition: 0.3s;
+    border-radius: 5px; 
 }
 
 /* position and fade effect for show map button */
@@ -726,9 +750,10 @@ footer {
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
+    border-radius: 5px;
 }
 
-#show-map-button:hover {
+#show-map-button:hover, #next-round-button:hover, #restart-game-button:hover, #go-home-button:hover {
     opacity: 1;
 }
 
@@ -749,11 +774,8 @@ footer {
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
+    border-radius: 5px;
 }
-
-#restart-game-button:hover {
-    opacity: 1;
-  }
 
 /* position button to the middle and add fade effect */
 #go-home-button{
@@ -763,6 +785,7 @@ footer {
     top: 60%;
     background-color: #ff6200;
     border: none;
+    border-radius: 5px;
     color: white;
     padding: 16px 32px;
     text-align: center;
@@ -773,29 +796,3 @@ footer {
     display: inline-block;
     text-decoration: none;
 }
-
-#go-home-button:hover {
-    opacity: 1;
-  }
-
-/* position button to the right and add fade effect */
-#next-round-button{
-    position: absolute;
-    top: 15%;
-    left: 89%;
-    background-color: #ff6200;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    font-size: 16px;
-    margin: 4px 2px;
-    opacity: 0.6;
-    transition: 0.3s;
-    display: inline-block;
-    text-decoration: none;    
-}
-
-#next-round-button:hover {
-    opacity: 1;
-  }

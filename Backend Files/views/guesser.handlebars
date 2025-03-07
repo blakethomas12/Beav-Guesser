@@ -1,9 +1,20 @@
 <main>
   <!-- This is the window for the google street view api -->
-  {{!-- show current round --}}
-  <p id="current-round"></p>
-  {{!-- next round button --}}
-  <button id ="next-round-button" onclick="nextRound()">Next Round</button>
+
+  <div id="game-top-bar">
+    <div id="round-container">
+      {{!-- show current round --}}
+      <p id="current-round"></p>
+    </div>
+    <div id="score-container">
+      {{!-- show score --}}
+      <div id="score"></div>
+    </div>
+    <div id="button-container">
+      {{!-- next round button --}}
+      <button id ="next-round-button" onclick="nextRound()">Next Round</button> 
+    </div>
+  </div>
 
   <div id="street-view-window">
     <div style="width: 100%; overflow: hidden; height: 600px;">
@@ -24,7 +35,6 @@
     <img src="..\image_files\campus-map.png" alt="Map" id="overlay-map">
     <canvas id="guess-canvas"></canvas>
   </div>
-  <div id="score"></div>
   <button onclick="showMap()" id="show-map-button">Show Map</button>
 
   {{!-- message that shows when game ends --}}
