@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'BaseballClubSolid';
+    src: url('../font_files/BaseballClubSolid-E4X69.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 h1 {
     text-align: center;
 }
@@ -164,6 +171,7 @@ button {
 }
 
 .home-middle-panel p {
+    font-family: 'BaseballClubSolid', sans-serif;
     padding: 0px;
     line-height: 0.0;
 }
