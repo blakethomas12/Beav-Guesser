@@ -3,31 +3,32 @@
 - 
 
 ### Goals From Last Week
-1. get each round to get score from server
-2. have page ready for beta test
+1. solidify user guess and coordinate conversion
    
 ### Progress and Issues
 - game if fully functional and scores every round
-- all pages are fully desgined and css done
+- all pages are fully designed and css done
+- user guessing now accurate
 
 ### Goals For Next Week
-1. solidfy user guess and coordinate conversion
+1. finish all aspects
+2. push final version
 
 # Contributions of Individual Team Members
 
 - ### Blake
   **Progress and Issues**
-  1) set up web hosting for server ready for beta release
-  2) created unit tests for db and scoring functions
+  1) created poster
+  2) updated proposal and manuals
+  3) pushed beta version to website
   
   **Goals From Last Week**
-  1) have all unit tests done
-  3) have web service of server up
-     
-  **Goals For Next Week**
   1) push beta version to web host
   2) clean up documents
-  3) reseach other ways to get user guess
+  3) research other ways to get user guess
+     
+  **Goals For Next Week**
+  1) push final changes to website
 
 
 - ### Joy
