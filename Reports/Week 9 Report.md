@@ -43,16 +43,13 @@
 
 - ### Lukas
   **Progress and Issues**
-  1) Fully finished lat/lng to x/y conversion
-  2) New guessing map
-  3) Misc big fixes and polish
+  1) Misc big fixes and polish
+  2) Can't figure out no streetview error
   
   **Goals From Last Week**
-  1) lat/lng working
-  2) error checking for no streetview
+  1) error checking for no streetview
    
   **Goals For Next Week**
-  1) error checking for no streetview
 
 
 - ### Kevin T
