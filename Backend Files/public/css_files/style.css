@@ -217,45 +217,68 @@ button {
     background-color: #e55a00;
 }
 
-
 .about-page {
-    height: 75.3vh;
+    height: 68vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../image_files/campusBlur.png');
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
 }
 
-.about-page h1 {
+.about-page h2 {
     font-family: 'Stratum 2 Bold', sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     margin: 20px 0;
     position: relative;
-    color:#ff6200;
+    color: #ff6200;
 }
 
-.about-page h1::after {
+.about-page h2::after {
     content: "";
     position: absolute;
     bottom: -10px;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
     height: 2px;
     background-color: black;
 }
 
-.about-page {
-    margin-left: 1in;
-    margin-right: 1in;
+.about-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem;
+    border-radius: 15px;
+    width: 70%;
+    max-width: 800px;
+    height: 185px;
+    margin-bottom: 1rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(8px);
 }
 
-.about-content {
-    font-size: 1.1rem;
-}
-
-.about-image {
-    float: left;
-    width: 300px;
+.about-container img {
+    width: 150px;
     height: auto;
-    margin-right: 20px;
-    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.about-text {
+    flex: 1;
+    padding: 0.5rem;
+    font-family: 'stratum2-regular-webfont.ttf', sans-serif;
+    transform: translateX(5px);
+}
+
+.about-container.reverse {
+    flex-direction: row-reverse;
+    height: 210px;
 }
 
 .login-page body, h1 {
