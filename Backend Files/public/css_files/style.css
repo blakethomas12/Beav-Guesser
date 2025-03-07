@@ -723,13 +723,12 @@ footer {
 
 /* position button to the right and add fade effect */
 #next-round-button{
-    background-color: #ff6200;
+    background-color: #ff9e62;
     border: none;
     color: white;
     padding: 16px 32px;
     text-align: center;
     font-size: 16px;
-    opacity: 0.6;
     transition: 0.3s;
     border-radius: 5px; 
 }
@@ -739,14 +738,13 @@ footer {
     position: absolute;
     left: 1%;
     top: 90%;
-    background-color: #ff6200;
+    background-color: #ff9e62;
     border: none;
     color: white;
     padding: 16px 32px;
     text-align: center;
     font-size: 16px;
     margin: 4px 2px;
-    opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
@@ -754,7 +752,7 @@ footer {
 }
 
 #show-map-button:hover, #next-round-button:hover, #restart-game-button:hover, #go-home-button:hover {
-    opacity: 1;
+    background-color: #ff6200;
 }
 
 /* position button to the middle and add fade effect */
@@ -763,14 +761,13 @@ footer {
     left: 50%;
     transform: translate(-50%);
     top: 50%;
-    background-color: #ff6200;
+    background-color: #ff9e62;
     border: none;
     color: white;
     padding: 16px 32px;
     text-align: center;
     font-size: 16px;
     margin: 4px 2px;
-    opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
@@ -783,7 +780,7 @@ footer {
     left: 50%;
     transform: translate(-50%);
     top: 60%;
-    background-color: #ff6200;
+    background-color: #ff9e62;
     border: none;
     border-radius: 5px;
     color: white;
@@ -791,7 +788,6 @@ footer {
     text-align: center;
     font-size: 16px;
     margin: 4px 2px;
-    opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
