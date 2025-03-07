@@ -14,6 +14,7 @@
             </div>
             <div class="profile-buttons">
                 <button class="logout-button" type="submit" onclick="logout()">Log Out</button>
+                <button class="edit-button" type="button" onclick="openEditPopup()">Edit Profile</button>
                 <button class="delete-button" type="button" onclick="openDeletePopup()">Delete this Profile</button>
             </div>
         </div>
@@ -44,9 +45,8 @@
             <label for="confirmPassword">Confirm New Password:</label>
             <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-            <button type="button" onclick="updateProfile()">Save Changes</button>
-            <button type="button" onclick="closeEditPopup()">Cancel</button>
+            <button class="save-button" type="button" onclick="updateProfile()">Save Changes</button>
+            <button class="cancel-button" type="button" onclick="closeEditPopup()">Cancel</button>
         </form>
     </div>
 </div>
-

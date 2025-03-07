@@ -499,10 +499,10 @@ button {
 }
 
 .leaderboard-icon {
-    width: 80px; /* Adjust size as needed */
+    width: 80px;
     height: 80px;
     vertical-align: middle;
-    margin: 0 10px; /* Adjust spacing as needed */
+    margin: 0 10px;
 }
 
 .leaderboard-page table {
@@ -522,6 +522,7 @@ button {
     text-align: center;
     font-size: 1.2rem;
     border-bottom: 1px solid #ccc;
+    font-family: 'Stratum 2', sans-serif;
 }
 
 .leaderboard-page th {
@@ -612,7 +613,7 @@ button {
     gap: 15px;
 }
 
-.logout-button {
+.logout-button, .edit-button, .delete-button, .save-button, .cancel-button {
     background-color: #ff6200;
     color: white;
     padding: 12px 20px;
@@ -622,25 +623,19 @@ button {
     cursor: pointer;
 }
 
-.logout-button:hover {
+.logout-button:hover, .edit-button:hover, .delete-button:hover, .save-button:hover, .cancel-button:hover {
     background-color: #e55a00;
 }
 
 .delete-button {
     background-color: red;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.3rem;
-    cursor: pointer;
 }
 
 .delete-button:hover {
     background-color: darkred;
 }
 
-.delete-popup {
+.delete-popup, .edit-popup {
     display: none;
     position: fixed;
     top: 0;
@@ -659,12 +654,16 @@ button {
     text-align: center;
 }
 
+.popup-content h2 {
+    font-family: 'stratum2-medium-webfont.ttf', sans-serif;
+}
+
 .popup-content p {
     font-size: 1.2rem;
     margin-bottom: 20px;
 }
 
-.confirm-delete, .cancel-delete {
+.confirm-delete, .cancel-delete, .save-button, .cancel-button {
     padding: 10px 15px;
     font-size: 1rem;
     border: none;
@@ -677,7 +676,7 @@ button {
     color: white;
 }
 
-.cancel-delete {
+.cancel-delete, .cancel-button {
     background-color: gray;
     color: white;
     margin-left: 10px;
@@ -687,8 +686,25 @@ button {
     background-color: darkred;
 }
 
-.cancel-delete:hover {
+.cancel-delete:hover, .cancel-button:hover {
     background-color: darkgray;
+}
+
+.edit-popup label {
+    display: block;
+    font-family: 'stratum2-medium-webfont.ttf', sans-serif;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.edit-popup input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'stratum2-regular-webfont.ttf', sans-serif;
+    font-size: 1rem;
 }
 
 

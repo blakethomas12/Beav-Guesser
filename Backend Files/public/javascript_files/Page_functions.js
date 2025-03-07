@@ -423,3 +423,10 @@ function closeDeletePopup() {
   document.getElementById("delete-popup").style.display = "none";
 }
 
+function openEditPopup() {
+  document.getElementById("edit-popup").style.display = "flex";
+}
+
+function closeEditPopup() {
+  document.getElementById("edit-popup").style.display = "none";
+}
