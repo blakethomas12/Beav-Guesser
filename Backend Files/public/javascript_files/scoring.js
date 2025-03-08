@@ -1,7 +1,7 @@
 //calculates the score of a single round with the users guess and location of image
 function calculate_score(true_x, true_y, user_x, user_y) {
     //finds a distance between the 2 locations
-    const dist = euclidean_distance(true_x, true_y, user_x, user_y);
+    var dist = euclidean_distance(true_x, true_y, user_x, user_y);
 
     let score;
 
@@ -11,7 +11,8 @@ function calculate_score(true_x, true_y, user_x, user_y) {
     }
 
     //removes padding from distances
-    const max = 781 - 5;
+    const max = 781 - 15;
+    dist = dist - 15
     score = Math.max(0, Math.min(5000, 5000 * (1 - dist / max) ** 2)); //calcs score with an exponential fall off of points
     return Math.round(score); //removes decimal
 }

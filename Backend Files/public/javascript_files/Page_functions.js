@@ -430,3 +430,12 @@ function openEditPopup() {
 function closeEditPopup() {
   document.getElementById("edit-popup").style.display = "none";
 }
+
+module.exports = {
+  goToPage,
+  showMap,
+  latLngToXY,
+  getRandomStreetViewEmbedLink,
+  startGame,
+  endGame
+}
