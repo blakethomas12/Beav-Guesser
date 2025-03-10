@@ -39,9 +39,15 @@ function latLngToXY(lat, lng) {
   return { x, y };
 }
 
-//gets a random street veiw 
+// Function to start the game
+async function startGame() {
+  await loadRandomStreetView();
+  console.log("Game started");
+}
+
+// Function to get a random street view embed link
 async function getRandomStreetViewEmbedLink() {
-  //generates random latitude and longitude within bounds
+  // Generates random latitude and longitude within bounds
   actualLat = Math.random() * (mapBounds.topLeft.lat - mapBounds.bottomRight.lat) + mapBounds.bottomRight.lat;
   actualLng = Math.random() * (mapBounds.bottomRight.lng - mapBounds.topLeft.lng) + mapBounds.topLeft.lng;
 
@@ -56,7 +62,7 @@ async function getRandomStreetViewEmbedLink() {
   }
 }
 
-//loads the random street view
+// Function to load the random street view
 async function loadRandomStreetView() {
   const iframe = document.getElementById("streetViewFrame");
   const streetViewLink = await getRandomStreetViewEmbedLink();
@@ -67,6 +73,15 @@ async function loadRandomStreetView() {
     iframe.style.display = "none";
   }
 }
+
+// Ensure everything is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM loaded");
+
+  if (window.location.pathname === "/guesser") {
+    startGame();
+  }
+});
 
 //when "play game", game will start from here
 //manages what is shown and hidden
