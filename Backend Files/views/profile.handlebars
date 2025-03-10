@@ -13,6 +13,7 @@
                 <h3>Level: {{level}}</h3>
             </div>
             <div class="profile-buttons">
+                <button class="edit-button" type="button" onclick="openEditPopup()">Edit Profile</button>
                 <button class="logout-button" type="submit" onclick="logout()">Log Out</button>
                 <button class="edit-button" type="button" onclick="openEditPopup()">Edit Profile</button>
                 <button class="delete-button" type="button" onclick="openDeletePopup()">Delete this Profile</button>
@@ -37,16 +38,16 @@
         <form id="editProfileForm">
             <input type="hidden" id="oldUsername" name="oldUsername" value="{{username}}">
             <label for="newUsername">New Username:</label>
-            <input type="text" id="newUsername" name="newUsername" required>
+            <input type="text" id="newUsername" name="newUsername">
 
             <label for="newPassword">New Password:</label>
-            <input type="password" id="newPassword" name="newPassword" required>
+            <input type="password" id="newPassword" name="newPassword">
 
             <label for="confirmPassword">Confirm New Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <input type="password" id="confirmPassword" name="confirmPassword">
 
-            <button class="save-button" type="button" onclick="updateProfile()">Save Changes</button>
-            <button class="cancel-button" type="button" onclick="closeEditPopup()">Cancel</button>
+            <button class="update-profile" type="button" onclick="updateProfile()">Save Changes</button>
+            <button class="cancel-delete" onclick="closeEditPopup()">Cancel</button>
         </form>
     </div>
 </div>

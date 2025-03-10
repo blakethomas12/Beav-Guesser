@@ -423,6 +423,72 @@ function closeDeletePopup() {
   document.getElementById("delete-popup").style.display = "none";
 }
 
+
+async function updateProfile() {
+  const username = document.getElementById('newUsername');
+  const password = document.getElementById('newPassword');
+  const confirmPassword = document.getElementById('confirmPassword');
+  const oldUsernameElement = document.getElementById('oldUsername'); 
+
+  if (!username || !password || !confirmPassword || !oldUsernameElement) {
+      console.error("Required form fields not found.");
+      alert("Please fill out all fields.");
+      return;
+  }
+
+  const usernameValue = username.value.trim();
+  const passwordValue = password.value.trim();
+  const confirmPasswordValue = confirmPassword.value.trim();
+  const oldUsernameValue = oldUsernameElement.value.trim();
+
+  if (usernameValue.length > 20) {
+    alert("Username cannot exceed 20 characters.");
+    return;
+  }
+
+  if (passwordValue !== confirmPasswordValue) {
+      console.error("Passwords do not match!");
+      alert("Passwords do not match!");
+      return;
+  }
+
+  const requestData = {
+      oldUsername: oldUsernameValue,
+      newUsername: usernameValue,
+      newPassword: passwordValue,
+      confirmPassword: confirmPasswordValue
+  };
+
+
+  try {
+      const response = await fetch("/updateProfile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(requestData)
+      });
+
+      if (response.ok) {
+          
+          if (response.redirected) {
+            closeEditPopup();
+            window.location.href = response.url
+
+          } else {
+            console.error("Update failed:", result.message);
+            alert(result.message || "Failed to update user details.");
+            window.location.href = response.url
+
+          }
+      } else {
+          console.error("Server error:", response.status);
+          alert("Failed to update user details. Please try again.");
+      }
+  } catch (error) {
+      console.error(error);
+      alert("An error occurred while updating user details.");
+  }
+}
+
 function openEditPopup() {
   document.getElementById("edit-popup").style.display = "flex";
 }
@@ -439,3 +505,4 @@ module.exports = {
   startGame,
   endGame
 }
+

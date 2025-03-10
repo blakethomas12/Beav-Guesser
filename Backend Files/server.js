@@ -117,8 +117,7 @@ app.get("/profile", async (req, res) => {
   }else{
     //if user is not logged in route to login page
     res.redirect('/login')
-  }
-    
+  }  
 });
 
 //render sign up
@@ -218,6 +217,53 @@ app.post('/delete', async (req, res) => {
     console.log(error)
   }
 })
+
+app.post('/updateProfile', async (req, res) => {
+  const { oldUsername, newUsername, newPassword, confirmPassword } = req.body;
+
+  try {
+    // Check if passwords match
+    if (newPassword !== confirmPassword) {
+      return res.json({ message: "Passwords do not match" });
+    }
+
+    // Check if user exists
+    const user = await dbFunctions.get_user(oldUsername);
+    if (!user) {
+      return res.json({ message: "User not found" });
+    }
+
+    // Check username availability
+    if (newUsername && newUsername !== oldUsername) {
+      const nameAvailable = await dbFunctions.check_name_availability(newUsername);
+      if (!nameAvailable) {
+        return res.json({ message: "Username is already taken" });
+      }
+    }
+    // Check username length
+    if (newUsername.length > 20) {
+      return res.json({ message: "Username cannot exceed 20 characters" });
+    }
+
+    const updatedUser = await dbFunctions.update_user(oldUsername, newUsername, newPassword);
+
+    if (!updatedUser) {
+      return res.json({ message: "Failed to update profile" });
+    }
+
+    // Update the token with the new username if it was changed
+    if (newUsername && newUsername !== oldUsername) {
+      const token = jwt.sign({ username: newUsername }, "secretKey");
+      res.cookie("token", token, { httpOnly: true, secure: true });
+    }
+
+    // Redirect to load profile with new data
+    res.redirect('/profile')
+  } catch (error) {
+    console.error("Error updating profile:", error);
+    res.status(500).json({ message: "Error updating profile" });
+  }
+});
 
 //returns location file of the index provided
 app.post("/getLocation", async function (req, res) {

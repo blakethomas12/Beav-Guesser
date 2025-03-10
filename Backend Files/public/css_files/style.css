@@ -649,6 +649,67 @@ button {
     justify-content: center;
 }
 
+.edit-button {
+    background-color: orange;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.edit-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    font-family: 'stratum2-medium-webfont.ttf', sans-serif;
+
+
+}
+.popup-content h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.popup-content label {
+    display: block;
+    font-size: 1rem;
+    margin: 10px 0 5px;
+    text-align: left;
+    color: #555;
+}
+
+.popup-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.update-profile {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+}
+
+.update-profile:hover {
+    background-color: #218838;
+}
+
 .popup-content {
     background: white;
     padding: 20px;
@@ -852,3 +913,29 @@ footer {
     display: inline-block;
     text-decoration: none;
 }
+
+#go-home-button:hover {
+    opacity: 1;
+  }
+
+/* position button to the right and add fade effect */
+#next-round-button{
+    position: absolute;
+    top: 15%;
+    left: 89%;
+    background-color: #ff6200;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;    
+}
+
+#next-round-button:hover {
+    opacity: 1;
+  }

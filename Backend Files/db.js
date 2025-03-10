@@ -145,6 +145,46 @@ async function delete_user(username) {
   }
 }
 
+async function update_user(oldUsername, newUsername, newPassword) {
+  try {
+    const user = await User.findOne({ username: oldUsername });
+    if (!user) {
+      console.error("User not found.");
+      return null;
+    }
+    if (newUsername && newUsername !== oldUsername) {
+      const nameAvailable = await check_name_availability(newUsername);
+      if (!nameAvailable) {
+        console.error("Username already taken.");
+        return null;
+      }
+      user.username = newUsername;
+      await Leaderboard.updateMany(
+        { username: oldUsername },
+        { $set: { username: newUsername } }
+      );
+    }
+    if (newPassword) {
+      const saltRounds = 10;
+      user.password = await bcrypt.hash(newPassword, saltRounds);
+    }
+
+    await user.save();
+
+    // Return the updated user profile
+    const updatedDoc = {
+      username: user.username,
+      high_score: user.high_score,
+      xp: user.xp
+    };
+
+    return updatedDoc;
+  } catch (error) {
+    console.error("Error updating user:", error);
+    return null;
+  }
+}
+
 //==============================LEADERBOARD FUNCTIONS===============================================
 //currently not used
 async function get_top_players() {
@@ -234,5 +274,6 @@ module.exports = {
   get_top_players,
   update_leaderboard,
   calculate_total_scores,
-  delete_user
+  delete_user,
+  update_user
 };
