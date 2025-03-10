@@ -197,6 +197,9 @@ button {
     top: 37px;
     left: 10px;
     right: 55px;
+    max-width: 90%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .home-right-panel li {
@@ -205,9 +208,10 @@ button {
 
 .home-button-container {
     position: absolute;
-    bottom: 20%;
-    left: 50%;
-    transform: translateX(-50%);
+    /* bottom: 20%;
+    left: 50%; */
+    /* transform: translateX(-50%); */
+    transform: translateY(225%);
 }
 
 .home-play-button {
@@ -266,7 +270,7 @@ button {
     padding: 0.5rem;
     border-radius: 15px;
     width: 70%;
-    max-width: 800px;
+    max-width: 1000px;
     height: 185px;
     margin-bottom: 1rem;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
