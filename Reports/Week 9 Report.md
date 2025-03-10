@@ -3,58 +3,54 @@
 - 
 
 ### Goals From Last Week
-1. get each round to get score from server
-2. have page ready for beta test
+1. solidify user guess and coordinate conversion
    
 ### Progress and Issues
 - game if fully functional and scores every round
-- all pages are fully desgined and css done
+- all pages are fully designed and css done
+- user guessing now accurate
 
 ### Goals For Next Week
-1. solidfy user guess and coordinate conversion
+1. finish all aspects
+2. push final version
 
 # Contributions of Individual Team Members
 
 - ### Blake
   **Progress and Issues**
-  1) set up web hosting for server ready for beta release
-  2) created unit tests for db and scoring functions
+  1) created poster
+  2) updated proposal and manuals
+  3) pushed beta version to website
   
   **Goals From Last Week**
-  1) have all unit tests done
-  3) have web service of server up
-     
-  **Goals For Next Week**
   1) push beta version to web host
   2) clean up documents
-  3) reseach other ways to get user guess
+  3) research other ways to get user guess
+     
+  **Goals For Next Week**
+  1) push final changes to website
 
 
 - ### Joy
   **Progress and Issues**
-  1) Map canvas clears after each round, submit guess after each round, start game again button and home button after game ends
+  1)
   
   **Goals From Last Week**
-  1) (Continuation) Ensure game features and logic connect (submit guess, scoring, etc.)
-  2) Map canvas should be cleared after each round
-  3) Implement a submit guess button to allows users to submit a guess when they are ready instead of the system automatically submitting a guess
-     
-  **Goals For Next Week**
   1) Polish the game UI
   2) Test for any bugs 
 
+     
+  **Goals For Next Week**
+
 - ### Lukas
   **Progress and Issues**
-  1) Fully finished lat/lng to x/y conversion
-  2) New guessing map
-  3) Misc big fixes and polish
+  1) Misc big fixes and polish
+  2) Can't figure out no streetview error
   
   **Goals From Last Week**
-  1) lat/lng working
-  2) error checking for no streetview
+  1) error checking for no streetview
    
   **Goals For Next Week**
-  1) error checking for no streetview
 
 
 - ### Kevin T

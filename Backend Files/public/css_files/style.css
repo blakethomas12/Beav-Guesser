@@ -5,6 +5,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'BaseballClubSolid';
+    src: url('../font_files/BaseballClubSolid-E4X69.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 h1 {
     text-align: center;
 }
@@ -99,22 +106,10 @@ button {
     display: none;
 }
 
-#score {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    padding-top: 20px;
-    padding-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #e54e00;
-}
-
 .home-main {
     width: 100%;
-    height: 79vh;
+    min-height: 79vh;
+    height: 85%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,6 +172,7 @@ button {
 }
 
 .home-middle-panel p {
+    font-family: 'BaseballClubSolid', sans-serif;
     padding: 0px;
     line-height: 0.0;
 }
@@ -209,7 +205,7 @@ button {
 
 .home-button-container {
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -230,45 +226,69 @@ button {
     background-color: #e55a00;
 }
 
-
 .about-page {
-    height: 75.3vh;
+    min-height: 68vh;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../image_files/campusBlur.png');
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
 }
 
-.about-page h1 {
+.about-page h2 {
     font-family: 'Stratum 2 Bold', sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     text-align: center;
     margin: 20px 0;
     position: relative;
-    color:#ff6200;
+    color: #ff6200;
 }
 
-.about-page h1::after {
+.about-page h2::after {
     content: "";
     position: absolute;
     bottom: -10px;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
     height: 2px;
     background-color: black;
 }
 
-.about-page {
-    margin-left: 1in;
-    margin-right: 1in;
+.about-container {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem;
+    border-radius: 15px;
+    width: 70%;
+    max-width: 800px;
+    height: 185px;
+    margin-bottom: 1rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(8px);
 }
 
-.about-content {
-    font-size: 1.1rem;
-}
-
-.about-image {
-    float: left;
-    width: 300px;
+.about-container img {
+    width: 150px;
     height: auto;
-    margin-right: 20px;
-    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.about-text {
+    flex: 1;
+    padding: 0.5rem;
+    font-family: 'stratum2-regular-webfont.ttf', sans-serif;
+    transform: translateX(5px);
+}
+
+.about-container.reverse {
+    flex-direction: row-reverse;
+    height: 215px;
 }
 
 .login-page body, h1 {
@@ -457,8 +477,9 @@ button {
     margin-top: auto;
     padding-top: 20px;
 }
+
 .leaderboard-page h1 {
-    font-family: 'Stratum 2 Bold', sans-serif;
+    font-family: 'BaseballClubSolid', sans-serif;
     font-size: 4rem;
     color: #ff6200;
     text-align: center;
@@ -479,6 +500,13 @@ button {
     background-color: black;
 }
 
+.leaderboard-icon {
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
+    margin: 0 10px;
+}
+
 .leaderboard-page table {
     width: 80%;
     max-width: 800px;
@@ -496,6 +524,7 @@ button {
     text-align: center;
     font-size: 1.2rem;
     border-bottom: 1px solid #ccc;
+    font-family: 'Stratum 2', sans-serif;
 }
 
 .leaderboard-page th {
@@ -586,7 +615,7 @@ button {
     gap: 15px;
 }
 
-.logout-button {
+.logout-button, .edit-button, .delete-button, .save-button, .cancel-button {
     background-color: #ff6200;
     color: white;
     padding: 12px 20px;
@@ -596,25 +625,19 @@ button {
     cursor: pointer;
 }
 
-.logout-button:hover {
+.logout-button:hover, .edit-button:hover, .delete-button:hover, .save-button:hover, .cancel-button:hover {
     background-color: #e55a00;
 }
 
 .delete-button {
     background-color: red;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.3rem;
-    cursor: pointer;
 }
 
 .delete-button:hover {
     background-color: darkred;
 }
 
-.delete-popup {
+.delete-popup, .edit-popup {
     display: none;
     position: fixed;
     top: 0;
@@ -694,12 +717,16 @@ button {
     text-align: center;
 }
 
+.popup-content h2 {
+    font-family: 'stratum2-medium-webfont.ttf', sans-serif;
+}
+
 .popup-content p {
     font-size: 1.2rem;
     margin-bottom: 20px;
 }
 
-.confirm-delete, .cancel-delete {
+.confirm-delete, .cancel-delete, .save-button, .cancel-button {
     padding: 10px 15px;
     font-size: 1rem;
     border: none;
@@ -712,7 +739,7 @@ button {
     color: white;
 }
 
-.cancel-delete {
+.cancel-delete, .cancel-button {
     background-color: gray;
     color: white;
     margin-left: 10px;
@@ -722,8 +749,25 @@ button {
     background-color: darkred;
 }
 
-.cancel-delete:hover {
+.cancel-delete:hover, .cancel-button:hover {
     background-color: darkgray;
+}
+
+.edit-popup label {
+    display: block;
+    font-family: 'stratum2-medium-webfont.ttf', sans-serif;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.edit-popup input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'stratum2-regular-webfont.ttf', sans-serif;
+    font-size: 1rem;
 }
 
 
@@ -734,6 +778,9 @@ footer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 
     text-align: right;
     font-family: "Garamond", "Trebuchet MS", Verdana, sans-serif;
@@ -747,6 +794,7 @@ footer {
     overflow: hidden; /* Prevents content overflow */
 }
 
+/* guesser page style */
 #game-result-message{
     font-size: 40px; 
     font-weight: bold; 
@@ -759,16 +807,51 @@ footer {
     transform: translateX(-50%);
 }
 
-#current-round{
+#game-top-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+}
+
+#round-container, #score-container, #button-container{
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+}
+
+#round-container{
+    justify-content: flex-start;    /*move round message to the left*/
+}
+
+#button-container{
+    justify-content: flex-end;      /*move button to the right*/
+}
+
+#score{
+    text-align: center;             /*move score to the center*/
+}
+
+#current-round, #score{
+    display: flex;
     font-size: 24px;
     font-weight: bold;
-    padding-left: 10px;
     font-family: Arial, Helvetica, sans-serif;
     color: #e54e00;
+}
+
+/* position button to the right and add fade effect */
+#next-round-button{
+    background-color: #ff9e62;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.3s;
+    border-radius: 5px; 
 }
 
 /* position and fade effect for show map button */
@@ -776,21 +859,21 @@ footer {
     position: absolute;
     left: 1%;
     top: 90%;
-    background-color: #ff6200;
+    background-color: #ff9e62;
     border: none;
     color: white;
     padding: 16px 32px;
     text-align: center;
     font-size: 16px;
     margin: 4px 2px;
-    opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
+    border-radius: 5px;
 }
 
-#show-map-button:hover {
-    opacity: 1;
+#show-map-button:hover, #next-round-button:hover, #restart-game-button:hover, #go-home-button:hover {
+    background-color: #ff6200;
 }
 
 /* position button to the middle and add fade effect */
@@ -799,22 +882,18 @@ footer {
     left: 50%;
     transform: translate(-50%);
     top: 50%;
-    background-color: #ff6200;
+    background-color: #ff9e62;
     border: none;
     color: white;
     padding: 16px 32px;
     text-align: center;
     font-size: 16px;
     margin: 4px 2px;
-    opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
+    border-radius: 5px;
 }
-
-#restart-game-button:hover {
-    opacity: 1;
-  }
 
 /* position button to the middle and add fade effect */
 #go-home-button{
@@ -822,14 +901,14 @@ footer {
     left: 50%;
     transform: translate(-50%);
     top: 60%;
-    background-color: #ff6200;
+    background-color: #ff9e62;
     border: none;
+    border-radius: 5px;
     color: white;
     padding: 16px 32px;
     text-align: center;
     font-size: 16px;
     margin: 4px 2px;
-    opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;

@@ -423,6 +423,7 @@ function closeDeletePopup() {
   document.getElementById("delete-popup").style.display = "none";
 }
 
+
 async function updateProfile() {
   const username = document.getElementById('newUsername');
   const password = document.getElementById('newPassword');
@@ -488,16 +489,20 @@ async function updateProfile() {
   }
 }
 
-
-
-
-
-
 function openEditPopup() {
   document.getElementById("edit-popup").style.display = "flex";
 }
 
 function closeEditPopup() {
   document.getElementById("edit-popup").style.display = "none";
+}
+
+module.exports = {
+  goToPage,
+  showMap,
+  latLngToXY,
+  getRandomStreetViewEmbedLink,
+  startGame,
+  endGame
 }
 
