@@ -458,7 +458,6 @@ async function updateProfile() {
       confirmPassword: confirmPasswordValue
   };
 
-  console.log("Sending request with data:", requestData);
 
   try {
       const response = await fetch("/updateProfile", {
@@ -467,26 +466,24 @@ async function updateProfile() {
           body: JSON.stringify(requestData)
       });
 
-      console.log("Response received:", response);
-
       if (response.ok) {
-          const result = await response.json();
-          console.log("Server response:", result);
+          
+          if (response.redirected) {
+            closeEditPopup();
+            window.location.href = response.url
 
-          if (result.message === "Profile updated successfully") {
-              alert("User details updated successfully!");
-              closeEditPopup();
-              location.reload(); 
           } else {
-              console.error("Update failed:", result.message);
-              alert(result.message || "Failed to update user details.");
+            console.error("Update failed:", result.message);
+            alert(result.message || "Failed to update user details.");
+            window.location.href = response.url
+
           }
       } else {
           console.error("Server error:", response.status);
           alert("Failed to update user details. Please try again.");
       }
   } catch (error) {
-      console.error("Error in fetch request:", error);
+      console.error(error);
       alert("An error occurred while updating user details.");
   }
 }

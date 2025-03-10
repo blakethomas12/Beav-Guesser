@@ -117,8 +117,7 @@ app.get("/profile", async (req, res) => {
   }else{
     //if user is not logged in route to login page
     res.redirect('/login')
-  }
-    
+  }  
 });
 
 //render sign up
@@ -258,8 +257,8 @@ app.post('/updateProfile', async (req, res) => {
       res.cookie("token", token, { httpOnly: true, secure: true });
     }
 
-    // Return success message
-    return res.json({ message: "Profile updated successfully" });
+    // Redirect to load profile with new data
+    res.redirect('/profile')
   } catch (error) {
     console.error("Error updating profile:", error);
     res.status(500).json({ message: "Error updating profile" });
