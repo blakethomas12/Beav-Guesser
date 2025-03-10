@@ -33,14 +33,15 @@
 
 - ### Joy
   **Progress and Issues**
-  1)
+  1) Created INSTALL.md
+  2) Changed the UI of game page 
   
   **Goals From Last Week**
   1) Polish the game UI
   2) Test for any bugs 
-
      
   **Goals For Next Week**
+  1) Be ready for final release
 
 - ### Lukas
   **Progress and Issues**
