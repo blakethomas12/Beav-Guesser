@@ -98,15 +98,15 @@
 
 - ### Gavin
   **Progress and Issues**
-  1) Game functionality connected to webpage
-  2) User profile deletion connected to webpage
+  1) Finished the slide for the poster
+  2) Added website testing suite 
   
   **Goals From Last Week**
-  1) Finish about page
-  2) Write tests for page functions
-     
-  **Goals For Next Week**
   1) Finish the slide for the poster
   2) Add more test cases for profile creation and deletion
+     
+  **Goals For Next Week**
+  1) Prepare for project presentation 
+  2) Wrap up the project with minor fixes and changes as needed
 
 
