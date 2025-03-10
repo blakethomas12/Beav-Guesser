@@ -1,4 +1,4 @@
- <html>
+<html>
     <head> 
         <title>Beav Guesser</title>
         <link rel="stylesheet" href="..\css_files\style.css">
@@ -8,6 +8,7 @@
         <div class="topnav">
             <div class="topnav-group" id="topnav-left-group">
                 <button class="topnav-item button-background-fix logo-fix" onclick="goToPage('/')"><img src="..\image_files\bevLogo.png" height="25" width="50"></button>
+                <button id="play-button" class="topnav-item button-background-fix" onclick="goToPage('/guesser')">Play</button>
                 <button class="topnav-item button-background-fix {{isActive '/about' currentPagePath}}" onclick="goToPage('/about')">About</button>
                 <button class="topnav-item button-background-fix {{isActive '/leaderboard' currentPagePath}}" onclick="goToPage('leaderboard')">Leaderboard</button>
             </div>
