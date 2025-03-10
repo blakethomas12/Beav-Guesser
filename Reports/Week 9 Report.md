@@ -55,18 +55,18 @@
 
 - ### Kevin T
   **Progress and Issues**
-  1) About section is finished
-  2) Level and High Score are updated on profile
-  3) Bugs with location showing no image and wrong "actual" location
+  1) Updated ReadMe with use cases
+  2) Help Update Project Proposal
+  3) Map bugs less present, but still happens
 
   **Goals From Last Week**
-  1) Finish about section (continuing)
-  2) Save the highest score in profile
-
-  **Goals For Next Week**
   1) Update ReadMe with use cases 
   2) Fix Map bugs
   3) Update Project Proposal
+
+  **Goals For Next Week**
+  1) Review Documents
+  2) Complete final changes and prepare for Final Presentation
 
 
 - ### Kevin N
