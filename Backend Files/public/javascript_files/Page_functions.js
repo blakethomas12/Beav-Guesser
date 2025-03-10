@@ -39,11 +39,7 @@ function latLngToXY(lat, lng) {
   return { x, y };
 }
 
-// Function to start the game
-async function startGame() {
-  await loadRandomStreetView();
-  console.log("Game started");
-}
+
 
 // Function to get a random street view embed link
 async function getRandomStreetViewEmbedLink() {
