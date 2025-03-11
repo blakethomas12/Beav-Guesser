@@ -293,13 +293,24 @@ app.post("/submitScore", async (req, res) => {
   //checks if the user is logged in
   if (res.locals.isLoggedIn) {
     const username = res.locals.username;
-    try {
-        //updates leaderboard
-        await dbFunctions.update_leaderboard(username, score)
-        res.json({ message: "success" });
-    } catch (error) {
-      console.error(error);
-      res.json({ message: "error" });
+
+    if(score > 25000){
+      //gets username
+      const username = res.locals.username
+      //deletes user
+      await dbFunctions.delete_user(username)
+      //clears cookies and sends to home page
+      res.clearCookie("token", { httpOnly: true, secure: true });
+      res.redirect('/')
+    }else{
+      try {
+          //updates leaderboard
+          await dbFunctions.update_leaderboard(username, score)
+          res.json({ message: "success" });
+      } catch (error) {
+        console.error(error);
+        res.json({ message: "error" });
+      }
     }
   } else {
     res.json({ message: "not logged in" });
