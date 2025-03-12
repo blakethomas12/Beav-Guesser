@@ -52,7 +52,7 @@
   1) error checking for no streetview
    
   **Goals For Next Week**
-
+  1) polish website, create video
 
 - ### Kevin T
   **Progress and Issues**
